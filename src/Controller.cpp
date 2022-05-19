@@ -8,7 +8,8 @@ Controller::Controller(){
 
 }
 void Controller::run(){
-    m_mainMenu.run();
+   if( !m_mainMenu.run())
+       return;
     m_window.create(sf::VideoMode(1920,1080),"City Buildy",sf::Style::Fullscreen);
     while (m_window.isOpen())
     {

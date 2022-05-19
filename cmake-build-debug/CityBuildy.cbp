@@ -84,10 +84,16 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/src/Button.cpp">
+			<Option target="CityBuildy"/>
+		</Unit>
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/src/Controller.cpp">
 			<Option target="CityBuildy"/>
 		</Unit>
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/src/MainMenu.cpp">
+			<Option target="CityBuildy"/>
+		</Unit>
+		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/src/Menu.cpp">
 			<Option target="CityBuildy"/>
 		</Unit>
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/src/Resources.cpp">
@@ -127,6 +133,9 @@
 			<Option virtualFolder="CMake Files\resources\"/>
 		</Unit>
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/CityBuildyMAIN.png">
+			<Option virtualFolder="CMake Files\resources\"/>
+		</Unit>
+		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/arcadeClassic.ttf">
 			<Option virtualFolder="CMake Files\resources\"/>
 		</Unit>
 	</Project>

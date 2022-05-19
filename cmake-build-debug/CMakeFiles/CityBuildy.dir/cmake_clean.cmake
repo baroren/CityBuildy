@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/CityBuildy.dir/src/Button.cpp.o"
   "CMakeFiles/CityBuildy.dir/src/Controller.cpp.o"
   "CMakeFiles/CityBuildy.dir/src/MainMenu.cpp.o"
+  "CMakeFiles/CityBuildy.dir/src/Menu.cpp.o"
   "CMakeFiles/CityBuildy.dir/src/Resources.cpp.o"
   "CMakeFiles/CityBuildy.dir/src/main.cpp.o"
   "CMakeFiles/CityBuildy.dir/src/window.cpp.o"

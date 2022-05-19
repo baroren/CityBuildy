@@ -2,4 +2,6 @@
                                              "Controller.cpp"
         "Resources.cpp"
         "window.cpp"
+        "Button.cpp"
+        "Menu.cpp"
         "MainMenu.cpp")

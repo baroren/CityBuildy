@@ -6,6 +6,22 @@
 
 #IncludeRegexTransform: 
 
+../include/Button.h
+SFML/Graphics.hpp
+-
+vector
+-
+string
+-
+cstdlib
+-
+sstream
+-
+iostream
+-
+SFML/Audio.hpp
+../include/SFML/Audio.hpp
+
 ../include/Macros.h
 
 ../include/MainMenu.h
@@ -25,6 +41,22 @@ Resources.h
 ../include/Resources.h
 Macros.h
 ../include/Macros.h
+Menu.h
+../include/Menu.h
+
+../include/Menu.h
+SFML/Graphics.hpp
+../include/SFML/Graphics.hpp
+Button.h
+../include/Button.h
+Window.h
+../include/Window.h
+string
+-
+iostream
+-
+Resources.h
+../include/Resources.h
 
 ../include/Resources.h
 SFML/Graphics.hpp
@@ -53,4 +85,8 @@ SFML/Graphics.hpp
 /Users/bar/Documents/school/yearB/CityBuildy/src/MainMenu.cpp
 MainMenu.h
 /Users/bar/Documents/school/yearB/CityBuildy/src/MainMenu.h
+
+/Users/bar/Documents/school/yearB/CityBuildy/src/Menu.cpp
+Menu.h
+/Users/bar/Documents/school/yearB/CityBuildy/src/Menu.h
 

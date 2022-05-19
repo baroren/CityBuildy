@@ -1,11 +1,11 @@
 #include "Resources.h"
 
 Resources::Resources() {
-   // if (!m_font.loadFromFile("arcadeClassic.ttf")) {
-   //     // error...
-    //    std::cout << "error loading font";
+    if (!m_font.loadFromFile("arcadeClassic.ttf")) {
+       // error...
+        std::cout << "error loading font";
 
-  //  }
+   }
     buildTexture();
     //buildAnimation();
     buildSprite();

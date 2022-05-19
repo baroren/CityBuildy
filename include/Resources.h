@@ -21,7 +21,7 @@ public:
     void operator=(const Resources &) = delete;
 
     sf::Texture *getTexture(gameObjectId id);
-   // sf::Font& getFont() ;
+    sf::Font& getFont() ;
     sf::Sprite* getSprite(gameObjectId id); // todo
 
 

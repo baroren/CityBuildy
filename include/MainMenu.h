@@ -10,6 +10,7 @@
 #include <memory>
 #include "Resources.h"
 #include "Macros.h"
+#include "Menu.h"
 using std::vector;
 using std::make_unique;
 using std::unique_ptr;
@@ -23,6 +24,6 @@ public:
 private :
     Window m_window;
     sf::Sprite m_bg;
-
+    Menu m_menu;
 
 };

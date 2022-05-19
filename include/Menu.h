@@ -1,8 +1,30 @@
-//
-// Created by Bar Oren on 14/05/2022.
-//
+#pragma once
 
-#ifndef CITYBUILDY_MENU_H
-#define CITYBUILDY_MENU_H
-
-#endif //CITYBUILDY_MENU_H
+#include "SFML/Graphics.hpp"
+#include "Button.h"
+#include "Window.h"
+#include <string>
+#include <iostream>
+#include "Resources.h"
+class Menu {
+public:
+    Menu();
+    ~Menu();
+    void createButton(string ,int x,int y,int,int);
+    int handleClick(const sf::Vector2f position,sf::RenderWindow& window);
+    Button* getButton(int i);
+    sf::Sprite getHelp();
+    void  updateBt(sf::RenderWindow& window);
+    void setHelp(bool help);
+    void changeText(string );
+    bool checkBt(int i,sf::Vector2f mousePos,sf::RenderWindow& window);
+    bool helpBt(int i,sf::Vector2f mousePos,sf::RenderWindow& window);
+    bool helpPressed();
+private:
+    bool m_music;
+    vector <Button*> m_buttons;
+    //  sf::Texture m_helpTex;
+    sf:: Font m_font;
+    bool m_helpPressed;
+    sf:: Sprite m_help ; //need to make vector
+};

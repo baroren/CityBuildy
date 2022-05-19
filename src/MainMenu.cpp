@@ -12,6 +12,10 @@ MainMenu::MainMenu() {
     m_bg.setScale(
             targetSize.x / m_bg.getLocalBounds().width,
             targetSize.y / m_bg.getLocalBounds().height);
+    m_menu.createButton("start ",330,275,250,50);
+    m_menu.createButton("Settings ",660,275,250,50);
+    m_menu.createButton("Quit ",500,350,250,50);
+
 }
 
 bool MainMenu::run(){
@@ -26,7 +30,15 @@ bool MainMenu::run(){
             if (event.type == sf::Event::Closed)
                 m_window.getWindow().close();
             if (event.type == sf::Event::MouseButtonPressed) {
-                return true;
+                if(m_menu.handleClick(
+                        m_window.getWindow().mapPixelToCoords(sf::Mouse::getPosition(m_window.getWindow())),
+                        m_window.getWindow())==0)
+                    return true;
+                if(m_menu.handleClick(
+                        m_window.getWindow().mapPixelToCoords(sf::Mouse::getPosition(m_window.getWindow())),
+                        m_window.getWindow())==2)
+                    return false;
+
             }
 
         }
@@ -36,8 +48,9 @@ bool MainMenu::run(){
         // draw everything here...
         // window.draw(...);
 m_window.getWindow().draw(m_bg);
+        m_menu.updateBt(m_window.getWindow());
         // end the current frame
         m_window.display();
     }
-
+return true;
 }
