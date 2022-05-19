@@ -1,0 +1,8 @@
+//
+// Created by Bar Oren on 14/05/2022.
+//
+
+#ifndef CITYBUILDY_POWERSOURCE_H
+#define CITYBUILDY_POWERSOURCE_H
+
+#endif //CITYBUILDY_POWERSOURCE_H

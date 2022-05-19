@@ -1,0 +1,8 @@
+//
+// Created by Bar Oren on 14/05/2022.
+//
+
+#ifndef CITYBUILDY_RESIDENCE_H
+#define CITYBUILDY_RESIDENCE_H
+
+#endif //CITYBUILDY_RESIDENCE_H

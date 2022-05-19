@@ -1,0 +1,8 @@
+//
+// Created by Bar Oren on 14/05/2022.
+//
+
+#ifndef CITYBUILDY_PLACEBLEOBJEC_H
+#define CITYBUILDY_PLACEBLEOBJEC_H
+
+#endif //CITYBUILDY_PLACEBLEOBJEC_H

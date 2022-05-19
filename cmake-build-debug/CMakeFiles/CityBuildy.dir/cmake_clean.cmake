@@ -1,0 +1,14 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/CityBuildy.dir/src/Controller.cpp.o"
+  "CMakeFiles/CityBuildy.dir/src/MainMenu.cpp.o"
+  "CMakeFiles/CityBuildy.dir/src/Resources.cpp.o"
+  "CMakeFiles/CityBuildy.dir/src/main.cpp.o"
+  "CMakeFiles/CityBuildy.dir/src/window.cpp.o"
+  "CityBuildy.app/Contents/MacOS/CityBuildy"
+  "CityBuildy.pdb"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/CityBuildy.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

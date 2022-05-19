@@ -1,0 +1,8 @@
+//
+// Created by Bar Oren on 14/05/2022.
+//
+
+#ifndef CITYBUILDY_CONECTORS_H
+#define CITYBUILDY_CONECTORS_H
+
+#endif //CITYBUILDY_CONECTORS_H

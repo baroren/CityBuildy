@@ -1,0 +1,1 @@
+﻿configure_file ("CityBuildyMAIN.png" ${CMAKE_BINARY_DIR} COPYONLY)
