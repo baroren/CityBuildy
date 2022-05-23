@@ -33,7 +33,7 @@ private:
     sf::Texture m_temp;
     std::array <sf::Sprite, numOfSprites> m_sprite;//why arr and not vector ?
     std::array <sf::Texture, numOfSprites> m_texture;
-    vector <string> m_imagePath = {"CityBuildyMAIN"};
+    vector <string> m_imagePath = {"CityBuildyMAIN","outdoors"};
     vector <string> m_musicNames={"MainMenuMusic.ogg"};
    // vector<Animation *> m_animation;
     sf::Music m_music;

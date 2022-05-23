@@ -99,6 +99,9 @@
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/src/Resources.cpp">
 			<Option target="CityBuildy"/>
 		</Unit>
+		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/src/TileMap.cpp">
+			<Option target="CityBuildy"/>
+		</Unit>
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/src/main.cpp">
 			<Option target="CityBuildy"/>
 		</Unit>
@@ -136,6 +139,9 @@
 			<Option virtualFolder="CMake Files\resources\"/>
 		</Unit>
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/arcadeClassic.ttf">
+			<Option virtualFolder="CMake Files\resources\"/>
+		</Unit>
+		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/outdoors.png">
 			<Option virtualFolder="CMake Files\resources\"/>
 		</Unit>
 	</Project>

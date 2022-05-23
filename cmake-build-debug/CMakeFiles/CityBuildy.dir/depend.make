@@ -11,6 +11,7 @@ CMakeFiles/CityBuildy.dir/src/Controller.cpp.o: \
  ../include/MainMenu.h \
  ../include/Menu.h \
  ../include/Resources.h \
+ ../include/TileMap.h \
  ../include/Window.h \
  ../src/Controller.cpp
 CMakeFiles/CityBuildy.dir/src/MainMenu.cpp.o: \
@@ -32,6 +33,12 @@ CMakeFiles/CityBuildy.dir/src/Resources.cpp.o: \
  ../include/Macros.h \
  ../include/Resources.h \
  ../src/Resources.cpp
+CMakeFiles/CityBuildy.dir/src/TileMap.cpp.o: \
+ ../include/Macros.h \
+ ../include/Resources.h \
+ ../include/TileMap.h \
+ ../include/Window.h \
+ ../src/TileMap.cpp
 CMakeFiles/CityBuildy.dir/src/main.cpp.o: \
  ../include/Button.h \
  ../include/Controller.h \
@@ -39,6 +46,7 @@ CMakeFiles/CityBuildy.dir/src/main.cpp.o: \
  ../include/MainMenu.h \
  ../include/Menu.h \
  ../include/Resources.h \
+ ../include/TileMap.h \
  ../include/Window.h \
  ../src/main.cpp
 CMakeFiles/CityBuildy.dir/src/window.cpp.o: \

@@ -249,6 +249,30 @@ src/Resources.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CityBuildy.dir/build.make CMakeFiles/CityBuildy.dir/src/Resources.cpp.s
 .PHONY : src/Resources.cpp.s
 
+src/TileMap.o: src/TileMap.cpp.o
+.PHONY : src/TileMap.o
+
+# target to build an object file
+src/TileMap.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CityBuildy.dir/build.make CMakeFiles/CityBuildy.dir/src/TileMap.cpp.o
+.PHONY : src/TileMap.cpp.o
+
+src/TileMap.i: src/TileMap.cpp.i
+.PHONY : src/TileMap.i
+
+# target to preprocess a source file
+src/TileMap.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CityBuildy.dir/build.make CMakeFiles/CityBuildy.dir/src/TileMap.cpp.i
+.PHONY : src/TileMap.cpp.i
+
+src/TileMap.s: src/TileMap.cpp.s
+.PHONY : src/TileMap.s
+
+# target to generate assembly for a file
+src/TileMap.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CityBuildy.dir/build.make CMakeFiles/CityBuildy.dir/src/TileMap.cpp.s
+.PHONY : src/TileMap.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -321,6 +345,9 @@ help:
 	@echo "... src/Resources.o"
 	@echo "... src/Resources.i"
 	@echo "... src/Resources.s"
+	@echo "... src/TileMap.o"
+	@echo "... src/TileMap.i"
+	@echo "... src/TileMap.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

@@ -8,8 +8,11 @@ Controller::Controller(){
 
 }
 void Controller::run(){
+
    if( !m_mainMenu.run())
        return;
+
+
     m_window.create(sf::VideoMode(1920,1080),"City Buildy",sf::Style::Fullscreen);
     while (m_window.isOpen())
     {
@@ -30,6 +33,8 @@ void Controller::run(){
 
         // draw everything here...
         // window.draw(...);
+        m_tileMap.draw(m_window);
+        m_window.clear(sf::Color(103, 230, 210));
 
         // end the current frame
         m_window.display();

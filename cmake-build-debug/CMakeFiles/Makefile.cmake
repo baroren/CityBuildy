@@ -45,6 +45,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "../resources/CMakeLists.txt"
   "../resources/CityBuildyMAIN.png"
   "../resources/arcadeClassic.ttf"
+  "../resources/outdoors.png"
   "../src/CMakeLists.txt"
   )
 
@@ -64,6 +65,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "src/CMakeFiles/CMakeDirectoryInformation.cmake"
   "CityBuildyMAIN.png"
   "arcadeClassic.ttf"
+  "outdoors.png"
   "resources/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
