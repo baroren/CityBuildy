@@ -3,4 +3,4 @@
 //
 #pragma once
 enum class gameObjectId{MainMenuBG,TileSheet};
-const int numOfSprites=2;
+const int numOfSprites=2,FACTOR=7;

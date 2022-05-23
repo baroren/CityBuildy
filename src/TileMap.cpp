@@ -2,15 +2,15 @@
 
 TileMap::TileMap()
 // Change the values when using tiles other than 30x30
-        : tileWidth(30)
-        , tileHeight(30)
+        : tileWidth(16*FACTOR)
+        , tileHeight(16*FACTOR)
 {
     // Load the texture which contains the tiles
 
    // tileSheet=Resources::instance().getTexture(gameObjectId::TileSheet);
     tile = *Resources::instance().getSprite(gameObjectId::TileSheet);
 
-
+    tile.setScale(FACTOR,FACTOR);
     // Set the tiles
    // tile.setTexture(*tileSheet);
 
@@ -22,29 +22,27 @@ void TileMap::draw(sf::RenderWindow &window)
 {
     // This is the map (20x20 tiles)
     // Change when needed
-    const int mapRows = 20;
-    const int mapColumns = 20;
+    const int mapRows = 4;
+    const int mapColumns = 10;
 
     /*
     The codes with their corresponding tiles
 
         - 0	=	pink path
         - 1	=	stone wall
-        - 2	=	wooden box
-        - 3	=	grass
+
     */
 
     int map[mapRows][mapColumns] =
             {
-                    { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 }, // row 1
-                    { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 }, // row 2
-                    { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 }, // row 3
-                    { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 }, // row 4
+                    {0,0,0,0,0,0,0,0,0,0},
+                    {0,0,0,0,0,0,0,0,0,0},
+                    {0,0,0,0,1,0,0,0,0,0},
+                    {0,0,0,1,1,0,0,0,0,0},
             };
 
     // IntRect placeholder
     sf::IntRect placeHolder;
-
     // Loop through the rows
     for (int row = 0; row < mapRows; row++)
     {
@@ -66,7 +64,7 @@ void TileMap::draw(sf::RenderWindow &window)
             tile.setTextureRect(placeHolder);
 
             // Set the position
-            tile.setPosition((row * tileWidth), (column * tileHeight));
+            tile.setPosition((row * tileWidth+300), (column * tileHeight+600));
 
             // Draw the sprite to the screen
             window.draw(tile);
@@ -80,15 +78,15 @@ void TileMap::draw(sf::RenderWindow &window)
 // Change if the tiles should be bigger / smaller
 void TileMap::initIntRect()
 {
-    m_grass.left = 0;
+    m_grass.left = 16;
     m_grass.top = 0;
-    m_grass.width = tileWidth;
-    m_grass.height = tileHeight;
+    m_grass.width = tileWidth/FACTOR;
+    m_grass.height = tileHeight/FACTOR;
 
-    m_ground.left = 30;
+    m_ground.left = 0;
     m_ground.top = 0;
-    m_ground.width = tileWidth;
-    m_ground.height = tileHeight;
+    m_ground.width = tileWidth/FACTOR;
+    m_ground.height = tileHeight/FACTOR;
 
 
 }

@@ -5,7 +5,6 @@
 #include "Controller.h"
 
 Controller::Controller(){
-
 }
 void Controller::run(){
 
@@ -33,8 +32,9 @@ void Controller::run(){
 
         // draw everything here...
         // window.draw(...);
-        m_tileMap.draw(m_window);
+
         m_window.clear(sf::Color(103, 230, 210));
+        m_tileMap.draw(m_window);
 
         // end the current frame
         m_window.display();
