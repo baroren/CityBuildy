@@ -13,12 +13,21 @@ class TileMap {
 public:
     TileMap();
 
-    void draw(sf::RenderWindow &window);
+    void draw(sf::RenderWindow &window,std::pair<int,int>);
+
+    void update(sf::Vector2f mousePos);
 
 private:
+
+    static const int mapRows = 4;//TODO
+    static const int mapColumns = 10;
+    int map[mapRows][mapColumns] = {
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
+            {0, 0, 0, 1, 1, 0, 0, 0, 0, 0}};// TODO change to arrray or vector
     void initIntRect();
 
-private:
     // In the constructor, specify these constants
     // They are important
     const int tileWidth;
@@ -26,7 +35,7 @@ private:
 
     // This textures holds the textures for the tiles
     // It should be a single image with multiple tiles (like a spritesheet)
-    sf::Texture *tileSheet;
+    //sf::Texture *tileSheet;
 
     sf::Sprite tile;
 

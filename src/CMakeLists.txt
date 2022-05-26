@@ -5,4 +5,5 @@
         "Button.cpp"
         "Menu.cpp"
         "MainMenu.cpp"
-        "TileMap.cpp")
+        "TileMap.cpp"
+      "Mouse.cpp")

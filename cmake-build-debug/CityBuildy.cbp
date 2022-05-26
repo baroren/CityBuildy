@@ -96,6 +96,9 @@
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/src/Menu.cpp">
 			<Option target="CityBuildy"/>
 		</Unit>
+		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/src/Mouse.cpp">
+			<Option target="CityBuildy"/>
+		</Unit>
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/src/Resources.cpp">
 			<Option target="CityBuildy"/>
 		</Unit>

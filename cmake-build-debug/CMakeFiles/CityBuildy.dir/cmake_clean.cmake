@@ -3,6 +3,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/CityBuildy.dir/src/Controller.cpp.o"
   "CMakeFiles/CityBuildy.dir/src/MainMenu.cpp.o"
   "CMakeFiles/CityBuildy.dir/src/Menu.cpp.o"
+  "CMakeFiles/CityBuildy.dir/src/Mouse.cpp.o"
   "CMakeFiles/CityBuildy.dir/src/Resources.cpp.o"
   "CMakeFiles/CityBuildy.dir/src/TileMap.cpp.o"
   "CMakeFiles/CityBuildy.dir/src/main.cpp.o"

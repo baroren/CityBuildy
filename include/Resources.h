@@ -38,6 +38,6 @@ private:
    // vector<Animation *> m_animation;
     sf::Music m_music;
     int numOfAnim=1;
-  //  vector<int>numOfFrames{ 4,3,3,3 ,3,4,4,4,1,4,4,1,4,1,4,1,1,1,1};
+    std::array<int,numOfSprites> numOfFrames{ 1,2};
     sf::Font m_font;
 };

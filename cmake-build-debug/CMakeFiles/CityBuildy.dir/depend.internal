@@ -10,6 +10,7 @@ CMakeFiles/CityBuildy.dir/src/Controller.cpp.o
  ../include/Macros.h
  ../include/MainMenu.h
  ../include/Menu.h
+ ../include/Mouse.h
  ../include/Resources.h
  ../include/TileMap.h
  ../include/Window.h
@@ -29,6 +30,11 @@ CMakeFiles/CityBuildy.dir/src/Menu.cpp.o
  ../include/Resources.h
  ../include/Window.h
  /Users/bar/Documents/school/yearB/CityBuildy/src/Menu.cpp
+CMakeFiles/CityBuildy.dir/src/Mouse.cpp.o
+ ../include/Macros.h
+ ../include/Mouse.h
+ ../include/Resources.h
+ /Users/bar/Documents/school/yearB/CityBuildy/src/Mouse.cpp
 CMakeFiles/CityBuildy.dir/src/Resources.cpp.o
  ../include/Macros.h
  ../include/Resources.h
@@ -45,6 +51,7 @@ CMakeFiles/CityBuildy.dir/src/main.cpp.o
  ../include/Macros.h
  ../include/MainMenu.h
  ../include/Menu.h
+ ../include/Mouse.h
  ../include/Resources.h
  ../include/TileMap.h
  ../include/Window.h

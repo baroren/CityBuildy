@@ -47,7 +47,7 @@ void Resources::buildSprite()
 {
     for(int i=0;i<m_imagePath.size();i++) {
         m_sprite[i].setTexture(m_texture[i]);
-        m_sprite[i].setOrigin(m_sprite[i].getGlobalBounds().width /2.f,m_sprite[i].getGlobalBounds().height /2.f);
+        m_sprite[i].setOrigin(m_sprite[i].getGlobalBounds().width/numOfFrames[i] /2.f,m_sprite[i].getGlobalBounds().height /2.f);
 
     }
 }

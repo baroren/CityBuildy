@@ -18,12 +18,11 @@ TileMap::TileMap()
     initIntRect();
 }
 
-void TileMap::draw(sf::RenderWindow &window)
+void TileMap::draw(sf::RenderWindow &window,std::pair<int,int> dims)
 {
     // This is the map (20x20 tiles)
     // Change when needed
-    const int mapRows = 4;
-    const int mapColumns = 10;
+
 
     /*
     The codes with their corresponding tiles
@@ -33,13 +32,7 @@ void TileMap::draw(sf::RenderWindow &window)
 
     */
 
-    int map[mapRows][mapColumns] =
-            {
-                    {0,0,0,0,0,0,0,0,0,0},
-                    {0,0,0,0,0,0,0,0,0,0},
-                    {0,0,0,0,1,0,0,0,0,0},
-                    {0,0,0,1,1,0,0,0,0,0},
-            };
+
 
     // IntRect placeholder
     sf::IntRect placeHolder;
@@ -64,14 +57,30 @@ void TileMap::draw(sf::RenderWindow &window)
             tile.setTextureRect(placeHolder);
 
             // Set the position
-            tile.setPosition((row * tileWidth+300), (column * tileHeight+600));
+            tile.setPosition((row * tileWidth+MARGINX), (column * tileHeight+MARGINY));
 
             // Draw the sprite to the screen
             window.draw(tile);
         }
     }
 }
+void TileMap::update(sf::Vector2f mousePos) {
+    std::cout<<mousePos.x<<"y"<<mousePos.y<<std::endl;
 
+    for (int row = 0; row < mapRows; row++) {
+        // Loop through the columns
+        for (int col = 0; col < mapColumns; col++) {
+            if ((mousePos.x> ((row) * (tileWidth)-tileWidth/2 + MARGINX) &&mousePos.x <((row) * tileWidth)+tileWidth/2+MARGINX) &&
+                    (mousePos.y>(((col) * (tileHeight)-tileWidth/2+MARGINY))&&mousePos.y<(((col) * tileHeight)+tileWidth/2+MARGINY)))
+            {
+                if (map[row][col] == 0)
+                    map[row][col] = 1;
+                else
+                    map[row][col] = 0;
+            }
+        }
+    }
+}
 // Check the SFML documentation about intrect if you do not know what is going on here
 // Add / remove some when needed (if you use less or more tiles in the texture)
 // The value of 30 is the width / height of a tile

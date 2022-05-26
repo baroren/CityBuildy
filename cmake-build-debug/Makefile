@@ -225,6 +225,30 @@ src/Menu.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CityBuildy.dir/build.make CMakeFiles/CityBuildy.dir/src/Menu.cpp.s
 .PHONY : src/Menu.cpp.s
 
+src/Mouse.o: src/Mouse.cpp.o
+.PHONY : src/Mouse.o
+
+# target to build an object file
+src/Mouse.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CityBuildy.dir/build.make CMakeFiles/CityBuildy.dir/src/Mouse.cpp.o
+.PHONY : src/Mouse.cpp.o
+
+src/Mouse.i: src/Mouse.cpp.i
+.PHONY : src/Mouse.i
+
+# target to preprocess a source file
+src/Mouse.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CityBuildy.dir/build.make CMakeFiles/CityBuildy.dir/src/Mouse.cpp.i
+.PHONY : src/Mouse.cpp.i
+
+src/Mouse.s: src/Mouse.cpp.s
+.PHONY : src/Mouse.s
+
+# target to generate assembly for a file
+src/Mouse.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CityBuildy.dir/build.make CMakeFiles/CityBuildy.dir/src/Mouse.cpp.s
+.PHONY : src/Mouse.cpp.s
+
 src/Resources.o: src/Resources.cpp.o
 .PHONY : src/Resources.o
 
@@ -342,6 +366,9 @@ help:
 	@echo "... src/Menu.o"
 	@echo "... src/Menu.i"
 	@echo "... src/Menu.s"
+	@echo "... src/Mouse.o"
+	@echo "... src/Mouse.i"
+	@echo "... src/Mouse.s"
 	@echo "... src/Resources.o"
 	@echo "... src/Resources.i"
 	@echo "... src/Resources.s"
