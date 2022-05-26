@@ -19,13 +19,19 @@ public:
 
 private:
 
-    static const int mapRows = 4;//TODO
+    static const int mapRows = 10;//TODO
     static const int mapColumns = 10;
     int map[mapRows][mapColumns] = {
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
-            {0, 0, 0, 1, 1, 0, 0, 0, 0, 0}};// TODO change to arrray or vector
+            {0, 0, 0, 1, 1, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}};// TODO change to arrray or vector
     void initIntRect();
 
     // In the constructor, specify these constants

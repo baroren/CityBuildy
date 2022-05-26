@@ -321,6 +321,30 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CityBuildy.dir/build.make CMakeFiles/CityBuildy.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/sideMenu.o: src/sideMenu.cpp.o
+.PHONY : src/sideMenu.o
+
+# target to build an object file
+src/sideMenu.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CityBuildy.dir/build.make CMakeFiles/CityBuildy.dir/src/sideMenu.cpp.o
+.PHONY : src/sideMenu.cpp.o
+
+src/sideMenu.i: src/sideMenu.cpp.i
+.PHONY : src/sideMenu.i
+
+# target to preprocess a source file
+src/sideMenu.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CityBuildy.dir/build.make CMakeFiles/CityBuildy.dir/src/sideMenu.cpp.i
+.PHONY : src/sideMenu.cpp.i
+
+src/sideMenu.s: src/sideMenu.cpp.s
+.PHONY : src/sideMenu.s
+
+# target to generate assembly for a file
+src/sideMenu.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CityBuildy.dir/build.make CMakeFiles/CityBuildy.dir/src/sideMenu.cpp.s
+.PHONY : src/sideMenu.cpp.s
+
 src/window.o: src/window.cpp.o
 .PHONY : src/window.o
 
@@ -378,6 +402,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/sideMenu.o"
+	@echo "... src/sideMenu.i"
+	@echo "... src/sideMenu.s"
 	@echo "... src/window.o"
 	@echo "... src/window.i"
 	@echo "... src/window.s"

@@ -1,4 +1,4 @@
-pragma once
+#pragma once
 
 #include "SFML/Graphics.hpp"
 #include "Button.h"
@@ -11,9 +11,10 @@ public:
     SideMenu();
     void createButton(string ,int x,int y,int,int);
     int handleClick(const sf::Vector2f position,sf::RenderWindow& window);
-
+    void draw(sf::RenderWindow& window);
 private:
-    vector <Button*> m_buttons;
+    vector <sf::Sprite> m_buttons;
+    sf::Sprite test;
     //  sf::Texture m_helpTex;
     sf:: Font m_font;
     bool m_helpPressed;

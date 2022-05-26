@@ -108,6 +108,9 @@
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/src/main.cpp">
 			<Option target="CityBuildy"/>
 		</Unit>
+		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/src/sideMenu.cpp">
+			<Option target="CityBuildy"/>
+		</Unit>
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/src/window.cpp">
 			<Option target="CityBuildy"/>
 		</Unit>
@@ -144,7 +147,34 @@
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/arcadeClassic.ttf">
 			<Option virtualFolder="CMake Files\resources\"/>
 		</Unit>
+		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/comm.png">
+			<Option virtualFolder="CMake Files\resources\"/>
+		</Unit>
+		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/destroy.png">
+			<Option virtualFolder="CMake Files\resources\"/>
+		</Unit>
+		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/indast.png">
+			<Option virtualFolder="CMake Files\resources\"/>
+		</Unit>
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/outdoors.png">
+			<Option virtualFolder="CMake Files\resources\"/>
+		</Unit>
+		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/park.png">
+			<Option virtualFolder="CMake Files\resources\"/>
+		</Unit>
+		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/powerLine.png">
+			<Option virtualFolder="CMake Files\resources\"/>
+		</Unit>
+		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/powerSource.png">
+			<Option virtualFolder="CMake Files\resources\"/>
+		</Unit>
+		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/rail.png">
+			<Option virtualFolder="CMake Files\resources\"/>
+		</Unit>
+		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/resident.png">
+			<Option virtualFolder="CMake Files\resources\"/>
+		</Unit>
+		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/road.png">
 			<Option virtualFolder="CMake Files\resources\"/>
 		</Unit>
 	</Project>

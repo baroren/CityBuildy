@@ -7,6 +7,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/CityBuildy.dir/src/Resources.cpp.o"
   "CMakeFiles/CityBuildy.dir/src/TileMap.cpp.o"
   "CMakeFiles/CityBuildy.dir/src/main.cpp.o"
+  "CMakeFiles/CityBuildy.dir/src/sideMenu.cpp.o"
   "CMakeFiles/CityBuildy.dir/src/window.cpp.o"
   "CityBuildy.app/Contents/MacOS/CityBuildy"
   "CityBuildy.pdb"

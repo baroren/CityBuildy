@@ -16,6 +16,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/bar/Documents/school/yearB/CityBuildy/src/Resources.cpp" "/Users/bar/Documents/school/yearB/CityBuildy/cmake-build-debug/CMakeFiles/CityBuildy.dir/src/Resources.cpp.o"
   "/Users/bar/Documents/school/yearB/CityBuildy/src/TileMap.cpp" "/Users/bar/Documents/school/yearB/CityBuildy/cmake-build-debug/CMakeFiles/CityBuildy.dir/src/TileMap.cpp.o"
   "/Users/bar/Documents/school/yearB/CityBuildy/src/main.cpp" "/Users/bar/Documents/school/yearB/CityBuildy/cmake-build-debug/CMakeFiles/CityBuildy.dir/src/main.cpp.o"
+  "/Users/bar/Documents/school/yearB/CityBuildy/src/sideMenu.cpp" "/Users/bar/Documents/school/yearB/CityBuildy/cmake-build-debug/CMakeFiles/CityBuildy.dir/src/sideMenu.cpp.o"
   "/Users/bar/Documents/school/yearB/CityBuildy/src/window.cpp" "/Users/bar/Documents/school/yearB/CityBuildy/cmake-build-debug/CMakeFiles/CityBuildy.dir/src/window.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")

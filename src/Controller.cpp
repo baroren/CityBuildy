@@ -44,7 +44,7 @@ void Controller::run(){
         m_window.clear(sf::Color(103, 230, 210));
         m_tileMap.draw(m_window,m_dims);
         m_mouse.trackMouse(m_window.mapPixelToCoords(sf::Mouse::getPosition(m_window)),m_window,16*FACTOR);
-
+        m_sideMenu.draw(m_window);
         // end the current frame
         m_window.display();
     }
