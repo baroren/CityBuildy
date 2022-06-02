@@ -12,15 +12,18 @@
 #include "TileMap.h"
 #include "Mouse.h"
 #include "SideMenu.h"
+#include "Roads.h"
 using std::vector;
 using std::unique_ptr;
 using std::make_unique;
+
 
 class Controller {
 public:
   Controller();
   void run();
 private:
+    int clicked =-1;
     SideMenu m_sideMenu;
     std::pair<int,int> m_dims;
     MainMenu m_mainMenu;

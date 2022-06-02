@@ -3,6 +3,6 @@
 //
 #pragma once
 enum class gameObjectId{MainMenuBG,TileSheet,road,comm,destroy,indast,park,powerLine,
-    powerSource,rail,resident};
-const int numOfSprites=11,MARGINX=600,MARGINY=300;
+    powerSource,rail,resident,roadHor};
+const int numOfSprites=12,MARGINX=600,MARGINY=300;
  static int FACTOR=3;

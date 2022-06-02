@@ -7,6 +7,9 @@
 #include <iostream>
 #include <memory>
 #include "Resources.h"
+#include "PlacebleObject.h"
+#include <Roads.h>
+#include "Ground.h"
 
 class TileMap {
 
@@ -15,23 +18,13 @@ public:
 
     void draw(sf::RenderWindow &window,std::pair<int,int>);
 
-    void update(sf::Vector2f mousePos);
+    void update(sf::Vector2f mousePos,int &id);
 
 private:
 
-    static const int mapRows = 10;//TODO
-    static const int mapColumns = 10;
-    int map[mapRows][mapColumns] = {
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
-            {0, 0, 0, 1, 1, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}};// TODO change to arrray or vector
+
+
+
     void initIntRect();
 
     // In the constructor, specify these constants
@@ -44,10 +37,11 @@ private:
     //sf::Texture *tileSheet;
 
     sf::Sprite tile;
-
+    vector<vector<std::unique_ptr<PlacebleObject>>> m_obj;
     // Add / remove these in order to add more tiles
     // This depends on the amount of tiles in your texture
-
+    int m_rows=10;
+    int m_cols=10;
     sf::IntRect m_grass;
     sf::IntRect m_ground;
 

@@ -177,5 +177,8 @@
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/road.png">
 			<Option virtualFolder="CMake Files\resources\"/>
 		</Unit>
+		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/roadHor.png">
+			<Option virtualFolder="CMake Files\resources\"/>
+		</Unit>
 	</Project>
 </CodeBlocks_project_file>

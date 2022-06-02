@@ -55,6 +55,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "../resources/rail.png"
   "../resources/resident.png"
   "../resources/road.png"
+  "../resources/roadHor.png"
   "../src/CMakeLists.txt"
   )
 
@@ -84,6 +85,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "powerSource.png"
   "rail.png"
   "resident.png"
+  "roadHor.png"
   "resources/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 

@@ -3,19 +3,16 @@
 TileMap::TileMap()
 // Change the values when using tiles other than 30x30
         : tileWidth(16*FACTOR)
-        , tileHeight(16*FACTOR)
-{
-    // Load the texture which contains the tiles
+        , tileHeight(16*FACTOR) {
+    for (int row = 0; row < m_rows ; ++row) {
+        vector<std::unique_ptr<PlacebleObject>> temp;
+        for (int col= 0; col < m_cols; col++) {
 
-   // tileSheet=Resources::instance().getTexture(gameObjectId::TileSheet);
-    tile = *Resources::instance().getSprite(gameObjectId::TileSheet);
-
-    tile.setScale(FACTOR,FACTOR);
-    // Set the tiles
-   // tile.setTexture(*tileSheet);
-
-    // Assign the tiles to the IntRect
-    initIntRect();
+                temp.push_back(std::make_unique<Ground>(sf::Vector2f(
+                        row * tileWidth+MARGINX  ,col * tileWidth+MARGINX),row,col,gameObjectId::TileSheet));
+        }
+        m_obj.push_back(std::move(temp));
+    }
 }
 
 void TileMap::draw(sf::RenderWindow &window,std::pair<int,int> dims)
@@ -37,49 +34,45 @@ void TileMap::draw(sf::RenderWindow &window,std::pair<int,int> dims)
     // IntRect placeholder
     sf::IntRect placeHolder;
     // Loop through the rows
-    for (int row = 0; row < mapRows; row++)
+    for (int row = 0; row < m_rows; row++)
     {
         // Loop through the columns
-        for (int column = 0; column < mapColumns; column++)
+        for (int column = 0; column < m_cols; column++)
         {
             // Add / remove cases when tiles are added / removed
-            switch (map[row][column])
-            {
-                case 0:
-                    placeHolder = m_grass;
-                    break;
-                case 1:
-                    placeHolder = m_ground;
-                    break;
-            }
+
+
+            m_obj[row][column]->show(window);
 
             // Set the correct part of the spritesheet
-            tile.setTextureRect(placeHolder);
 
-            // Set the position
-            tile.setPosition((row * tileWidth+MARGINX), (column * tileHeight+MARGINY));
-
-            // Draw the sprite to the screen
-            window.draw(tile);
         }
     }
 }
-void TileMap::update(sf::Vector2f mousePos) {
+
+void TileMap::update(sf::Vector2f mousePos,int &id) {
     std::cout<<mousePos.x<<"y"<<mousePos.y<<std::endl;
 
-    for (int row = 0; row < mapRows; row++) {
+    for (int row = 0; row < m_rows; row++) {
         // Loop through the columns
-        for (int col = 0; col < mapColumns; col++) {
-            if ((mousePos.x> ((row) * (tileWidth)-tileWidth/2 + MARGINX) &&mousePos.x <((row) * tileWidth)+tileWidth/2+MARGINX) &&
-                    (mousePos.y>(((col) * (tileHeight)-tileWidth/2+MARGINY))&&mousePos.y<(((col) * tileHeight)+tileWidth/2+MARGINY)))
+        for (int col = 0; col < m_cols; col++) {
+            if (m_obj[row][col]->checkClick(mousePos))
             {
-                if (map[row][col] == 0)
-                    map[row][col] = 1;
-                else
-                    map[row][col] = 0;
+                std::cout<<row<<col<<" "<<id;
+                if(m_obj[row][col]->returnID()==0)
+                {
+                    if (id==1) {
+                       std::unique_ptr<Roads> roads = std::make_unique<Roads>(sf::Vector2f(
+                                row * tileWidth + MARGINX, col * tileWidth + MARGINX), row, col, gameObjectId::road);
+
+                       m_obj[row][col] = std::move(roads);
+                    }
+                }
+
             }
         }
     }
+    //id=-1;
 }
 // Check the SFML documentation about intrect if you do not know what is going on here
 // Add / remove some when needed (if you use less or more tiles in the texture)

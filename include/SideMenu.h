@@ -10,7 +10,7 @@ class SideMenu {
 public:
     SideMenu();
     void createButton(string ,int x,int y,int,int);
-    int handleClick(const sf::Vector2f position,sf::RenderWindow& window);
+    int handleClick(const sf::Vector2f position);
     void draw(sf::RenderWindow& window);
 private:
     vector <sf::Sprite> m_buttons;

@@ -6,7 +6,6 @@
 
 Controller::Controller(){
 
-
 }
 void Controller::run(){
 
@@ -24,12 +23,24 @@ void Controller::run(){
         sf::Event event;
         while (m_window.pollEvent(event))
         {
+
             // "close requested" event: we close the window
             if (event.type == sf::Event::Closed)
                 m_window.close();
             if (event.type == sf::Event::MouseButtonPressed) {
+                int temp= m_sideMenu.handleClick(m_window.mapPixelToCoords(sf::Mouse::getPosition(m_window)));
+                std::cout<<"temp"<<temp<<std::endl;
+                if(clicked ==-1 || temp>1 &&temp <5) {
+                    clicked = m_sideMenu.handleClick(m_window.mapPixelToCoords(sf::Mouse::getPosition(m_window)));
+                    std::cout << "clicked from side menud in if  : " << clicked << std::endl;
 
-                m_tileMap.update(m_window.mapPixelToCoords(sf::Mouse::getPosition(m_window)));
+
+                }
+                else {
+                    std::cout << "clicked from side menud : " << clicked << std::endl;
+                    m_tileMap.update(m_window.mapPixelToCoords(sf::Mouse::getPosition(m_window)), clicked);
+                }
+
             }
 
         }
@@ -41,7 +52,9 @@ void Controller::run(){
 // activate it
 
 
+
         m_window.clear(sf::Color(103, 230, 210));
+
         m_tileMap.draw(m_window,m_dims);
         m_mouse.trackMouse(m_window.mapPixelToCoords(sf::Mouse::getPosition(m_window)),m_window,16*FACTOR);
         m_sideMenu.draw(m_window);
