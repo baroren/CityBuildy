@@ -147,6 +147,9 @@
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/arcadeClassic.ttf">
 			<Option virtualFolder="CMake Files\resources\"/>
 		</Unit>
+		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/comPlace.png">
+			<Option virtualFolder="CMake Files\resources\"/>
+		</Unit>
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/comm.png">
 			<Option virtualFolder="CMake Files\resources\"/>
 		</Unit>
@@ -169,6 +172,9 @@
 			<Option virtualFolder="CMake Files\resources\"/>
 		</Unit>
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/rail.png">
+			<Option virtualFolder="CMake Files\resources\"/>
+		</Unit>
+		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/resPlace.png">
 			<Option virtualFolder="CMake Files\resources\"/>
 		</Unit>
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/resident.png">

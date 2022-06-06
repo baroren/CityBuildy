@@ -23,6 +23,9 @@ public:
     void print(){std::cout<<"test";};
     void setPos(int x,int y){m_obj.setPosition(x,y);};
     int returnID(){return id;};
+   bool checkIfContained(sf::FloatRect  bound ){return  m_obj.getGlobalBounds().intersects(bound);};
+    sf::FloatRect  bound(){return m_obj.getGlobalBounds();};
+
 
 private:
     sf::Sprite m_obj;

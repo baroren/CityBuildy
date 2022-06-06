@@ -13,7 +13,7 @@ public:
     Roads(sf::Vector2f pos,int row,int col,gameObjectId id):Conectors(pos ,row,col,id) {
         m_obj=*Resources::instance().getSprite(gameObjectId::roadHor);
         m_obj.setPosition(pos);
-        m_obj.scale(FACTOR,FACTOR);}
+        m_obj.scale(PlacebleObjectFactor,PlacebleObjectFactor   );}
 
     bool checkClick(sf::Vector2f pos){return m_obj.getGlobalBounds().contains(pos);}
     void rotate() { m_obj.setRotation(90.f); };
@@ -21,8 +21,12 @@ public:
     void setPos(int x,int y){m_obj.setPosition(x,y);};
     int returnID(){return id;};
     void print(){std::cout<<"roads";};
-private:
+    bool checkIfContained(sf::FloatRect  bound ){return  m_obj.getGlobalBounds().intersects(bound);};
+    sf::FloatRect  bound(){return m_obj.getGlobalBounds();};
+protected:
     sf::Sprite m_obj;
+private:
+ //   sf::Sprite m_obj;
     int id=1;
     std::pair<int,int>pos;
 

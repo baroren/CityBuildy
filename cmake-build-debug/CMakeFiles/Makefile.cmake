@@ -45,6 +45,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "../resources/CMakeLists.txt"
   "../resources/CityBuildyMAIN.png"
   "../resources/arcadeClassic.ttf"
+  "../resources/comPlace.png"
   "../resources/comm.png"
   "../resources/destroy.png"
   "../resources/indast.png"
@@ -53,6 +54,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "../resources/powerLine.png"
   "../resources/powerSource.png"
   "../resources/rail.png"
+  "../resources/resPlace.png"
   "../resources/resident.png"
   "../resources/road.png"
   "../resources/roadHor.png"
@@ -86,6 +88,8 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "rail.png"
   "resident.png"
   "roadHor.png"
+  "comPlace.png"
+  "resPlace.png"
   "resources/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 

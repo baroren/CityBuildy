@@ -77,38 +77,50 @@ void TileMap::update(sf::Vector2f mousePos,int &id) {
               //  int retflag;
                 //factor2Check(row, col, retflag);
                 //if (retflag == 2) break;
-                
-                if (m_obj[row][col]->returnID() == 0)
-                {
+
+                if (m_obj[row][col]->returnID() == 0) {
 
                     // if(m_obj[row-1][col]->returnID() == 0)
                     std::cout << id << std::endl;
                     if (id == 1) {
                         createRoad(row, col);
-                    }
-
-
-             
-                    else if (id == 2)
-                    {
-                          int retflag;
-                          factor2Check(row, col, retflag);
-                            if (retflag == 2) break;
+                    } else if (id == 2) {
+                        int retflag;
+                        //   factor2Check(row, col, retflag);
+                        //  if (retflag == 2) break;
 
 
                         std::cout << "comm";
                         std::unique_ptr<Commercial> commercial = std::make_unique<Commercial>(sf::Vector2f(
-                            col * tileWidth + MARGINX, row * tileWidth + MARGINY), row, col, gameObjectId::comPlace);
+                                                                                                      col * tileWidth + MARGINX + 12, row * tileWidth + MARGINY), row, col,
+                                                                                              gameObjectId::comPlace);
 
                         m_obj[row][col] = std::move(commercial);
+                        factor2Check(row, col, retflag);
                     }
+                 else if (id == 5)
+                {
+                    int retflag;
+
+                    std::cout << "comm";
+                    std::unique_ptr<Residence> residence = std::make_unique<Residence>(sf::Vector2f(
+                                                                                                  col * tileWidth + MARGINX + 12, row * tileWidth + MARGINY), row, col,
+                                                                                          gameObjectId::resPlace);
+
+                    m_obj[row][col] = std::move(residence);
+                    factor2Check(row, col, retflag);
+                }
                 }
                 else if (id == 3) {
+                    int retflag;
+
                     std::cout << "delete";
                     std::unique_ptr<Ground> ground = std::make_unique<Ground>(sf::Vector2f(
                         col * tileWidth + MARGINX, row * tileWidth + MARGINY), row, col, gameObjectId::TileSheet);
 
                     m_obj[row][col] = std::move(ground);
+                    factor2Check(row, col, retflag);
+
                 }
 
             }
@@ -119,7 +131,7 @@ void TileMap::update(sf::Vector2f mousePos,int &id) {
 void TileMap::factor2Check(int row, int col, int& retflag)
 {
     retflag = 1;
-    if (row > 2 || row < m_rows - 2 || col >2 || col < m_cols - 2)
+    /*if (row > 2 || row < m_rows - 2 || col >2 || col < m_cols - 2)
     {
         if (m_obj[row - 1][col]->returnID() == 1 ||
             (m_obj[row + 1][col]->returnID() == 1) ||
@@ -131,8 +143,28 @@ void TileMap::factor2Check(int row, int col, int& retflag)
         {//ugly as hell need to change asap
             std::cout << "not goodd";
             { retflag = 2; return; };
+    */
+    for (int i = 0; i < m_rows; i++) {
+        // Loop through the columns
+        for (int j = 0; j < m_cols; j++) {
+            if(m_obj[i][j]->returnID() != 0) {
+                if (!(i == row && j == col)) {
+                    if (m_obj[i][j]->checkIfContained(m_obj[row][col]->bound())) {
+                        if (m_obj[i][j]->bound().left + 144 - m_obj[row][col]->bound().left < 0)
+                            std::cout << "containes \n\n";
+                        std::cout << "touching.\n";
+                        std::cout << m_obj[i][j]->bound().left << ".\n";
+
+                        std::cout << m_obj[row][col]->bound().left << ".\n";
+
+                    }
+
+                }
+            }
+
         }
     }
+
 }
 void TileMap::createRoad(int& row, int& col)
 {

@@ -12,6 +12,7 @@
 #include "Ground.h"
 #include "Area.h"
 #include "Commercial.h"
+#include "Residence.h"
 
 class TileMap {
 

@@ -1,8 +1,34 @@
-//
-// Created by Bar Oren on 14/05/2022.
-//
+#pragma once
 
-#ifndef CITYBUILDY_RESIDENCE_H
-#define CITYBUILDY_RESIDENCE_H
+#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+#include "Window.h"
+#include <vector>
+#include <iostream>
+#include <memory>
+#include "Resources.h"
+#include "Conectors.h"
+class Residence :public Area {
+public:
+    Residence(sf::Vector2f pos, int row, int col, gameObjectId id) :Area(pos, row, col, id) {
+        m_obj = *Resources::instance().getSprite(gameObjectId::resPlace);
+        m_obj.setPosition(pos);
+        m_obj.scale(PlacebleObjectFactor, PlacebleObjectFactor);
+    }
 
-#endif //CITYBUILDY_RESIDENCE_H
+    bool checkClick(sf::Vector2f pos) { return m_obj.getGlobalBounds().contains(pos); }
+    void rotate() { m_obj.setRotation(90.f); };
+    void show(sf::RenderWindow& window) { window.draw(m_obj); };
+    void setPos(int x, int y) { m_obj.setPosition(x, y); };
+    int returnID() { return id; };
+    void print() { std::cout << "roads"; };
+    bool checkIfContained(sf::FloatRect  bound ){std::cout<<"#######\n";return  m_obj.getGlobalBounds().intersects(bound);};
+    sf::FloatRect  bound(){return m_obj.getGlobalBounds();};
+private:
+    sf::Sprite m_obj;
+
+    // sf::Sprite m_obj;
+    int id = 1;
+    std::pair<int, int>pos;
+
+};

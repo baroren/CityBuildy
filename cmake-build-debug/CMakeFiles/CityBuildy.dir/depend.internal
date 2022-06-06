@@ -5,7 +5,9 @@ CMakeFiles/CityBuildy.dir/src/Button.cpp.o
  ../include/Button.h
  /Users/bar/Documents/school/yearB/CityBuildy/src/Button.cpp
 CMakeFiles/CityBuildy.dir/src/Controller.cpp.o
+ ../include/Area.h
  ../include/Button.h
+ ../include/Commercial.h
  ../include/Conectors.h
  ../include/Controller.h
  ../include/Ground.h
@@ -14,6 +16,7 @@ CMakeFiles/CityBuildy.dir/src/Controller.cpp.o
  ../include/Menu.h
  ../include/Mouse.h
  ../include/PlacebleObject.h
+ ../include/Residence.h
  ../include/Resources.h
  ../include/Roads.h
  ../include/SideMenu.h
@@ -45,17 +48,22 @@ CMakeFiles/CityBuildy.dir/src/Resources.cpp.o
  ../include/Resources.h
  /Users/bar/Documents/school/yearB/CityBuildy/src/Resources.cpp
 CMakeFiles/CityBuildy.dir/src/TileMap.cpp.o
+ ../include/Area.h
+ ../include/Commercial.h
  ../include/Conectors.h
  ../include/Ground.h
  ../include/Macros.h
  ../include/PlacebleObject.h
+ ../include/Residence.h
  ../include/Resources.h
  ../include/Roads.h
  ../include/TileMap.h
  ../include/Window.h
  /Users/bar/Documents/school/yearB/CityBuildy/src/TileMap.cpp
 CMakeFiles/CityBuildy.dir/src/main.cpp.o
+ ../include/Area.h
  ../include/Button.h
+ ../include/Commercial.h
  ../include/Conectors.h
  ../include/Controller.h
  ../include/Ground.h
@@ -64,6 +72,7 @@ CMakeFiles/CityBuildy.dir/src/main.cpp.o
  ../include/Menu.h
  ../include/Mouse.h
  ../include/PlacebleObject.h
+ ../include/Residence.h
  ../include/Resources.h
  ../include/Roads.h
  ../include/SideMenu.h
