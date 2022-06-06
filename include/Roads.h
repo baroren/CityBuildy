@@ -16,7 +16,7 @@ public:
         m_obj.scale(FACTOR,FACTOR);}
 
     bool checkClick(sf::Vector2f pos){return m_obj.getGlobalBounds().contains(pos);}
-
+    void rotate() { m_obj.setRotation(90.f); };
     void show(sf::RenderWindow &window) {window.draw(m_obj);};
     void setPos(int x,int y){m_obj.setPosition(x,y);};
     int returnID(){return id;};

@@ -30,7 +30,7 @@ void Controller::run(){
             if (event.type == sf::Event::MouseButtonPressed) {
                 int temp= m_sideMenu.handleClick(m_window.mapPixelToCoords(sf::Mouse::getPosition(m_window)));
                 std::cout<<"temp"<<temp<<std::endl;
-                if(clicked ==-1 || temp>1 &&temp <5) {
+                if(clicked ==-1 || temp>=1 &&temp <9) {
                     clicked = m_sideMenu.handleClick(m_window.mapPixelToCoords(sf::Mouse::getPosition(m_window)));
                     std::cout << "clicked from side menud in if  : " << clicked << std::endl;
 

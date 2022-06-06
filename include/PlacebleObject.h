@@ -16,7 +16,7 @@ public:
     virtual void setPos(int x,int y)=0;
     virtual void print()=0;
     virtual int returnID()=0;
-
+    virtual void rotate() = 0;
     virtual bool checkClick(sf::Vector2f pos)=0;
 private:
     sf::Sprite m_obj;

@@ -1,8 +1,24 @@
-//
-// Created by Bar Oren on 14/05/2022.
-//
+#pragma once
 
-#ifndef CITYBUILDY_AREA_H
-#define CITYBUILDY_AREA_H
+#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+#include "Window.h"
+#include <vector>
+#include <iostream>
+#include <memory>
+#include "Resources.h"
+#include "PlacebleObject.h"
 
-#endif //CITYBUILDY_AREA_H
+class Area :public PlacebleObject {
+public:
+    using PlacebleObject::PlacebleObject;
+
+
+    // Conectors(const sf::Vector2f &pos,) : PlacebleObject(pos) {}
+
+    virtual void show(sf::RenderWindow& window) = 0;
+
+private:
+    sf::Sprite m_obj;
+
+};

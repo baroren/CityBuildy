@@ -15,8 +15,9 @@ public:
          m_obj.setPosition(pos);
      m_obj.scale(FACTOR,FACTOR);}
 
-    using PlacebleObject::PlacebleObject;
-
+    
+    void rotate() {
+        std::cout << "test"; };
     bool checkClick(sf::Vector2f pos){return m_obj.getGlobalBounds().contains(pos);}
     void show(sf::RenderWindow &window) {window.draw(m_obj);}
     void print(){std::cout<<"test";};

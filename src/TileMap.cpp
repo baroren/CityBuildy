@@ -9,7 +9,7 @@ TileMap::TileMap()
         for (int col= 0; col < m_cols; col++) {
 
                 temp.push_back(std::make_unique<Ground>(sf::Vector2f(
-                        row * tileWidth+MARGINX  ,col * tileWidth+MARGINX),row,col,gameObjectId::TileSheet));
+                       col * tileWidth+MARGINX, row * tileWidth + MARGINY),row,col,gameObjectId::TileSheet));
         }
         m_obj.push_back(std::move(temp));
     }
@@ -41,13 +41,29 @@ void TileMap::draw(sf::RenderWindow &window,std::pair<int,int> dims)
         {
             // Add / remove cases when tiles are added / removed
 
-
-            m_obj[row][column]->show(window);
+            if(m_obj[row][column]->returnID()==0)
+                m_obj[row][column]->show(window);
 
             // Set the correct part of the spritesheet
 
         }
     }
+    for (int row = 0; row < m_rows; row++)
+    {
+        // Loop through the columns
+        for (int column = 0; column < m_cols; column++)
+        {
+            // Add / remove cases when tiles are added / removed
+
+            if (m_obj[row][column]->returnID() 
+                != 0)
+                m_obj[row][column]->show(window);
+
+            // Set the correct part of the spritesheet
+
+        }
+    }
+
 }
 
 void TileMap::update(sf::Vector2f mousePos,int &id) {
@@ -58,21 +74,95 @@ void TileMap::update(sf::Vector2f mousePos,int &id) {
         for (int col = 0; col < m_cols; col++) {
             if (m_obj[row][col]->checkClick(mousePos))
             {
-                std::cout<<row<<col<<" "<<id;
-                if(m_obj[row][col]->returnID()==0)
+              //  int retflag;
+                //factor2Check(row, col, retflag);
+                //if (retflag == 2) break;
+                
+                if (m_obj[row][col]->returnID() == 0)
                 {
-                    if (id==1) {
-                       std::unique_ptr<Roads> roads = std::make_unique<Roads>(sf::Vector2f(
-                                row * tileWidth + MARGINX, col * tileWidth + MARGINX), row, col, gameObjectId::road);
 
-                       m_obj[row][col] = std::move(roads);
+                    // if(m_obj[row-1][col]->returnID() == 0)
+                    std::cout << id << std::endl;
+                    if (id == 1) {
+                        createRoad(row, col);
                     }
+
+
+             
+                    else if (id == 2)
+                    {
+                          int retflag;
+                          factor2Check(row, col, retflag);
+                            if (retflag == 2) break;
+
+
+                        std::cout << "comm";
+                        std::unique_ptr<Commercial> commercial = std::make_unique<Commercial>(sf::Vector2f(
+                            col * tileWidth + MARGINX, row * tileWidth + MARGINY), row, col, gameObjectId::comPlace);
+
+                        m_obj[row][col] = std::move(commercial);
+                    }
+                }
+                else if (id == 3) {
+                    std::cout << "delete";
+                    std::unique_ptr<Ground> ground = std::make_unique<Ground>(sf::Vector2f(
+                        col * tileWidth + MARGINX, row * tileWidth + MARGINY), row, col, gameObjectId::TileSheet);
+
+                    m_obj[row][col] = std::move(ground);
                 }
 
             }
         }
     }
     //id=-1;
+}
+void TileMap::factor2Check(int row, int col, int& retflag)
+{
+    retflag = 1;
+    if (row > 2 || row < m_rows - 2 || col >2 || col < m_cols - 2)
+    {
+        if (m_obj[row - 1][col]->returnID() == 1 ||
+            (m_obj[row + 1][col]->returnID() == 1) ||
+            (m_obj[row][col + 1]->returnID() == 1) ||
+            (m_obj[row][col - 1]->returnID() == 1) ||
+            (m_obj[row - 1][col - 1]->returnID() == 1) ||
+            (m_obj[row + 1][col + 1]->returnID() == 1))
+            //for size*2 factor
+        {//ugly as hell need to change asap
+            std::cout << "not goodd";
+            { retflag = 2; return; };
+        }
+    }
+}
+void TileMap::createRoad(int& row, int& col)
+{
+  
+    
+    std::unique_ptr<Roads> roads = std::make_unique<Roads>(sf::Vector2f(
+         col * tileWidth + MARGINX+ 12, row * tileHeight + MARGINY ), row, col, gameObjectId::road);
+
+    m_obj[row][col] = std::move(roads);
+    diraction(row, col);
+
+}
+void TileMap::diraction(int& row, int& col )
+{//make gengeric
+    if (row>0 && row<m_rows)
+        if (m_obj[row - 1][col]->returnID() == 1 ||
+            m_obj[row + 1][col]->returnID() == 1)
+        {
+            std::cout << "rotate";
+            m_obj[row][col]->rotate();
+            if (m_obj[row - 1][col]->returnID() == 1 &&
+                m_obj[row + 1][col]->returnID() == 1)
+            {
+                m_obj[row - 1][col]->rotate();
+                m_obj[row + 1][col]->rotate();
+            }
+            
+
+        }
+   
 }
 // Check the SFML documentation about intrect if you do not know what is going on here
 // Add / remove some when needed (if you use less or more tiles in the texture)

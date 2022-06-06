@@ -1,7 +1,7 @@
 #include "SideMenu.h"
 
 SideMenu::SideMenu() {
-    for (int i = 2; i < 10; i++) {
+    for (int i = 2; i < 9; i++) {
         m_buttons.push_back(*Resources::instance().getSprite(gameObjectId(i)));
     }
     for(int i = 0; i <m_buttons.size() ; ++i) {

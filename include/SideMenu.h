@@ -17,6 +17,6 @@ private:
     sf::Sprite test;
     //  sf::Texture m_helpTex;
     sf:: Font m_font;
-    bool m_helpPressed;
+  // bool m_helpPressed;
     sf:: Sprite m_help ; //need to make vector
 };

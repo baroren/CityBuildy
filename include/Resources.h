@@ -34,7 +34,7 @@ private:
     std::array <sf::Sprite, numOfSprites> m_sprite;
     std::array <sf::Texture, numOfSprites> m_texture;
     vector <string> m_imagePath = {"CityBuildyMAIN","outdoors","road","comm","destroy","indast","park","powerLine",
-                                   "powerSource","rail","resident","roadHor"};
+                                   "powerSource","resident","roadHor","comPlace"};
     vector <string> m_musicNames={"MainMenuMusic.ogg"};
    // vector<Animation *> m_animation;
     sf::Music m_music;

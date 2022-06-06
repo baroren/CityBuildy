@@ -10,6 +10,8 @@
 #include "PlacebleObject.h"
 #include <Roads.h>
 #include "Ground.h"
+#include "Area.h"
+#include "Commercial.h"
 
 class TileMap {
 
@@ -20,10 +22,17 @@ public:
 
     void update(sf::Vector2f mousePos,int &id);
 
+    void factor2Check(int row, int col, int& retflag);
+
+ 
+
 private:
 
 
 
+    void createRoad(int& row, int& col);
+
+    void diraction(int& row, int& col);
 
     void initIntRect();
 
@@ -40,8 +49,8 @@ private:
     vector<vector<std::unique_ptr<PlacebleObject>>> m_obj;
     // Add / remove these in order to add more tiles
     // This depends on the amount of tiles in your texture
-    int m_rows=10;
-    int m_cols=10;
+    int m_rows=20;
+    int m_cols=20;
     sf::IntRect m_grass;
     sf::IntRect m_ground;
 
