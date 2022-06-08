@@ -43,6 +43,13 @@ sf::Sprite* Resources::getSprite(gameObjectId id)
 }
 // ----------------------------------------------------------------------------
 
+sf::Font* Resources::getFont()
+{
+    return &m_font;
+}
+
+// ----------------------------------------------------------------------------
+
 void Resources::buildSprite()
 {
     for(int i=0;i<m_imagePath.size();i++) {

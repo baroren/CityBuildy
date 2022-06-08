@@ -3,7 +3,7 @@
 //
 #pragma once
 enum class gameObjectId{MainMenuBG,TileSheet,road,comm,destroy,indast,park,powerLine,
-    powerSource,resident,roadHor,comPlace,resPlace};
+    powerSource,resident,roadHor,comPlace,resPlace,inPlace};
 enum class sideMenuId{S_road=1,S_com=2,S_del=3,S_facroty=4,S_park=5,S_powerLine,S_PowerPlant};
-const int numOfSprites=20,MARGINX=600,MARGINY=200;
+const int numOfSprites=20,MARGINX=300,MARGINY=100;
  static int FACTOR=3,PlacebleObjectFactor=1;

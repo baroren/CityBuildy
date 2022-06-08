@@ -16,9 +16,6 @@ public:
 
    // Conectors(const sf::Vector2f &pos,) : PlacebleObject(pos) {}
 
-    virtual void show(sf::RenderWindow &window)  =0;
 
-private:
-    sf::Sprite m_obj;
 
 };

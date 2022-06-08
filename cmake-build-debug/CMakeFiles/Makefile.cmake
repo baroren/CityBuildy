@@ -48,6 +48,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "../resources/comPlace.png"
   "../resources/comm.png"
   "../resources/destroy.png"
+  "../resources/inPlace.png"
   "../resources/indast.png"
   "../resources/outdoors.png"
   "../resources/park.png"
@@ -90,6 +91,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "roadHor.png"
   "comPlace.png"
   "resPlace.png"
+  "inPlace.png"
   "resources/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 

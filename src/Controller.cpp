@@ -5,20 +5,30 @@
 #include "Controller.h"
 
 Controller::Controller(){
+  m_testTemp.setFont(*Resources::instance().getFont());
+  m_timeTemp.setFont(*Resources::instance().getFont());
 
 }
 void Controller::run(){
 
-    if( !m_mainMenu.run())
-       return;
+  //  if( !m_mainMenu.run())
+     //  return;
 
 
+    m_testTemp.setPosition(100,900);//temp for clock pos
+    m_testTemp.setCharacterSize(48);
+    m_timeTemp.setPosition(1800,10);//temp for clock pos
+    m_timeTemp.setCharacterSize(48);
+    m_testTemp.setFillColor(sf::Color::Black);
     m_window.create(sf::VideoMode(1920,1080),"City Buildy");
     m_dims.first=sf::VideoMode::getDesktopMode().width;
     m_dims.second=sf::VideoMode::getDesktopMode().height;
 
     while (m_window.isOpen())
     {
+        sf::Time time1 = m_clock.getElapsedTime();
+        m_testTemp.setString("test");
+
         // check all the window's events that were triggered since the last iteration of the loop
         sf::Event event;
         while (m_window.pollEvent(event))
@@ -35,6 +45,7 @@ void Controller::run(){
                     std::cout << "clicked from side menud in if  : " << clicked << std::endl;
 
 
+
                 }
                 else {
                     std::cout << "clicked from side menud : " << clicked << std::endl;
@@ -44,20 +55,23 @@ void Controller::run(){
             }
 
         }
+        m_testTemp.setString(m_sideMenu.getPrice(clicked));
+        m_timeTemp.setString("Dec "+std::to_string(int(time1.asSeconds())));
 
         // clear the window with black color
-
+       // std::cout<<time1.asSeconds()<<std::endl;
         // draw everything here...
         // window.draw(...);
-// activate it
+       // m_clock.restart();
 
 
-
-        m_window.clear(sf::Color(103, 230, 210));
-
-        m_tileMap.draw(m_window,m_dims);
+        m_window.clear(sf::Color(0, 170, 250));
+        m_window.draw(m_testTemp);
+       if( m_tileMap.draw(m_window,m_dims))
+          std:: cout<<"gameOver"<<std::endl;
         m_mouse.trackMouse(m_window.mapPixelToCoords(sf::Mouse::getPosition(m_window)),m_window,16*FACTOR);
         m_sideMenu.draw(m_window);
+        m_window.draw(m_timeTemp);
         // end the current frame
         m_window.display();
     }

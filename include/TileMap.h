@@ -13,24 +13,28 @@
 #include "Area.h"
 #include "Commercial.h"
 #include "Residence.h"
+#include "Player.h"
+#include "Indastrial.h"
 
 class TileMap {
 
 public:
     TileMap();
 
-    void draw(sf::RenderWindow &window,std::pair<int,int>);
+    bool draw(sf::RenderWindow &window,std::pair<int,int>);
 
     void update(sf::Vector2f mousePos,int &id);
 
     void factor2Check(int row, int col, int& retflag);
 
+
  
 
 private:
 
+    Player m_player;
 
-
+    sf::Text m_playerMoney;
     void createRoad(int& row, int& col);
 
     void diraction(int& row, int& col);
@@ -50,8 +54,8 @@ private:
     vector<vector<std::unique_ptr<PlacebleObject>>> m_obj;
     // Add / remove these in order to add more tiles
     // This depends on the amount of tiles in your texture
-    int m_rows=20;
-    int m_cols=20;
+    int m_rows=17;
+    int m_cols=30;
     sf::IntRect m_grass;
     sf::IntRect m_ground;
 

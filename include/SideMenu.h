@@ -6,12 +6,16 @@
 #include <string>
 #include <iostream>
 #include "Resources.h"
+#include <string>
+
+using std::string;
 class SideMenu {
 public:
     SideMenu();
     void createButton(string ,int x,int y,int,int);
     int handleClick(const sf::Vector2f position);
     void draw(sf::RenderWindow& window);
+    string getPrice(int id);
 private:
     vector <sf::Sprite> m_buttons;
     sf::Sprite test;

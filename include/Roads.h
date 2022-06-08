@@ -10,24 +10,20 @@
 #include "Conectors.h"
 class Roads:public Conectors {
 public:
-    Roads(sf::Vector2f pos,int row,int col,gameObjectId id):Conectors(pos ,row,col,id) {
-        m_obj=*Resources::instance().getSprite(gameObjectId::roadHor);
-        m_obj.setPosition(pos);
-        m_obj.scale(PlacebleObjectFactor,PlacebleObjectFactor   );}
+  using Conectors::Conectors;
 
-    bool checkClick(sf::Vector2f pos){return m_obj.getGlobalBounds().contains(pos);}
-    void rotate() { m_obj.setRotation(90.f); };
-    void show(sf::RenderWindow &window) {window.draw(m_obj);};
-    void setPos(int x,int y){m_obj.setPosition(x,y);};
-    int returnID(){return id;};
-    void print(){std::cout<<"roads";};
-    bool checkIfContained(sf::FloatRect  bound ){return  m_obj.getGlobalBounds().intersects(bound);};
-    sf::FloatRect  bound(){return m_obj.getGlobalBounds();};
-protected:
-    sf::Sprite m_obj;
+  /*  bool checkClick(sf::Vector2f pos){return m_obj.getGlobalBounds().contains(pos);}
+    void rotate() ;
+    void show(sf::RenderWindow &window);
+    void setPos(int x,int y);
+    int returnID();
+    void print();
+    bool checkIfContained(sf::FloatRect  bound );
+    sf::FloatRect  bound();*/
+
 private:
  //   sf::Sprite m_obj;
-    int id=1;
+
     std::pair<int,int>pos;
 
 };

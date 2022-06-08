@@ -13,6 +13,7 @@
 #include "Mouse.h"
 #include "SideMenu.h"
 #include "Roads.h"
+#include <string>
 using std::vector;
 using std::unique_ptr;
 using std::make_unique;
@@ -23,6 +24,10 @@ public:
   Controller();
   void run();
 private:
+    sf::Text m_testTemp;
+    sf::Text m_timeTemp;
+
+    sf::Clock m_clock;
     int clicked =-1;
     SideMenu m_sideMenu;
     std::pair<int,int> m_dims;

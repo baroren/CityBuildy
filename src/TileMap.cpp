@@ -4,18 +4,23 @@ TileMap::TileMap()
 // Change the values when using tiles other than 30x30
         : tileWidth(16*FACTOR)
         , tileHeight(16*FACTOR) {
+
+    m_playerMoney.setFont(*Resources::instance().getFont());
+
     for (int row = 0; row < m_rows ; ++row) {
         vector<std::unique_ptr<PlacebleObject>> temp;
         for (int col= 0; col < m_cols; col++) {
 
                 temp.push_back(std::make_unique<Ground>(sf::Vector2f(
-                       col * tileWidth+MARGINX, row * tileWidth + MARGINY),row,col,gameObjectId::TileSheet));
+                       col * tileWidth+MARGINX, row * tileWidth + MARGINY),row,col,gameObjectId::TileSheet,FACTOR,0,0,0,0));
         }
         m_obj.push_back(std::move(temp));
     }
 }
+//---------------------------------------------
 
-void TileMap::draw(sf::RenderWindow &window,std::pair<int,int> dims)
+
+bool TileMap::draw(sf::RenderWindow &window,std::pair<int,int> dims)
 {
     // This is the map (20x20 tiles)
     // Change when needed
@@ -28,8 +33,6 @@ void TileMap::draw(sf::RenderWindow &window,std::pair<int,int> dims)
         - 1	=	stone wall
 
     */
-
-
 
     // IntRect placeholder
     sf::IntRect placeHolder;
@@ -63,11 +66,21 @@ void TileMap::draw(sf::RenderWindow &window,std::pair<int,int> dims)
 
         }
     }
+    m_playerMoney.setString("funds " +std::to_string(m_player.getMoney()));
+    m_playerMoney.setPosition(50,25);
+    window.draw(m_playerMoney);
+    return (m_player.gameOver());
+
 
 }
 
+//---------------------------------------------
+
+
 void TileMap::update(sf::Vector2f mousePos,int &id) {
     std::cout<<mousePos.x<<"y"<<mousePos.y<<std::endl;
+
+
 
     for (int row = 0; row < m_rows; row++) {
         // Loop through the columns
@@ -92,10 +105,13 @@ void TileMap::update(sf::Vector2f mousePos,int &id) {
 
                         std::cout << "comm";
                         std::unique_ptr<Commercial> commercial = std::make_unique<Commercial>(sf::Vector2f(
-                                                                                                      col * tileWidth + MARGINX + 12, row * tileWidth + MARGINY), row, col,
-                                                                                              gameObjectId::comPlace);
+                                                                                                      col * tileWidth + MARGINX + 12,
+                                                                                                      row * tileWidth + MARGINY), row, col,
+                                                                                              gameObjectId::comPlace,PlacebleObjectFactor,2,30,30,10);
 
                         m_obj[row][col] = std::move(commercial);
+                        m_player.transaction( -m_obj[row][col]->buildCost());
+
                         factor2Check(row, col, retflag);
                     }
                  else if (id == 5)
@@ -105,20 +121,38 @@ void TileMap::update(sf::Vector2f mousePos,int &id) {
                     std::cout << "comm";
                     std::unique_ptr<Residence> residence = std::make_unique<Residence>(sf::Vector2f(
                                                                                                   col * tileWidth + MARGINX + 12, row * tileWidth + MARGINY), row, col,
-                                                                                          gameObjectId::resPlace);
+                                                                                          gameObjectId::resPlace,PlacebleObjectFactor,5,30,30,10);
 
                     m_obj[row][col] = std::move(residence);
+                    m_player.transaction( -m_obj[row][col]->buildCost());
+
                     factor2Check(row, col, retflag);
                 }
+                    else if (id == 4)
+                    {
+                        int retflag;
+
+                        std::cout << "comm";
+                        std::unique_ptr<Indastrial> indastrial =  std::make_unique<Indastrial>(sf::Vector2f(
+                                                                                                   col * tileWidth + MARGINX + 12, row * tileWidth + MARGINY), row, col,
+                                                                                           gameObjectId::inPlace,PlacebleObjectFactor,5,20,30,10);
+
+                        m_obj[row][col] = std::move(indastrial);
+                        m_player.transaction( -m_obj[row][col]->buildCost());
+
+                        factor2Check(row, col, retflag);
+                    }
                 }
                 else if (id == 3) {
                     int retflag;
 
                     std::cout << "delete";
                     std::unique_ptr<Ground> ground = std::make_unique<Ground>(sf::Vector2f(
-                        col * tileWidth + MARGINX, row * tileWidth + MARGINY), row, col, gameObjectId::TileSheet);
+                        col * tileWidth + MARGINX, row * tileWidth + MARGINY), row, col, gameObjectId::TileSheet,FACTOR,0,0,10,0);
 
                     m_obj[row][col] = std::move(ground);
+                    m_player.transaction( -m_obj[row][col]->buildCost());
+
                     factor2Check(row, col, retflag);
 
                 }
@@ -171,9 +205,10 @@ void TileMap::createRoad(int& row, int& col)
   
     
     std::unique_ptr<Roads> roads = std::make_unique<Roads>(sf::Vector2f(
-         col * tileWidth + MARGINX+ 12, row * tileHeight + MARGINY ), row, col, gameObjectId::road);
+         col * tileWidth + MARGINX+ 12, row * tileHeight + MARGINY ), row, col, gameObjectId::roadHor,PlacebleObjectFactor,1,0,10,5);
 
     m_obj[row][col] = std::move(roads);
+    m_player.transaction( -m_obj[row][col]->buildCost());
     diraction(row, col);
 
 }

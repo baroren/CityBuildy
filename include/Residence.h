@@ -10,7 +10,7 @@
 #include "Conectors.h"
 class Residence :public Area {
 public:
-    Residence(sf::Vector2f pos, int row, int col, gameObjectId id) :Area(pos, row, col, id) {
+   /* Residence(sf::Vector2f pos, int row, int col, gameObjectId id) :Area(pos, row, col, id) {
         m_obj = *Resources::instance().getSprite(gameObjectId::resPlace);
         m_obj.setPosition(pos);
         m_obj.scale(PlacebleObjectFactor, PlacebleObjectFactor);
@@ -23,12 +23,13 @@ public:
     int returnID() { return id; };
     void print() { std::cout << "roads"; };
     bool checkIfContained(sf::FloatRect  bound ){std::cout<<"#######\n";return  m_obj.getGlobalBounds().intersects(bound);};
-    sf::FloatRect  bound(){return m_obj.getGlobalBounds();};
+    sf::FloatRect  bound(){return m_obj.getGlobalBounds();};*/
+   using Area::Area;
 private:
-    sf::Sprite m_obj;
+    //sf::Sprite m_obj;
 
     // sf::Sprite m_obj;
-    int id = 1;
+   // int id = 1;
     std::pair<int, int>pos;
 
 };

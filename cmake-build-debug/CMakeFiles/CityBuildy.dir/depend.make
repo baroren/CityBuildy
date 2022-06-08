@@ -11,11 +11,13 @@ CMakeFiles/CityBuildy.dir/src/Controller.cpp.o: \
  ../include/Conectors.h \
  ../include/Controller.h \
  ../include/Ground.h \
+ ../include/Indastrial.h \
  ../include/Macros.h \
  ../include/MainMenu.h \
  ../include/Menu.h \
  ../include/Mouse.h \
  ../include/PlacebleObject.h \
+ ../include/Player.h \
  ../include/Residence.h \
  ../include/Resources.h \
  ../include/Roads.h \
@@ -52,8 +54,10 @@ CMakeFiles/CityBuildy.dir/src/TileMap.cpp.o: \
  ../include/Commercial.h \
  ../include/Conectors.h \
  ../include/Ground.h \
+ ../include/Indastrial.h \
  ../include/Macros.h \
  ../include/PlacebleObject.h \
+ ../include/Player.h \
  ../include/Residence.h \
  ../include/Resources.h \
  ../include/Roads.h \
@@ -67,11 +71,13 @@ CMakeFiles/CityBuildy.dir/src/main.cpp.o: \
  ../include/Conectors.h \
  ../include/Controller.h \
  ../include/Ground.h \
+ ../include/Indastrial.h \
  ../include/Macros.h \
  ../include/MainMenu.h \
  ../include/Menu.h \
  ../include/Mouse.h \
  ../include/PlacebleObject.h \
+ ../include/Player.h \
  ../include/Residence.h \
  ../include/Resources.h \
  ../include/Roads.h \

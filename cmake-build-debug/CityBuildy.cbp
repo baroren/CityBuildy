@@ -156,6 +156,9 @@
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/destroy.png">
 			<Option virtualFolder="CMake Files\resources\"/>
 		</Unit>
+		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/inPlace.png">
+			<Option virtualFolder="CMake Files\resources\"/>
+		</Unit>
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/indast.png">
 			<Option virtualFolder="CMake Files\resources\"/>
 		</Unit>

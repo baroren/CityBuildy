@@ -10,20 +10,51 @@
 
 class PlacebleObject {
 public:
-    PlacebleObject(sf::Vector2f pos,int row,int col,gameObjectId id){}
-    virtual   ~PlacebleObject(){}
-    virtual void show(sf::RenderWindow &window) =0;
-    virtual void setPos(int x,int y)=0;
-    virtual void print()=0;
-    virtual int returnID()=0;
-    virtual void rotate() = 0;
-     virtual bool checkClick(sf::Vector2f pos)=0;
-   virtual bool checkIfContained(sf::FloatRect  bound )=0;
-  virtual  sf::FloatRect  bound()=0;
+    PlacebleObject(sf::Vector2f pos, int row, int col, gameObjectId id,
+                   int factor, int idN, int rate, int cost, int maint) {
+        m_obj = *Resources::instance().getSprite(id);
+        m_obj.setPosition(pos);
+        m_obj.scale(factor, factor);
+        m_id = idN;
+        m_rate = rate;
+        m_buildCost = cost;
+        m_maintance = maint;
+    }
 
-   // bool checkIfContained(sf::FloatRect  bound ){return  m_obj.getGlobalBounds().intersects(bound);};
-  //  sf::FloatRect  bound(){return m_obj.getGlobalBounds();};
-private:
+    virtual   ~PlacebleObject() {}
+
+    virtual void show(sf::RenderWindow &window) { window.draw(m_obj); };
+
+    virtual void setPos(int x, int y) { m_obj.setPosition(x, y); };
+
+    virtual void print() { std::cout << "roads"; };
+
+    virtual int returnID() { return m_id; };
+
+    virtual void rotate() { m_obj.setRotation(90.f); };
+
+    virtual bool checkClick(sf::Vector2f pos) { return m_obj.getGlobalBounds().contains(pos); };
+
+    virtual bool checkIfContained(sf::FloatRect bound) { return m_obj.getGlobalBounds().intersects(bound); };
+
+    virtual sf::FloatRect bound() { return m_obj.getGlobalBounds(); };
+
+    virtual int calcRate() { return m_rate; };
+
+    virtual int buildCost() { return m_buildCost; };
+
+    virtual int maintanceCost() { return m_maintance; };
+
+
+protected:
     sf::Sprite m_obj;
-    std::pair<int,int>index;
+    int m_id;
+    int m_rate;
+    int m_buildCost;
+    int m_maintance;
+
+
+private:
+
+    std::pair<int, int> index;
 };

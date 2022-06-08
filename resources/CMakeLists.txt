@@ -13,6 +13,7 @@ configure_file ("resident.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("roadHor.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("comPlace.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("resPlace.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("inPlace.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 
 
