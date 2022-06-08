@@ -1,8 +1,20 @@
-//
-// Created by Bar Oren on 14/05/2022.
-//
+#pragma once
 
-#ifndef CITYBUILDY_POWERSOURCE_H
-#define CITYBUILDY_POWERSOURCE_H
+#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+#include "Window.h"
+#include <vector>
+#include <iostream>
+#include <memory>
+#include "Resources.h"
+#include "Conectors.h"
 
-#endif //CITYBUILDY_POWERSOURCE_H
+class PowerSource : public Area {
+public:
+
+    using Area::Area;
+private:
+    // sf::Sprite m_obj;
+    std::pair<int, int> pos;
+
+};

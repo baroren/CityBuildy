@@ -14,6 +14,9 @@ configure_file ("roadHor.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("comPlace.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("resPlace.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("inPlace.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("PowerSourcePlace.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("powerLinePlace.png" ${CMAKE_BINARY_DIR} COPYONLY)
+
 
 
 

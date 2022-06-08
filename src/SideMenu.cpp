@@ -39,19 +39,19 @@ string SideMenu::getPrice(int id) {
 
     switch (id) {
         case 1 :
-            return "Road 10$";
+            return "Road "+std::to_string(c_road);
         case 2 :
-            return "Commercial 20$";
+            return "Commercial "+std::to_string(c_commercial);
         case 3 :
-            return "Delete 10$";
+            return "Delete "+std::to_string(c_delete);
         case 4 :
-            return "Industrial 20$";
+            return "Industrial "+std::to_string(c_indastrial);
         case 5 :
-            return "Residence 3$";
+            return "Residence "+std::to_string(c_ressidance);
         case 6 :
-            return "Power line 3$";
+            return "Power line "+std::to_string(c_powerline);
         case 7 :
-            return "PowerSource60$";
+            return "PowerSource "+std::to_string(c_powerSource);
         default:
             return "0";
 

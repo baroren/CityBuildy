@@ -144,6 +144,9 @@
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/CityBuildyMAIN.png">
 			<Option virtualFolder="CMake Files\resources\"/>
 		</Unit>
+		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/PowerSourcePlace.png">
+			<Option virtualFolder="CMake Files\resources\"/>
+		</Unit>
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/arcadeClassic.ttf">
 			<Option virtualFolder="CMake Files\resources\"/>
 		</Unit>
@@ -169,6 +172,9 @@
 			<Option virtualFolder="CMake Files\resources\"/>
 		</Unit>
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/powerLine.png">
+			<Option virtualFolder="CMake Files\resources\"/>
+		</Unit>
+		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/powerLinePlace.png">
 			<Option virtualFolder="CMake Files\resources\"/>
 		</Unit>
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/powerSource.png">

@@ -15,7 +15,8 @@
 #include "Residence.h"
 #include "Player.h"
 #include "Indastrial.h"
-
+#include "PowerLines.h"
+#include "PowerSource.h"
 class TileMap {
 
 public:
@@ -26,6 +27,8 @@ public:
     void update(sf::Vector2f mousePos,int &id);
 
     void factor2Check(int row, int col, int& retflag);
+
+    void updateMoney();
 
 
  

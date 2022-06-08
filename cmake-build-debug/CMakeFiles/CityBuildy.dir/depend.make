@@ -18,6 +18,8 @@ CMakeFiles/CityBuildy.dir/src/Controller.cpp.o: \
  ../include/Mouse.h \
  ../include/PlacebleObject.h \
  ../include/Player.h \
+ ../include/PowerLines.h \
+ ../include/PowerSource.h \
  ../include/Residence.h \
  ../include/Resources.h \
  ../include/Roads.h \
@@ -58,6 +60,8 @@ CMakeFiles/CityBuildy.dir/src/TileMap.cpp.o: \
  ../include/Macros.h \
  ../include/PlacebleObject.h \
  ../include/Player.h \
+ ../include/PowerLines.h \
+ ../include/PowerSource.h \
  ../include/Residence.h \
  ../include/Resources.h \
  ../include/Roads.h \
@@ -78,6 +82,8 @@ CMakeFiles/CityBuildy.dir/src/main.cpp.o: \
  ../include/Mouse.h \
  ../include/PlacebleObject.h \
  ../include/Player.h \
+ ../include/PowerLines.h \
+ ../include/PowerSource.h \
  ../include/Residence.h \
  ../include/Resources.h \
  ../include/Roads.h \

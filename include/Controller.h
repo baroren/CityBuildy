@@ -26,7 +26,7 @@ public:
 private:
     sf::Text m_testTemp;
     sf::Text m_timeTemp;
-
+    bool m_payday=true;
     sf::Clock m_clock;
     int clicked =-1;
     SideMenu m_sideMenu;

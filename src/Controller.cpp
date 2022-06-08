@@ -17,7 +17,7 @@ void Controller::run(){
 
     m_testTemp.setPosition(100,900);//temp for clock pos
     m_testTemp.setCharacterSize(48);
-    m_timeTemp.setPosition(1800,10);//temp for clock pos
+    m_timeTemp.setPosition(1750,10);//temp for clock pos
     m_timeTemp.setCharacterSize(48);
     m_testTemp.setFillColor(sf::Color::Black);
     m_window.create(sf::VideoMode(1920,1080),"City Buildy");
@@ -57,7 +57,14 @@ void Controller::run(){
         }
         m_testTemp.setString(m_sideMenu.getPrice(clicked));
         m_timeTemp.setString("Dec "+std::to_string(int(time1.asSeconds())));
+        if(int(time1.asSeconds())%10==0 &&m_payday )
+        {
+            m_payday=false;
+            m_tileMap.updateMoney();
 
+        }
+        if(int(time1.asSeconds())%11==0)
+            m_payday=true;
         // clear the window with black color
        // std::cout<<time1.asSeconds()<<std::endl;
         // draw everything here...

@@ -220,6 +220,42 @@ Resources.h
 PlacebleObject.h
 ../include/PlacebleObject.h
 
+../include/PowerLines.h
+SFML/Graphics.hpp
+-
+SFML/Audio.hpp
+-
+Window.h
+../include/Window.h
+vector
+-
+iostream
+-
+memory
+-
+Resources.h
+../include/Resources.h
+Conectors.h
+../include/Conectors.h
+
+../include/PowerSource.h
+SFML/Graphics.hpp
+-
+SFML/Audio.hpp
+-
+Window.h
+../include/Window.h
+vector
+-
+iostream
+-
+memory
+-
+Resources.h
+../include/Resources.h
+Conectors.h
+../include/Conectors.h
+
 ../include/Residence.h
 SFML/Graphics.hpp
 -
@@ -319,6 +355,10 @@ Player.h
 ../include/Player.h
 Indastrial.h
 ../include/Indastrial.h
+PowerLines.h
+../include/PowerLines.h
+PowerSource.h
+../include/PowerSource.h
 
 ../include/Window.h
 vector
@@ -329,6 +369,14 @@ SFML/Graphics.hpp
 ../include/SFML/Graphics.hpp
 
 /Users/bar/Documents/school/yearB/CityBuildy/src/Controller.cpp
+Controller.h
+/Users/bar/Documents/school/yearB/CityBuildy/src/Controller.h
+
+/Users/bar/Documents/school/yearB/CityBuildy/src/TileMap.cpp
+TileMap.h
+/Users/bar/Documents/school/yearB/CityBuildy/src/TileMap.h
+
+/Users/bar/Documents/school/yearB/CityBuildy/src/main.cpp
 Controller.h
 /Users/bar/Documents/school/yearB/CityBuildy/src/Controller.h
 

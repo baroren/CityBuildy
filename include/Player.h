@@ -18,7 +18,7 @@ public:
     // Conectors(const sf::Vector2f &pos,) : PlacebleObject(pos) {}
 
 private:
-    int m_money=100;
+    int m_money=10000;
     int m_taxes;
     int m_happyRes;
     int m_happyCom;

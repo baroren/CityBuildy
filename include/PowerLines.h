@@ -1,8 +1,22 @@
-//
-// Created by Bar Oren on 14/05/2022.
-//
+#pragma once
 
-#ifndef CITYBUILDY_POWERLINES_H
-#define CITYBUILDY_POWERLINES_H
+#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+#include "Window.h"
+#include <vector>
+#include <iostream>
+#include <memory>
+#include "Resources.h"
+#include "Conectors.h"
+class PowerLines:public Conectors {
+public:
+    using Conectors::Conectors;
 
-#endif //CITYBUILDY_POWERLINES_H
+
+
+private:
+    //   sf::Sprite m_obj;
+
+    std::pair<int,int>pos;
+
+};
