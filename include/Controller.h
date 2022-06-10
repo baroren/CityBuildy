@@ -17,13 +17,22 @@
 using std::vector;
 using std::unique_ptr;
 using std::make_unique;
-
+using std::cout;
+using std::string;
 
 class Controller {
 public:
   Controller();
   void run();
+  void draw();
+  void handleTimeAndDate(sf::Time& time1);
 private:
+    void date();
+
+    std::array<string, 12> m_dates = { "Jan","Feb","Mar","Apr"
+        ,"May","June","July","aug","Sep","Oct","Nov","Dec" };
+    int m_currDate = 0;
+    int m_year = 1920;
     sf::Text m_testTemp;
     sf::Text m_timeTemp;
     bool m_payday=true;

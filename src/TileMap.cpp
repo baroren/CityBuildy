@@ -181,6 +181,8 @@ void TileMap::update(sf::Vector2f mousePos,int &id) {
     }
     //id=-1;
 }
+
+//--------------------------------------------------------------------------
 void TileMap::factor2Check(int row, int col, int& retflag)
 {
     retflag = 1;
@@ -219,6 +221,8 @@ void TileMap::factor2Check(int row, int col, int& retflag)
     }
 
 }
+
+//--------------------------------------------------------------------------
 void TileMap::createRoad(int& row, int& col)
 {
   
@@ -231,6 +235,8 @@ void TileMap::createRoad(int& row, int& col)
     diraction(row, col);
 
 }
+
+//--------------------------------------------------------------------------
 void TileMap::diraction(int& row, int& col )
 {//make gengeric
     if (row>0 && row<m_rows)

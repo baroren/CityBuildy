@@ -9,6 +9,7 @@ Controller::Controller(){
   m_timeTemp.setFont(*Resources::instance().getFont());
 
 }
+//--------------------------------------------------------------------------
 void Controller::run(){
 
   //  if( !m_mainMenu.run())
@@ -17,7 +18,7 @@ void Controller::run(){
 
     m_testTemp.setPosition(100,900);//temp for clock pos
     m_testTemp.setCharacterSize(48);
-    m_timeTemp.setPosition(1750,10);//temp for clock pos
+    m_timeTemp.setPosition(1600,10);//temp for clock pos
     m_timeTemp.setCharacterSize(48);
     m_testTemp.setFillColor(sf::Color::Black);
     m_window.create(sf::VideoMode(1920,1080),"City Buildy");
@@ -55,31 +56,60 @@ void Controller::run(){
             }
 
         }
-        m_testTemp.setString(m_sideMenu.getPrice(clicked));
-        m_timeTemp.setString("Dec "+std::to_string(int(time1.asSeconds())));
-        if(int(time1.asSeconds())%10==0 &&m_payday )
-        {
-            m_payday=false;
-            m_tileMap.updateMoney();
-
-        }
-        if(int(time1.asSeconds())%11==0)
-            m_payday=true;
+        handleTimeAndDate(time1);
         // clear the window with black color
        // std::cout<<time1.asSeconds()<<std::endl;
         // draw everything here...
         // window.draw(...);
-       // m_clock.restart();
+       // m_clock.restart()
+        draw();
 
-
-        m_window.clear(sf::Color(0, 170, 250));
-        m_window.draw(m_testTemp);
-       if( m_tileMap.draw(m_window,m_dims))
-          std:: cout<<"gameOver"<<std::endl;
-        m_mouse.trackMouse(m_window.mapPixelToCoords(sf::Mouse::getPosition(m_window)),m_window,16*FACTOR);
-        m_sideMenu.draw(m_window);
-        m_window.draw(m_timeTemp);
-        // end the current frame
-        m_window.display();
     }
+}
+//--------------------------------------------------------------------------
+void Controller::draw()
+{
+
+    m_window.clear(sf::Color(0, 170, 250));
+    m_window.draw(m_testTemp);
+
+    if (m_tileMap.draw(m_window, m_dims))
+        std::cout << "gameOver" << std::endl;
+    m_mouse.trackMouse(m_window.mapPixelToCoords(sf::Mouse::getPosition(m_window)), m_window, 16 * FACTOR);
+    m_sideMenu.draw(m_window);
+    m_window.draw(m_timeTemp);
+    // end the current frame
+    m_window.display();
+}
+//--------------------------------------------------------------------------
+void Controller::handleTimeAndDate(sf::Time& time1)
+{
+    m_testTemp.setString(m_sideMenu.getPrice(clicked));
+    m_timeTemp.setString(m_dates[m_currDate] + "  " + std::to_string(m_year));
+    if (int(time1.asSeconds())>float(month) && m_payday)
+    {
+        m_clock.restart();
+        //   m_payday=false;
+        cout << "month past";
+        m_tileMap.updateMoney();
+        date();
+
+    }
+    else if (int(time1.asSeconds()) % (month + 1) == 0)//11 will be set accotding to game speed 
+    {
+        // m_payday = true;
+    }
+}
+
+//--------------------------------------------------------------------------
+
+void Controller::date() {
+
+    if (m_currDate >= 11)
+    {
+        m_currDate = 0;
+        m_year++;
+    }
+   
+        m_currDate++;
 }

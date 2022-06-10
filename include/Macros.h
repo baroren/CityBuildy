@@ -12,5 +12,5 @@ const int numOfSprites=20,MARGINX=300,MARGINY=100,
         m_powerline=5,m_powerSource=300,
         r_ressidance=30,r_road=0,r_commercial=90,r_indastrial=50,r_delete=0,
         r_powerline=10,r_powerSource=0;
-static int FACTOR=3,PlacebleObjectFactor=1;
+static int FACTOR=3,PlacebleObjectFactor=1, month = 2;
 
