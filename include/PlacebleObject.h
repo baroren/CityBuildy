@@ -7,23 +7,33 @@
 #include <iostream>
 #include <memory>
 #include "Resources.h"
-
+#include "Animation.h"
 class PlacebleObject {
 public:
     PlacebleObject(sf::Vector2f pos, int row, int col, gameObjectId id,
                    int factor, int idN, int rate, int cost, int maint) {
         m_obj = *Resources::instance().getSprite(id);
+
+        m_animation =new Animation(Resources::instance().getTexture(id)
+              ,sf::Vector2u(Resources::instance().getImageCount(id),Resources::instance().getImageCount(id)),
+                            2);
+
         m_obj.setPosition(pos);
         m_obj.scale(factor, factor);
         m_id = idN;
         m_rate = rate;
         m_buildCost = cost;
         m_maintance = maint;
+
     }
 
     virtual   ~PlacebleObject() {}
 
-    virtual void show(sf::RenderWindow &window) { window.draw(m_obj); };
+    virtual void show(sf::RenderWindow &window,int animState,float deltaTime) {
+        m_animation->update(currAnim,deltaTime);
+        m_obj.setTextureRect((m_animation->getRect()));
+
+        window.draw(m_obj); };
 
     virtual void setPos(int x, int y) { m_obj.setPosition(x, y); };
 
@@ -47,7 +57,9 @@ public:
 
     virtual void connectRoad(bool connect){m_roadConnected = connect;};
 
-    virtual void connectPower(bool connect){m_powerConnected = connect;};
+    virtual void connectPower(bool connect){m_powerConnected = connect;
+                                            currAnim=2;};
+
 
 protected:
     sf::Sprite m_obj;
@@ -57,6 +69,8 @@ protected:
     int m_maintance;
     bool m_roadConnected;
     bool m_powerConnected;
+    Animation*  m_animation;
+    int currAnim=0;
 
 private:
 

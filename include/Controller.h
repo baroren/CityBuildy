@@ -34,12 +34,17 @@ private:
         ,"May","June","July","aug","Sep","Oct","Nov","Dec" };
     int m_currDate = 0;
     int m_year = 1920;
+    int clicked =-1;
+    float m_deltaTime;
+
+
     sf::Text m_testTemp;
     sf::Text m_cityNameText;
     sf::Text m_timeTemp;
     bool m_payday=true;
     sf::Clock m_clock;
-    int clicked =-1;
+    sf::Clock m_clockAnim;
+
     SideMenu m_sideMenu;
     std::pair<int,int> m_dims;
     MainMenu m_mainMenu;

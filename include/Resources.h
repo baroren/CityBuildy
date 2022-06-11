@@ -23,7 +23,7 @@ public:
     sf::Texture *getTexture(gameObjectId id);
     sf::Font* getFont() ;
     sf::Sprite *getSprite(gameObjectId id); // todo
-
+    int getImageCount(gameObjectId id){return numOfFrames[int(id)];};
 
 private:
     Resources();
@@ -39,8 +39,8 @@ private:
    // vector<Animation *> m_animation;
     sf::Music m_music;
     int numOfAnim=1;
-    std::array<int,numOfSprites> numOfFrames{ 1,2,1,
+    std::array<int,numOfSprites> numOfFrames{ 1,1,1,
                                               1,1,1,1,
-                                              1,1,1,1,1,1,1,1,1};
+                                              1,1,1,1,3,1,1,1,1};
     sf::Font m_font;
 };

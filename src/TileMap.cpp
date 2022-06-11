@@ -18,7 +18,7 @@ TileMap::TileMap()
     }
 }
 //---------------------------------------------
-bool TileMap::draw(sf::RenderWindow &window,std::pair<int,int> dims)
+bool TileMap::draw(sf::RenderWindow &window,std::pair<int,int> dims,float deltaTime)
 {
 
     // Loop through the rows
@@ -30,7 +30,7 @@ bool TileMap::draw(sf::RenderWindow &window,std::pair<int,int> dims)
             // Add / remove cases when tiles are added / removed
 
             if(m_obj[row][column]->returnID()==0)
-                m_obj[row][column]->show(window);
+                m_obj[row][column]->show(window,0,deltaTime);
 
             // Set the correct part of the spritesheet
 
@@ -45,7 +45,7 @@ bool TileMap::draw(sf::RenderWindow &window,std::pair<int,int> dims)
 
             if (m_obj[row][column]->returnID() 
                 != 0)
-                m_obj[row][column]->show(window);
+                m_obj[row][column]->show(window,0,deltaTime);
 
             // Set the correct part of the spritesheet
 
@@ -99,7 +99,7 @@ void TileMap::update(sf::Vector2f mousePos,int &id) {
 
 
                         std::unique_ptr<Commercial> commercial = std::make_unique<Commercial>(sf::Vector2f(
-                                                                                                      col * tileWidth + MARGINX + 12,
+                                                                                                      col * tileWidth + MARGINX ,
                                                                                                       row * tileWidth + MARGINY), row, col,
                                                                                               gameObjectId::comPlace,PlacebleObjectFactor,id,r_commercial,c_commercial,m_commercial);
 
@@ -113,7 +113,7 @@ void TileMap::update(sf::Vector2f mousePos,int &id) {
 
                     std::cout << "comm";
                     std::unique_ptr<Residence> residence = std::make_unique<Residence>(sf::Vector2f(
-                                                                                                  col * tileWidth + MARGINX + 12, row * tileWidth + MARGINY), row, col,
+                                                                                                  col * tileWidth + MARGINX , row * tileWidth + MARGINY), row, col,
                                                                                           gameObjectId::resPlace,PlacebleObjectFactor,id,r_ressidance,c_ressidance,m_ressidance);
 
                     m_obj[row][col] = std::move(residence);
@@ -127,7 +127,7 @@ void TileMap::update(sf::Vector2f mousePos,int &id) {
 
                         std::cout << "comm";
                         std::unique_ptr<Indastrial> indastrial =  std::make_unique<Indastrial>(sf::Vector2f(
-                                                                                                   col * tileWidth + MARGINX + 12, row * tileWidth + MARGINY), row, col,
+                                                                                                   col * tileWidth + MARGINX , row * tileWidth + MARGINY), row, col,
                                                                                            gameObjectId::inPlace,PlacebleObjectFactor,id,r_indastrial,c_indastrial,m_indastrial);
 
                         m_obj[row][col] = std::move(indastrial);
@@ -141,7 +141,7 @@ void TileMap::update(sf::Vector2f mousePos,int &id) {
 
                         std::cout << "comm";
                         std::unique_ptr<PowerLines> powerLines = std::make_unique<PowerLines>(sf::Vector2f(
-                                col * tileWidth + MARGINX+ 12, row * tileHeight + MARGINY ), row, col, gameObjectId::psLines,PlacebleObjectFactor,id,r_powerline,c_powerline,m_powerline);
+                                col * tileWidth + MARGINX, row * tileHeight + MARGINY ), row, col, gameObjectId::psLines,PlacebleObjectFactor,id,r_powerline,c_powerline,m_powerline);
 
                         m_obj[row][col] = std::move(powerLines);
                         m_player.transaction( -m_obj[row][col]->buildCost());
@@ -155,7 +155,7 @@ void TileMap::update(sf::Vector2f mousePos,int &id) {
 
                         std::cout << "comm";
                         std::unique_ptr<PowerSource> powerSource = std::make_unique<PowerSource>(sf::Vector2f(
-                                                                                                       col * tileWidth + MARGINX + 12, row * tileWidth + MARGINY), row, col,
+                                                                                                       col * tileWidth + MARGINX , row * tileWidth + MARGINY), row, col,
                                                                                                gameObjectId::psSource,PlacebleObjectFactor,id,r_powerSource,c_powerSource,m_powerSource);
 
                         m_obj[row][col] = std::move(powerSource);
@@ -200,7 +200,8 @@ void TileMap::check(int row, int col, checkConector check)
             return;
             std::cout<<"row"<<row<<col<<std::endl;
             if (m_obj[row - 1][col]->returnID() == int(check))
-                std::cout << row - 1 << col << "UP : " << m_obj[row - 1][col]->returnID() << std::endl;
+                m_obj[row][col]->connectPower(true);
+                //std::cout << row - 1 << col << "UP : " << m_obj[row - 1][col]->returnID() << std::endl;
             else if (m_obj[row + 1][col]->returnID() == int(check));
             else if (m_obj[row][col + 1]->returnID() == int(check));
             else if (m_obj[row][col - 1]->returnID() == int(check));
@@ -244,7 +245,7 @@ void TileMap::createRoad(int& row, int& col)
   
     
     std::unique_ptr<Roads> roads = std::make_unique<Roads>(sf::Vector2f(
-         col * tileWidth + MARGINX+ 12, row * tileHeight + MARGINY ), row, col, gameObjectId::roadHor,PlacebleObjectFactor,1,r_road,c_road,m_road);
+         col * tileWidth + MARGINX, row * tileHeight + MARGINY ), row, col, gameObjectId::roadHor,PlacebleObjectFactor,1,r_road,c_road,m_road);
 
     m_obj[row][col] = std::move(roads);
     m_player.transaction( -m_obj[row][col]->buildCost());

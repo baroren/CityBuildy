@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/Users/bar/Documents/school/yearB/CityBuildy/src/Animation.cpp" "/Users/bar/Documents/school/yearB/CityBuildy/cmake-build-debug/CMakeFiles/CityBuildy.dir/src/Animation.cpp.o"
   "/Users/bar/Documents/school/yearB/CityBuildy/src/Button.cpp" "/Users/bar/Documents/school/yearB/CityBuildy/cmake-build-debug/CMakeFiles/CityBuildy.dir/src/Button.cpp.o"
   "/Users/bar/Documents/school/yearB/CityBuildy/src/Controller.cpp" "/Users/bar/Documents/school/yearB/CityBuildy/cmake-build-debug/CMakeFiles/CityBuildy.dir/src/Controller.cpp.o"
   "/Users/bar/Documents/school/yearB/CityBuildy/src/MainMenu.cpp" "/Users/bar/Documents/school/yearB/CityBuildy/cmake-build-debug/CMakeFiles/CityBuildy.dir/src/MainMenu.cpp.o"

@@ -129,6 +129,30 @@ CityBuildy/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CityBuildy.dir/build.make CMakeFiles/CityBuildy.dir/build
 .PHONY : CityBuildy/fast
 
+src/Animation.o: src/Animation.cpp.o
+.PHONY : src/Animation.o
+
+# target to build an object file
+src/Animation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CityBuildy.dir/build.make CMakeFiles/CityBuildy.dir/src/Animation.cpp.o
+.PHONY : src/Animation.cpp.o
+
+src/Animation.i: src/Animation.cpp.i
+.PHONY : src/Animation.i
+
+# target to preprocess a source file
+src/Animation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CityBuildy.dir/build.make CMakeFiles/CityBuildy.dir/src/Animation.cpp.i
+.PHONY : src/Animation.cpp.i
+
+src/Animation.s: src/Animation.cpp.s
+.PHONY : src/Animation.s
+
+# target to generate assembly for a file
+src/Animation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CityBuildy.dir/build.make CMakeFiles/CityBuildy.dir/src/Animation.cpp.s
+.PHONY : src/Animation.cpp.s
+
 src/Button.o: src/Button.cpp.o
 .PHONY : src/Button.o
 
@@ -378,6 +402,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... CityBuildy"
+	@echo "... src/Animation.o"
+	@echo "... src/Animation.i"
+	@echo "... src/Animation.s"
 	@echo "... src/Button.o"
 	@echo "... src/Button.i"
 	@echo "... src/Button.s"

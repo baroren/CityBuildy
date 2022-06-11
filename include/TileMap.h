@@ -22,7 +22,7 @@ class TileMap {
 public:
     TileMap();
 
-    bool draw(sf::RenderWindow &window,std::pair<int,int>);
+    bool draw(sf::RenderWindow &window,std::pair<int,int>,float deltaTime);
 
     void update(sf::Vector2f mousePos,int &id);
 
