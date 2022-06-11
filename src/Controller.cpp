@@ -19,7 +19,7 @@ void Controller::run(){
     auto viewSize = sf::Vector2f(m_window.getSize().x / 2,m_window.getSize().y);
      m_views[0] = sf::View(sf::FloatRect(0.f,0.f, 1920.f,1080.f));
     m_views[0].setViewport(sf::FloatRect( 0.f, 0.f, 1.f, 1.f ));
-     m_views[1] = sf::View(sf::FloatRect(300.f,200.f, 800.f,800.f));
+     m_views[1] = sf::View(sf::FloatRect(200.f,200.f, 800.f,800.f));
     m_views[1].setViewport({ 0.2f, 0.2f, 1.f, 0.8f });
     m_testTemp.setPosition(100,900);//temp for clock pos
     m_testTemp.setCharacterSize(48);
@@ -49,11 +49,13 @@ void Controller::run(){
             if (event.type == sf::Event::MouseButtonPressed) {
                // view0.zoom(3.f);
 
-                int temp= m_sideMenu.handleClick(translateMouse({event.mouseMove.x,event.mouseMove.y}));
-                std::cout<<"temp"<<temp<<std::endl;
+                int temp= m_sideMenu.handleClick(m_window.mapPixelToCoords(sf::Mouse::getPosition(m_window)));
+               // std::cout<<"temp"<<temp<<std::endl;
                 if(clicked ==-1 || temp>=1 &&temp <9) {
                     clicked = m_sideMenu.handleClick(m_window.mapPixelToCoords(sf::Mouse::getPosition(m_window)));
                     std::cout << "clicked from side menud in if  : " << clicked << std::endl;
+                 //   cout<<"X: "<<m_window.mapPixelToCoords(sf::Mouse::getPosition(m_window),m_views[0]).x<<std::endl;
+                 //   m_views[1].zoom(3.f);
 
 
 
@@ -76,12 +78,12 @@ void Controller::run(){
         m_window.clear(sf::Color(0, 170, 250));
         m_window.setView(m_views[0]);
 
-        draw();
-        m_window.setView(m_views[1]);
+       // draw();
+      // m_window.setView(m_views[1]);
         if (m_tileMap.draw(m_window, m_dims))
             std::cout << "gameOver" << std::endl;
 
-        draw();
+       draw();
       // m_window.setView(view1);
       //  draw();
         m_window.display();

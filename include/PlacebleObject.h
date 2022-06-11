@@ -45,6 +45,9 @@ public:
 
     virtual int maintanceCost() { return m_maintance; };
 
+    virtual void connectRoad(bool connect){m_roadConnected = connect;};
+
+    virtual void connectPower(bool connect){m_powerConnected = connect;};
 
 protected:
     sf::Sprite m_obj;
@@ -52,7 +55,8 @@ protected:
     int m_rate;
     int m_buildCost;
     int m_maintance;
-
+    bool m_roadConnected;
+    bool m_powerConnected;
 
 private:
 

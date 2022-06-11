@@ -80,6 +80,9 @@ void TileMap::update(sf::Vector2f mousePos,int &id) {
     for (int row = 0; row < m_rows; row++) {
         // Loop through the columns
         for (int col = 0; col < m_cols; col++) {
+
+
+
             if (m_obj[row][col]->checkClick(mousePos))
             {
               //  int retflag;
@@ -93,7 +96,7 @@ void TileMap::update(sf::Vector2f mousePos,int &id) {
                     if (id == 1) {
                         createRoad(row, col);
                     } else if (id == 2) {
-                        int retflag;
+
 
                         std::unique_ptr<Commercial> commercial = std::make_unique<Commercial>(sf::Vector2f(
                                                                                                       col * tileWidth + MARGINX + 12,
@@ -103,11 +106,10 @@ void TileMap::update(sf::Vector2f mousePos,int &id) {
                         m_obj[row][col] = std::move(commercial);
                         m_player.transaction( -m_obj[row][col]->buildCost());
 
-                        factor2Check(row, col, retflag);
                     }
                  else if (id == 5)
                 {
-                    int retflag;
+
 
                     std::cout << "comm";
                     std::unique_ptr<Residence> residence = std::make_unique<Residence>(sf::Vector2f(
@@ -117,11 +119,11 @@ void TileMap::update(sf::Vector2f mousePos,int &id) {
                     m_obj[row][col] = std::move(residence);
                     m_player.transaction( -m_obj[row][col]->buildCost());
 
-                    factor2Check(row, col, retflag);
+                  //  check(row, col, 1);
                 }
                     else if (id == 4)
                     {
-                        int retflag;
+
 
                         std::cout << "comm";
                         std::unique_ptr<Indastrial> indastrial =  std::make_unique<Indastrial>(sf::Vector2f(
@@ -131,7 +133,7 @@ void TileMap::update(sf::Vector2f mousePos,int &id) {
                         m_obj[row][col] = std::move(indastrial);
                         m_player.transaction( -m_obj[row][col]->buildCost());
 
-                        factor2Check(row, col, retflag);
+                       // check(row, col, retflag);
                     }
                     else if (id == 6)
                     {
@@ -145,7 +147,7 @@ void TileMap::update(sf::Vector2f mousePos,int &id) {
                         m_player.transaction( -m_obj[row][col]->buildCost());
                         diraction(row, col);
 
-                        factor2Check(row, col, retflag);
+                        //check(row, col, id);
                     }
                     else if (id == 7)
                     {
@@ -159,7 +161,7 @@ void TileMap::update(sf::Vector2f mousePos,int &id) {
                         m_obj[row][col] = std::move(powerSource);
                         m_player.transaction( -m_obj[row][col]->buildCost());
 
-                        factor2Check(row, col, retflag);
+                       // check(row, col, id);
                     }
                 }
                 else if (id == 3) {
@@ -167,38 +169,51 @@ void TileMap::update(sf::Vector2f mousePos,int &id) {
 
                     std::cout << "delete";
                     std::unique_ptr<Ground> ground = std::make_unique<Ground>(sf::Vector2f(
-                        col * tileWidth + MARGINX, row * tileWidth + MARGINY), row, col, gameObjectId::TileSheet,FACTOR,id,r_delete,c_delete,m_delete);
+                        col * tileWidth + MARGINX, row * tileWidth + MARGINY), row, col, gameObjectId::TileSheet,FACTOR,0,r_delete,c_delete,m_delete);
 
                     m_obj[row][col] = std::move(ground);
                     m_player.transaction( -m_obj[row][col]->buildCost());
 
-                    factor2Check(row, col, retflag);
+                    //check(row, col, retflag);
 
                 }
 
+
+
+
             }
+            check(row, col, checkConector::road);
+            check(row, col, checkConector::powerLines);
         }
     }
     //id=-1;
 }
 
 //--------------------------------------------------------------------------
-void TileMap::factor2Check(int row, int col, int& retflag)
+void TileMap::check(int row, int col, checkConector check)
 {
-    retflag = 1;
-    /*if (row > 2 || row < m_rows - 2 || col >2 || col < m_cols - 2)
+    if (row < 1 || row >m_rows - 2 || col <1 || col > m_cols - 2)
     {
-        if (m_obj[row - 1][col]->returnID() == 1 ||
-            (m_obj[row + 1][col]->returnID() == 1) ||
-            (m_obj[row][col + 1]->returnID() == 1) ||
-            (m_obj[row][col - 1]->returnID() == 1) ||
-            (m_obj[row - 1][col - 1]->returnID() == 1) ||
-            (m_obj[row + 1][col + 1]->returnID() == 1))
+        return;
+    }else {
+        if(m_obj[row][col]->returnID()==0)
+            return;
+            std::cout<<"row"<<row<<col<<std::endl;
+            if (m_obj[row - 1][col]->returnID() == int(check))
+                std::cout << row - 1 << col << "UP : " << m_obj[row - 1][col]->returnID() << std::endl;
+            else if (m_obj[row + 1][col]->returnID() == int(check));
+            else if (m_obj[row][col + 1]->returnID() == int(check));
+            else if (m_obj[row][col - 1]->returnID() == int(check));
+
+            else;
+                std::cout<<row-1 << col <<"disconnect";
+
+          // s
+    }
             //for size*2 factor
-        {//ugly as hell need to change asap
-            std::cout << "not goodd";
-            { retflag = 2; return; };
-    */
+
+
+    /*
     for (int i = 0; i < m_rows; i++) {
         // Loop through the columns
         for (int j = 0; j < m_cols; j++) {
@@ -217,8 +232,9 @@ void TileMap::factor2Check(int row, int col, int& retflag)
                 }
             }
 
-        }
+        }\
     }
+     */
 
 }
 
