@@ -28,12 +28,14 @@ public:
   void handleTimeAndDate(sf::Time& time1);
 private:
     void date();
-
+    sf::Vector2f translateMouse(sf::Vector2i mouseLocation) const;
+    std::array<sf::View,2> m_views;
     std::array<string, 12> m_dates = { "Jan","Feb","Mar","Apr"
         ,"May","June","July","aug","Sep","Oct","Nov","Dec" };
     int m_currDate = 0;
     int m_year = 1920;
     sf::Text m_testTemp;
+    sf::Text m_cityNameText;
     sf::Text m_timeTemp;
     bool m_payday=true;
     sf::Clock m_clock;
@@ -45,4 +47,5 @@ private:
     Mouse m_mouse;
     sf::RenderWindow m_window;
 
+    string m_cityName="nahariya ";
 };
