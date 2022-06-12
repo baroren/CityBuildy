@@ -61,7 +61,7 @@ namespace // anonymous namespace — the standard way to make function "static"
 
 
         // else if (!com.isPowerConnected())
-      //     com2.connectPower(false);
+        //     com2.connectPower(false);
 
 
         if (com2.isPowerConnected())
@@ -128,7 +128,7 @@ namespace // anonymous namespace — the standard way to make function "static"
 
     void resPowerLine(PlacebleObject &res,
                       PlacebleObject &powerLine) {
-        std::cout << "SpaceShip and SpaceStation collision!\n";
+        comPowerLine(res, powerLine);
     }
 
     void resRoad(PlacebleObject &res,
@@ -148,7 +148,7 @@ namespace // anonymous namespace — the standard way to make function "static"
 
     void resRes(PlacebleObject &res,
                 PlacebleObject &res2) {
-        std::cout << "Two SpaceShips collision!\n";
+        comCom(res, res2);
     }
 //----------end of collision in ---------------------
 
@@ -214,7 +214,7 @@ namespace // anonymous namespace — the standard way to make function "static"
 
     void pLineRes(PlacebleObject &pLine,
                   PlacebleObject &res) {
-        std::cout << "Two SpaceShips collision!\n";
+resPowerLine(res,pLine);
     }
 //----------end of collision in ---------------------
 
@@ -236,7 +236,16 @@ namespace // anonymous namespace — the standard way to make function "static"
         phm[Key(typeid(Commercial), typeid(Indastrial))] = &comIn;
         phm[Key(typeid(Commercial), typeid(Commercial))] = &comCom;
 
+        phm[Key(typeid(Residence), typeid(Road))] = &resRoad;
+        phm[Key(typeid(Residence), typeid(PowerLines))] = &resPowerLine;
+        phm[Key(typeid(Residence), typeid(Ground))] = &ground;
+        phm[Key(typeid(Residence), typeid(Residence))] = &resRes;
+        phm[Key(typeid(Residence), typeid(Indastrial))] = &resIn;
+        phm[Key(typeid(Residence), typeid(Commercial))] = &resCom;
+
         phm[Key(typeid(PowerLines), typeid(Commercial))] = &pLineCom;
+        phm[Key(typeid(PowerLines), typeid(Residence))] = &pLineRes;
+
         phm[Key(typeid(Road), typeid(Commercial))] = &comRoad;
 
 
