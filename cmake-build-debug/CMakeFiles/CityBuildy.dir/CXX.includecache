@@ -382,6 +382,22 @@ SFML/Graphics.hpp
 Controller.h
 /Users/bar/Documents/school/yearB/CityBuildy/src/Controller.h
 
+/Users/bar/Documents/school/yearB/CityBuildy/src/MainMenu.cpp
+MainMenu.h
+/Users/bar/Documents/school/yearB/CityBuildy/src/MainMenu.h
+
+/Users/bar/Documents/school/yearB/CityBuildy/src/Menu.cpp
+Menu.h
+/Users/bar/Documents/school/yearB/CityBuildy/src/Menu.h
+
+/Users/bar/Documents/school/yearB/CityBuildy/src/Mouse.cpp
+Mouse.h
+/Users/bar/Documents/school/yearB/CityBuildy/src/Mouse.h
+
+/Users/bar/Documents/school/yearB/CityBuildy/src/Resources.cpp
+Resources.h
+/Users/bar/Documents/school/yearB/CityBuildy/src/Resources.h
+
 /Users/bar/Documents/school/yearB/CityBuildy/src/TileMap.cpp
 TileMap.h
 /Users/bar/Documents/school/yearB/CityBuildy/src/TileMap.h
@@ -389,4 +405,8 @@ TileMap.h
 /Users/bar/Documents/school/yearB/CityBuildy/src/main.cpp
 Controller.h
 /Users/bar/Documents/school/yearB/CityBuildy/src/Controller.h
+
+/Users/bar/Documents/school/yearB/CityBuildy/src/sideMenu.cpp
+SideMenu.h
+/Users/bar/Documents/school/yearB/CityBuildy/src/SideMenu.h
 

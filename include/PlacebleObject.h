@@ -8,15 +8,16 @@
 #include <memory>
 #include "Resources.h"
 #include "Animation.h"
-class PlacebleObject {
-public:
+
+   class PlacebleObject{
+   public:
     PlacebleObject(sf::Vector2f pos, int row, int col, gameObjectId id,
                    int factor, int idN, int rate, int cost, int maint) {
         m_obj = *Resources::instance().getSprite(id);
 
         m_animation =new Animation(Resources::instance().getTexture(id)
               ,sf::Vector2u(Resources::instance().getImageCount(id),Resources::instance().getImageCount(id)),
-                            2);
+                            0.3f);
 
         m_obj.setPosition(pos);
         m_obj.scale(factor, factor);

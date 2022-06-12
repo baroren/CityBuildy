@@ -14,8 +14,8 @@ Controller::Controller() {
 //--------------------------------------------------------------------------3
 void Controller::run() {
 
-    //  if( !m_mainMenu.run())
-    //  return;
+      if( !m_mainMenu.run())
+      return;
 
     //move to constructor maybe move
 //------------------------------------------
@@ -43,7 +43,7 @@ void Controller::run() {
 
     while (m_window.isOpen()) {
         sf::Time time1 = m_clock.getElapsedTime();
-        //sf::Time timeForAnim=m_clockAnim.getElapsedTime();
+        sf::Time timeForAnim=m_clockAnim.getElapsedTime();
         m_testTemp.setString("test");
 
         // check all the window's events that were triggered since the last iteration of the loop
@@ -51,12 +51,11 @@ void Controller::run() {
         while (m_window.pollEvent(event)) {
 
 
-            m_deltaTime = m_clockAnim.restart().asSeconds();
             // "close requested" event: we close the window
             if (event.type == sf::Event::Closed)
                 m_window.close();
             if (event.type == sf::Event::MouseButtonPressed) {
-                // view0.zoom(3.f);
+                 m_views[1].zoom(3.f);
 
                 int temp = m_sideMenu.handleClick(m_window.mapPixelToCoords(sf::Mouse::getPosition(m_window)));
                 // std::cout<<"temp"<<temp<<std::endl;
@@ -86,12 +85,14 @@ void Controller::run() {
         m_window.clear(sf::Color(0, 170, 250));
         m_window.setView(m_views[0]);
 
-        // draw();
-        // m_window.setView(m_views[1]);
+         //draw();
+       //  m_window.setView(m_views[1]);
         if (m_tileMap.draw(m_window, m_dims,m_deltaTime))
             std::cout << "gameOver" << std::endl;
 
         draw();
+        m_deltaTime = m_clockAnim.restart().asSeconds();
+
         // m_window.setView(view1);
         //  draw();
         m_window.display();
