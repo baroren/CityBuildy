@@ -14,9 +14,12 @@ CMakeFiles/CityBuildy.dir/src/CollisionHandling.cpp.o: \
  ../include/Commercial.h \
  ../include/Conectors.h \
  ../include/Ground.h \
+ ../include/Indastrial.h \
  ../include/Macros.h \
  ../include/PlacebleObject.h \
  ../include/PowerLines.h \
+ ../include/PowerSource.h \
+ ../include/Residence.h \
  ../include/Resources.h \
  ../include/Road.h \
  ../include/Window.h \

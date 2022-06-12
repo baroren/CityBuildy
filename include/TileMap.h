@@ -31,6 +31,7 @@ public:
 
     void updateMoney();
 
+    void del(int row, int col) ;
 
  
 

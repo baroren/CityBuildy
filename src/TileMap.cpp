@@ -47,6 +47,17 @@ bool TileMap::draw(sf::RenderWindow &window, std::pair<int, int> dims, float del
 
         }
     }
+
+    for (int row = 0; row < m_rows; row++) {
+        // Loop through the columns
+        for (int col = 0; col < m_cols; col++) {
+
+            check(row, col, checkConector::road);
+            //check(row, col, checkConector::powerLines);
+        }
+    }
+
+
     m_playerMoney.setString("funds " + std::to_string(m_player.getMoney()));
     m_playerMoney.setPosition(50, 25);
     window.draw(m_playerMoney);
@@ -138,7 +149,6 @@ void TileMap::update(sf::Vector2f mousePos, int &id) {
                     } else if (id == 6) {
                         int retflag;
 
-                        std::cout << "comm";
                         std::unique_ptr<PowerLines> powerLines = std::make_unique<PowerLines>(sf::Vector2f(
                                                                                                       col * tileWidth + MARGINX, row * tileHeight + MARGINY), row, col, gameObjectId::psLines,
                                                                                               PlacebleObjectFactor, id,
@@ -148,7 +158,6 @@ void TileMap::update(sf::Vector2f mousePos, int &id) {
                         m_obj[row][col] = std::move(powerLines);
                         m_player.transaction(-m_obj[row][col]->buildCost());
                         //  diraction(row, col);
-
                         //check(row, col, id);
                     } else if (id == 7) {
                         int retflag;
@@ -169,11 +178,12 @@ void TileMap::update(sf::Vector2f mousePos, int &id) {
                     }
                 } else if (id == 3) {
                     int retflag;
-
+                    del(row, col);
                     std::cout << "delete";
                     std::unique_ptr<Ground> ground = std::make_unique<Ground>(sf::Vector2f(
                                                                                       col * tileWidth + MARGINX, row * tileWidth + MARGINY), row, col, gameObjectId::TileSheet,
                                                                               FACTOR, 0, r_delete, c_delete, m_delete);
+
 
                     m_obj[row][col] = std::move(ground);
                     m_player.transaction(-m_obj[row][col]->buildCost());
@@ -185,71 +195,100 @@ void TileMap::update(sf::Vector2f mousePos, int &id) {
 
             }
 
-            check(row, col, checkConector::road);
-            check(row, col, checkConector::powerLines);
 
         }
     }
     //id=-1;
 }
 
+void TileMap::del(int row, int col) {
+
+
+    if (row < 1 || row > m_rows - 2 || col < 1 || col > m_cols - 2)
+        return;
+    for (int row = 0; row < m_rows; row++) {
+        // Loop through the columns
+        for (int col = 0; col < m_cols; col++) {
+            if (m_obj[row][col]->returnID() != 0) {
+                std::cout << "delet power" << std::endl;
+                if (m_obj[row - 1][col]->returnID() != 0)
+                    m_obj[row - 1][col]->connectPower(false);
+                //std::cout << row - 1 << col << "UP : " << m_obj[row - 1][col]->returnID() << std::endl;
+                if (m_obj[row + 1][col]->returnID() != 0)
+                    m_obj[row + 1][col]->connectPower(false);
+
+
+                if (m_obj[row][col - 1]->returnID() != 0)
+                    m_obj[row][col - 1]->connectPower(false);
+                if (m_obj[row][col + 1]->returnID() != 0) {
+                    std::cout << "test" << std::endl;
+                    m_obj[row][col + 1]->connectPower(false);
+                }
+            }
+        }
+    }
+
+}
+
 //--------------------------------------------------------------------------
 void TileMap::check(int row, int col, checkConector check) {
     // Loop through the rows
 
-
-    if (row < 1 || row > m_rows - 2 || col < 1 || col > m_cols - 2) {
+    if (m_obj[row][col]->returnID() == 0)
         return;
-    } else {
-        if (m_obj[row][col]->returnID() == 0)
-            return;
-        if (m_obj[row - 1][col]->returnID() !=0) {
-            //   m_obj[row][col]->connectPower(true);
-            processCollision(*m_obj[row][col], *m_obj[row - 1][col]);
-
-        }
-            //std::cout << row - 1 << col << "UP : " << m_obj[row - 1][col]->returnID() << std::endl;
-        else if (m_obj[row + 1][col]->returnID()!=0)
-            processCollision(*m_obj[row][col], *m_obj[row +1][col]);
-
-        else if (m_obj[row][col + 1]->returnID()!=0)
-            processCollision(*m_obj[row][col], *m_obj[row][col+1]);
-
-        else if (m_obj[row][col - 1]->returnID() !=0)
-            processCollision(*m_obj[row][col], *m_obj[row ][col-1]);
+    if (row < 1 || row > m_rows - 2 || col < 1 || col > m_cols - 2)
+        return;
 
 
-        else
-            m_obj[row][col]->connectPower(false);
-        // s
-    }
-    //for size*2 factor
+
+    if (m_obj[row - 1][col]->returnID() != 0)
+        processCollision(*m_obj[row][col], *m_obj[row - 1][col]);
+
+    //std::cout << row - 1 << col << "UP : " << m_obj[row - 1][col]->returnID() << std::endl;
+    if (m_obj[row + 1][col]->returnID() != 0)
+        processCollision(*m_obj[row][col], *m_obj[row + 1][col]);
 
 
-    /*
-    for (int i = 0; i < m_rows; i++) {
-        // Loop through the columns
-        for (int j = 0; j < m_cols; j++) {
-            if(m_obj[i][j]->returnID() != 0) {
-                if (!(i == row && j == col)) {
-                    if (m_obj[i][j]->checkIfContained(m_obj[row][col]->bound())) {
-                        if (m_obj[i][j]->bound().left + 144 - m_obj[row][col]->bound().left < 0)
-                            std::cout << "containes \n\n";
-                        std::cout << "touching.\n";
-                        std::cout << m_obj[i][j]->bound().left << ".\n";
+    if (m_obj[row][col - 1]->returnID() != 0)
+        processCollision(*m_obj[row][col], *m_obj[row][col - 1]);
+    if (m_obj[row][col + 1]->returnID() != 0)
+        processCollision(*m_obj[row][col], *m_obj[row][col + 1]);
 
-                        std::cout << m_obj[row][col]->bound().left << ".\n";
 
-                    }
+
+
+
+    //  else;
+    //    m_obj[row][col]->connectPower(false);
+    // s
+}
+//for size*2 factor
+
+
+/*
+for (int i = 0; i < m_rows; i++) {
+    // Loop through the columns
+    for (int j = 0; j < m_cols; j++) {
+        if(m_obj[i][j]->returnID() != 0) {
+            if (!(i == row && j == col)) {
+                if (m_obj[i][j]->checkIfContained(m_obj[row][col]->bound())) {
+                    if (m_obj[i][j]->bound().left + 144 - m_obj[row][col]->bound().left < 0)
+                        std::cout << "containes \n\n";
+                    std::cout << "touching.\n";
+                    std::cout << m_obj[i][j]->bound().left << ".\n";
+
+                    std::cout << m_obj[row][col]->bound().left << ".\n";
 
                 }
+
             }
+        }
 
-        }\
-    }
-     */
-
+    }\
 }
+ */
+
+
 
 //--------------------------------------------------------------------------
 void TileMap::createRoad(int &row, int &col) {

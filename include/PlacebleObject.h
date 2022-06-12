@@ -27,6 +27,7 @@ public:
         m_buildCost = cost;
         m_maintance = maint;
 
+
     }
 
     virtual   ~PlacebleObject() {}
@@ -61,9 +62,10 @@ public:
     virtual bool isPowerConnected() { return m_powerConnected; };
 
     virtual bool isRoadConnected() { return m_roadConnected; };
+    virtual bool isPowerLineConnect ( ){return m_powerLineConnected;}
 
     virtual void connectRoad(bool connect) { m_roadConnected = connect; };
-
+    virtual void connectPowerSource (bool connect ){m_powerLineConnected = connect;}
     virtual void connectPower(bool connect) {
         m_powerConnected = connect;
         if(connect)
@@ -80,8 +82,9 @@ protected:
     int m_rate;
     int m_buildCost;
     int m_maintance;
-    bool m_roadConnected;
-    bool m_powerConnected;
+    bool m_roadConnected=false;
+    bool m_powerConnected=false;
+    bool m_powerLineConnected=false;
     Animation *m_animation;
     int currAnim = 0;
     int groundConnection = 4;
