@@ -9,15 +9,16 @@
 #include "Resources.h"
 #include "Animation.h"
 
-   class PlacebleObject{
-   public:
+class PlacebleObject {
+public:
     PlacebleObject(sf::Vector2f pos, int row, int col, gameObjectId id,
                    int factor, int idN, int rate, int cost, int maint) {
         m_obj = *Resources::instance().getSprite(id);
 
-        m_animation =new Animation(Resources::instance().getTexture(id)
-              ,sf::Vector2u(Resources::instance().getImageCount(id),Resources::instance().getImageCount(id)),
-                            0.3f);
+        m_animation = new Animation(Resources::instance().getTexture(id),
+                                    sf::Vector2u(Resources::instance().getImageCount(id),
+                                                 Resources::instance().getImageCount(id)),
+                                    0.3f);
 
         m_obj.setPosition(pos);
         m_obj.scale(factor, factor);
@@ -30,11 +31,12 @@
 
     virtual   ~PlacebleObject() {}
 
-    virtual void show(sf::RenderWindow &window,int animState,float deltaTime) {
-        m_animation->update(currAnim,deltaTime);
+    virtual void show(sf::RenderWindow &window, int animState, float deltaTime) {
+        m_animation->update(currAnim, deltaTime);
         m_obj.setTextureRect((m_animation->getRect()));
 
-        window.draw(m_obj); };
+        window.draw(m_obj);
+    };
 
     virtual void setPos(int x, int y) { m_obj.setPosition(x, y); };
 
@@ -56,10 +58,20 @@
 
     virtual int maintanceCost() { return m_maintance; };
 
-    virtual void connectRoad(bool connect){m_roadConnected = connect;};
+    virtual bool isPowerConnected() { return m_powerConnected; };
 
-    virtual void connectPower(bool connect){m_powerConnected = connect;
-                                            currAnim=2;};
+    virtual bool isRoadConnected() { return m_roadConnected; };
+
+    virtual void connectRoad(bool connect) { m_roadConnected = connect; };
+
+    virtual void connectPower(bool connect) {
+        m_powerConnected = connect;
+        if(connect)
+          currAnim=2;
+        else
+            currAnim=0;
+    };
+
 
 
 protected:
@@ -70,8 +82,9 @@ protected:
     int m_maintance;
     bool m_roadConnected;
     bool m_powerConnected;
-    Animation*  m_animation;
-    int currAnim=0;
+    Animation *m_animation;
+    int currAnim = 0;
+    int groundConnection = 4;
 
 private:
 

@@ -8,6 +8,7 @@
 #include <memory>
 #include "Resources.h"
 #include "Conectors.h"
+#include "Area.h"
 
 class Commercial : public Area {
 public:

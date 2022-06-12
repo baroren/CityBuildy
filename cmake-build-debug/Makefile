@@ -177,6 +177,30 @@ src/Button.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CityBuildy.dir/build.make CMakeFiles/CityBuildy.dir/src/Button.cpp.s
 .PHONY : src/Button.cpp.s
 
+src/CollisionHandling.o: src/CollisionHandling.cpp.o
+.PHONY : src/CollisionHandling.o
+
+# target to build an object file
+src/CollisionHandling.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CityBuildy.dir/build.make CMakeFiles/CityBuildy.dir/src/CollisionHandling.cpp.o
+.PHONY : src/CollisionHandling.cpp.o
+
+src/CollisionHandling.i: src/CollisionHandling.cpp.i
+.PHONY : src/CollisionHandling.i
+
+# target to preprocess a source file
+src/CollisionHandling.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CityBuildy.dir/build.make CMakeFiles/CityBuildy.dir/src/CollisionHandling.cpp.i
+.PHONY : src/CollisionHandling.cpp.i
+
+src/CollisionHandling.s: src/CollisionHandling.cpp.s
+.PHONY : src/CollisionHandling.s
+
+# target to generate assembly for a file
+src/CollisionHandling.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CityBuildy.dir/build.make CMakeFiles/CityBuildy.dir/src/CollisionHandling.cpp.s
+.PHONY : src/CollisionHandling.cpp.s
+
 src/Controller.o: src/Controller.cpp.o
 .PHONY : src/Controller.o
 
@@ -408,6 +432,9 @@ help:
 	@echo "... src/Button.o"
 	@echo "... src/Button.i"
 	@echo "... src/Button.s"
+	@echo "... src/CollisionHandling.o"
+	@echo "... src/CollisionHandling.i"
+	@echo "... src/CollisionHandling.s"
 	@echo "... src/Controller.o"
 	@echo "... src/Controller.i"
 	@echo "... src/Controller.s"

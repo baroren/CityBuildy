@@ -8,7 +8,7 @@
 #include <memory>
 #include "Resources.h"
 #include "Conectors.h"
-class Roads:public Conectors {
+class Road: public Conectors {
 public:
   using Conectors::Conectors;
 

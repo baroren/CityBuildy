@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/bar/Documents/school/yearB/CityBuildy/src/Animation.cpp" "/Users/bar/Documents/school/yearB/CityBuildy/cmake-build-debug/CMakeFiles/CityBuildy.dir/src/Animation.cpp.o"
   "/Users/bar/Documents/school/yearB/CityBuildy/src/Button.cpp" "/Users/bar/Documents/school/yearB/CityBuildy/cmake-build-debug/CMakeFiles/CityBuildy.dir/src/Button.cpp.o"
+  "/Users/bar/Documents/school/yearB/CityBuildy/src/CollisionHandling.cpp" "/Users/bar/Documents/school/yearB/CityBuildy/cmake-build-debug/CMakeFiles/CityBuildy.dir/src/CollisionHandling.cpp.o"
   "/Users/bar/Documents/school/yearB/CityBuildy/src/Controller.cpp" "/Users/bar/Documents/school/yearB/CityBuildy/cmake-build-debug/CMakeFiles/CityBuildy.dir/src/Controller.cpp.o"
   "/Users/bar/Documents/school/yearB/CityBuildy/src/MainMenu.cpp" "/Users/bar/Documents/school/yearB/CityBuildy/cmake-build-debug/CMakeFiles/CityBuildy.dir/src/MainMenu.cpp.o"
   "/Users/bar/Documents/school/yearB/CityBuildy/src/Menu.cpp" "/Users/bar/Documents/school/yearB/CityBuildy/cmake-build-debug/CMakeFiles/CityBuildy.dir/src/Menu.cpp.o"

@@ -13,7 +13,10 @@ class Conectors:public PlacebleObject {
 public:
     using PlacebleObject::PlacebleObject;
 
-
+    virtual void connectPower(bool connect) {
+        m_powerConnected = connect;
+        // currAnim=2;
+    };
    // Conectors(const sf::Vector2f &pos,) : PlacebleObject(pos) {}
 
 

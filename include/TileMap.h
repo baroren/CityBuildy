@@ -8,7 +8,7 @@
 #include <memory>
 #include "Resources.h"
 #include "PlacebleObject.h"
-#include <Roads.h>
+#include <Road.h>
 #include "Ground.h"
 #include "Area.h"
 #include "Commercial.h"
@@ -17,6 +17,7 @@
 #include "Indastrial.h"
 #include "PowerLines.h"
 #include "PowerSource.h"
+#include "CollisionHandling.h"
 class TileMap {
 
 public:
@@ -34,6 +35,7 @@ public:
  
 
 private:
+// STL-like algorithm to run over all pairs
 
     Player m_player;
 

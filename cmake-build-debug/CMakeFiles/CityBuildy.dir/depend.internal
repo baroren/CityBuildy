@@ -7,10 +7,25 @@ CMakeFiles/CityBuildy.dir/src/Animation.cpp.o
 CMakeFiles/CityBuildy.dir/src/Button.cpp.o
  ../include/Button.h
  /Users/bar/Documents/school/yearB/CityBuildy/src/Button.cpp
+CMakeFiles/CityBuildy.dir/src/CollisionHandling.cpp.o
+ ../include/Animation.h
+ ../include/Area.h
+ ../include/CollisionHandling.h
+ ../include/Commercial.h
+ ../include/Conectors.h
+ ../include/Ground.h
+ ../include/Macros.h
+ ../include/PlacebleObject.h
+ ../include/PowerLines.h
+ ../include/Resources.h
+ ../include/Road.h
+ ../include/Window.h
+ /Users/bar/Documents/school/yearB/CityBuildy/src/CollisionHandling.cpp
 CMakeFiles/CityBuildy.dir/src/Controller.cpp.o
  ../include/Animation.h
  ../include/Area.h
  ../include/Button.h
+ ../include/CollisionHandling.h
  ../include/Commercial.h
  ../include/Conectors.h
  ../include/Controller.h
@@ -26,7 +41,7 @@ CMakeFiles/CityBuildy.dir/src/Controller.cpp.o
  ../include/PowerSource.h
  ../include/Residence.h
  ../include/Resources.h
- ../include/Roads.h
+ ../include/Road.h
  ../include/SideMenu.h
  ../include/TileMap.h
  ../include/Window.h
@@ -58,6 +73,7 @@ CMakeFiles/CityBuildy.dir/src/Resources.cpp.o
 CMakeFiles/CityBuildy.dir/src/TileMap.cpp.o
  ../include/Animation.h
  ../include/Area.h
+ ../include/CollisionHandling.h
  ../include/Commercial.h
  ../include/Conectors.h
  ../include/Ground.h
@@ -69,7 +85,7 @@ CMakeFiles/CityBuildy.dir/src/TileMap.cpp.o
  ../include/PowerSource.h
  ../include/Residence.h
  ../include/Resources.h
- ../include/Roads.h
+ ../include/Road.h
  ../include/TileMap.h
  ../include/Window.h
  /Users/bar/Documents/school/yearB/CityBuildy/src/TileMap.cpp
@@ -77,6 +93,7 @@ CMakeFiles/CityBuildy.dir/src/main.cpp.o
  ../include/Animation.h
  ../include/Area.h
  ../include/Button.h
+ ../include/CollisionHandling.h
  ../include/Commercial.h
  ../include/Conectors.h
  ../include/Controller.h
@@ -92,7 +109,7 @@ CMakeFiles/CityBuildy.dir/src/main.cpp.o
  ../include/PowerSource.h
  ../include/Residence.h
  ../include/Resources.h
- ../include/Roads.h
+ ../include/Road.h
  ../include/SideMenu.h
  ../include/TileMap.h
  ../include/Window.h

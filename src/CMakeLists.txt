@@ -1,11 +1,12 @@
-﻿target_sources (${CMAKE_PROJECT_NAME} PRIVATE "main.cpp"
-                                             "Controller.cpp"
+﻿target_sources(${CMAKE_PROJECT_NAME} PRIVATE "main.cpp"
+        "Controller.cpp"
         "Resources.cpp"
         "window.cpp"
         "Button.cpp"
         "Menu.cpp"
         "MainMenu.cpp"
         "TileMap.cpp"
-      "Mouse.cpp"
+        "Mouse.cpp"
         "sideMenu.cpp"
-        "Animation.cpp")
+        "Animation.cpp"
+        "CollisionHandling.cpp")

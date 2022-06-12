@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/CityBuildy.dir/src/Animation.cpp.o"
   "CMakeFiles/CityBuildy.dir/src/Button.cpp.o"
+  "CMakeFiles/CityBuildy.dir/src/CollisionHandling.cpp.o"
   "CMakeFiles/CityBuildy.dir/src/Controller.cpp.o"
   "CMakeFiles/CityBuildy.dir/src/MainMenu.cpp.o"
   "CMakeFiles/CityBuildy.dir/src/Menu.cpp.o"

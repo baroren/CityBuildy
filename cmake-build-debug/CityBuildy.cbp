@@ -90,6 +90,9 @@
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/src/Button.cpp">
 			<Option target="CityBuildy"/>
 		</Unit>
+		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/src/CollisionHandling.cpp">
+			<Option target="CityBuildy"/>
+		</Unit>
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/src/Controller.cpp">
 			<Option target="CityBuildy"/>
 		</Unit>
