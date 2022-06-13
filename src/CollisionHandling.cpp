@@ -102,11 +102,14 @@ namespace // anonymous namespace — the standard way to make function "static"
 
     void inRoad(PlacebleObject &in,
                 PlacebleObject &road) {
+        if (road.isroadpLineConnected())
+            inPowerLine(in, road);
+
     }
 
     void inCom(PlacebleObject &in,
                PlacebleObject &com) {
-        comIn(in, com);
+        comIn(com, in);
     }
 
     void inIn(PlacebleObject &in,
@@ -135,12 +138,14 @@ namespace // anonymous namespace — the standard way to make function "static"
 
     void resRoad(PlacebleObject &res,
                  PlacebleObject &road) {
-        std::cout << "Asteroid and SpaceStation collision!\n";
+
+        if (road.isroadpLineConnected())
+            resPowerLine(res, road);
     }
 
     void resCom(PlacebleObject &res,
                 PlacebleObject &com) {
-        comRes(res, com);
+        comRes(com, res);
     }
 
     void resIn(PlacebleObject &res,
@@ -185,7 +190,7 @@ namespace // anonymous namespace — the standard way to make function "static"
 
     void roadCom(PlacebleObject &road,
                  PlacebleObject &com) {
-        comRoad(road, com);
+        comRoad(com, road);
     }
 
     void roadIn(PlacebleObject &road,
@@ -305,7 +310,7 @@ namespace // anonymous namespace — the standard way to make function "static"
         phm[Key(typeid(PowerLines), typeid(Road))] = &pLineRoad;
         phm[Key(typeid(PowerLines), typeid(PowerLines))] = &pLinePowerLine;
         phm[Key(typeid(PowerLines), typeid(Ground))] = &ground;
-        phm[Key(typeid(PowerLines), typeid(Indastrial))] = &pLineRes;
+        phm[Key(typeid(PowerLines), typeid(Indastrial))] = &pLineIn;
         phm[Key(typeid(PowerLines), typeid(Commercial))] = &pLineCom;
         phm[Key(typeid(PowerLines), typeid(Residence))] = &pLineRes;
         phm[Key(typeid(PowerLines), typeid(PowerSource))] = &pLinePower;

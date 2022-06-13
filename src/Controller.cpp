@@ -33,6 +33,10 @@ void Controller::run() {
     m_cityNameText.setCharacterSize(48);
     m_cityNameText.setString(m_cityName);
     m_testTemp.setFillColor(sf::Color::Black);
+    m_cityNameText.setFillColor(sf::Color::Black);
+    m_timeTemp.setFillColor(sf::Color::Black);
+
+
     m_window.create(sf::VideoMode(1920, 1080), "City Buildy");
     m_dims.first = sf::VideoMode::getDesktopMode().width;
     m_dims.second = sf::VideoMode::getDesktopMode().height;

@@ -4,7 +4,8 @@ TileMap::TileMap()
 // Change the values when using tiles other than 30x30
         : tileWidth(16 * FACTOR), tileHeight(16 * FACTOR) {
 
-    m_playerMoney.setFont(*Resources::instance().getFont());
+    m_playerMoney.setFont(*Resources::instance().getFont());//move it to Controller
+    m_playerMoney.setFillColor(sf::Color::Black);
 
     for (int row = 0; row < m_rows; ++row) {
         vector<std::unique_ptr<PlacebleObject>> temp;
@@ -234,24 +235,24 @@ void TileMap::del(int row, int col) {
             if (m_obj[row][col]->returnID() != 0) {
                 std::cout << "delet power" << std::endl;
                 if (m_obj[row - 1][col]->returnID() != 0) {
-                    m_obj[row - 1][col]->roadpLine(false);
+                  //  m_obj[row - 1][col]->roadpLine(false);
                     m_obj[row - 1][col]->connectPower(false);
                 }
                 //std::cout << row - 1 << col << "UP : " << m_obj[row - 1][col]->returnID() << std::endl;
                 if (m_obj[row + 1][col]->returnID() != 0) {
-                    m_obj[row + 1][col]->roadpLine(false);
+                //    m_obj[row + 1][col]->roadpLine(false);
 
                     m_obj[row + 1][col]->connectPower(false);
                 }
 
 
                 if (m_obj[row][col - 1]->returnID() != 0) {
-                    m_obj[row ][col-1]->roadpLine(false);
+                //    m_obj[row ][col-1]->roadpLine(false);
 
                     m_obj[row][col - 1]->connectPower(false);
                 }
                 if (m_obj[row][col + 1]->returnID() != 0) {
-                    m_obj[row ][col+1]->roadpLine(false);
+               //     m_obj[row ][col+1]->roadpLine(false);
 
                     std::cout << "test" << std::endl;
                     m_obj[row][col + 1]->connectPower(false);
