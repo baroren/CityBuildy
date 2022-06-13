@@ -156,6 +156,9 @@
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/arcadeClassic.ttf">
 			<Option virtualFolder="CMake Files\resources\"/>
 		</Unit>
+		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/bg.png">
+			<Option virtualFolder="CMake Files\resources\"/>
+		</Unit>
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/comPlace.png">
 			<Option virtualFolder="CMake Files\resources\"/>
 		</Unit>

@@ -8,7 +8,8 @@ Controller::Controller() {
     m_testTemp.setFont(*Resources::instance().getFont());
     m_timeTemp.setFont(*Resources::instance().getFont());
     m_cityNameText.setFont(*Resources::instance().getFont());
-
+    m_bg= *Resources::instance().getSprite(gameObjectId::bg);
+    m_bg.setScale(2,2);
 }
 
 //--------------------------------------------------------------------------3
@@ -36,6 +37,7 @@ void Controller::run() {
     m_dims.first = sf::VideoMode::getDesktopMode().width;
     m_dims.second = sf::VideoMode::getDesktopMode().height;
 //----------------------------------
+    m_bg.setPosition(m_window.getSize().x/2, m_window.getSize().y/2);
 
 
 
@@ -44,6 +46,7 @@ void Controller::run() {
     while (m_window.isOpen()) {
         sf::Time time1 = m_clock.getElapsedTime();
         sf::Time timeForAnim=m_clockAnim.getElapsedTime();
+
         m_testTemp.setString("test");
 
         // check all the window's events that were triggered since the last iteration of the loop
@@ -82,7 +85,8 @@ void Controller::run() {
         // draw everything here...
         // window.draw(...);
         // m_clock.restart()
-        m_window.clear(sf::Color(0, 170, 250));
+        m_window.clear(sf::Color(123, 200, 249));
+        m_window.draw(m_bg);
         m_window.setView(m_views[0]);
 
          //draw();
@@ -129,17 +133,19 @@ void Controller::draw() {
 void Controller::handleTimeAndDate(sf::Time &time1) {
     m_testTemp.setString(m_sideMenu.getPrice(clicked));
     m_timeTemp.setString(m_dates[m_currDate] + "  " + std::to_string(m_year));
-    if (int(time1.asSeconds()) > float(month) && m_payday) {
+    if (time1.asSeconds() > float(month) && m_payday) {
         m_clock.restart();
         //   m_payday=false;
         cout << "month past";
         m_tileMap.updateMoney();
+        m_tileMap.updateAnim();
         date();
 
-    } else if (int(time1.asSeconds()) % (month + 1) == 0)//11 will be set accotding to game speed
-    {
-        // m_payday = true;
     }
+
+
+
+
 }
 
 //--------------------------------------------------------------------------

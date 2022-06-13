@@ -3,8 +3,7 @@
 //
 #pragma once
 enum class gameObjectId{MainMenuBG,TileSheet,road,comm,destroy,indast,resident,powerLine,
-    powerSource,park,roadHor,comPlace,resPlace,inPlace,psSource,psLines};
-enum class checkConector{road=1,powerLines=6};
+    powerSource,park,roadHor,comPlace,resPlace,inPlace,psSource,psLines,bg};
 enum class sideMenuId{S_road=1,S_com=2,S_del=3,S_facroty=4,S_park=5,S_powerLine,S_PowerPlant};
 const int numOfSprites=20,MARGINX=300,MARGINY=100,
         c_ressidance=30,c_road=10,c_commercial=90,c_indastrial=50,c_delete=10,

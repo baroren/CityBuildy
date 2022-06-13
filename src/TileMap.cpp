@@ -77,6 +77,20 @@ void TileMap::updateMoney() {
 
     }
 }
+
+
+void TileMap::updateAnim()
+{
+    for (auto &row: m_obj) {
+        // Loop through the columns
+        for (auto &col: row) {
+
+            col->changeAnim();
+
+        }
+
+    }
+}
 //---------------------------------------------
 
 void TileMap::update(sf::Vector2f mousePos, int &id) {
@@ -88,115 +102,125 @@ void TileMap::update(sf::Vector2f mousePos, int &id) {
         for (int col = 0; col < m_cols; col++) {
 
 
-            if (m_obj[row][col]->checkClick(mousePos)) {
-                //  int retflag;
-                //factor2Check(row, col, retflag);
-                //if (retflag == 2) break;
-
-                if (m_obj[row][col]->returnID() == 0) {
-
-                    // if(m_obj[row-1][col]->returnID() == 0)
-                    std::cout << id << std::endl;
-                    if (id == 1) {
-                        createRoad(row, col);
-                    } else if (id == 2) {
-
-
-                        std::unique_ptr<Commercial> commercial = std::make_unique<Commercial>(sf::Vector2f(
-                                                                                                      col * tileWidth + MARGINX,
-                                                                                                      row * tileWidth + MARGINY), row, col,
-                                                                                              gameObjectId::comPlace,
-                                                                                              PlacebleObjectFactor, id,
-                                                                                              r_commercial,
-                                                                                              c_commercial,
-                                                                                              m_commercial);
-
-                        m_obj[row][col] = std::move(commercial);
-                        m_player.transaction(-m_obj[row][col]->buildCost());
-
-                    } else if (id == 5) {
-
-
-                        std::cout << "comm";
-                        std::unique_ptr<Residence> residence = std::make_unique<Residence>(sf::Vector2f(
-                                                                                                   col * tileWidth + MARGINX, row * tileWidth + MARGINY), row, col,
-                                                                                           gameObjectId::resPlace,
-                                                                                           PlacebleObjectFactor, id,
-                                                                                           r_ressidance, c_ressidance,
-                                                                                           m_ressidance);
-
-                        m_obj[row][col] = std::move(residence);
-                        m_player.transaction(-m_obj[row][col]->buildCost());
-
-                        //  check(row, col, 1);
-                    } else if (id == 4) {
-
-
-                        std::cout << "comm";
-                        std::unique_ptr<Indastrial> indastrial = std::make_unique<Indastrial>(sf::Vector2f(
-                                                                                                      col * tileWidth + MARGINX, row * tileWidth + MARGINY), row, col,
-                                                                                              gameObjectId::inPlace,
-                                                                                              PlacebleObjectFactor, id,
-                                                                                              r_indastrial,
-                                                                                              c_indastrial,
-                                                                                              m_indastrial);
-
-                        m_obj[row][col] = std::move(indastrial);
-                        m_player.transaction(-m_obj[row][col]->buildCost());
-
-                        // check(row, col, retflag);
-                    } else if (id == 6) {
-                        int retflag;
-
-                        std::unique_ptr<PowerLines> powerLines = std::make_unique<PowerLines>(sf::Vector2f(
-                                                                                                      col * tileWidth + MARGINX, row * tileHeight + MARGINY), row, col, gameObjectId::psLines,
-                                                                                              PlacebleObjectFactor, id,
-                                                                                              r_powerline, c_powerline,
-                                                                                              m_powerline);
-
-                        m_obj[row][col] = std::move(powerLines);
-                        m_player.transaction(-m_obj[row][col]->buildCost());
-                         diraction(row, col);
-                        //check(row, col, id);
-                    } else if (id == 7) {
-                        int retflag;
-
-                        std::cout << "comm";
-                        std::unique_ptr<PowerSource> powerSource = std::make_unique<PowerSource>(sf::Vector2f(
-                                                                                                         col * tileWidth + MARGINX, row * tileWidth + MARGINY), row, col,
-                                                                                                 gameObjectId::psSource,
-                                                                                                 PlacebleObjectFactor,
-                                                                                                 id, r_powerSource,
-                                                                                                 c_powerSource,
-                                                                                                 m_powerSource);
-
-                        m_obj[row][col] = std::move(powerSource);
-                        m_player.transaction(-m_obj[row][col]->buildCost());
-
-                        // check(row, col, id);
-                    }
-                } else if (id == 3) {
-                    int retflag;
-                    del(row, col);
-                    std::cout << "delete";
-                    std::unique_ptr<Ground> ground = std::make_unique<Ground>(sf::Vector2f(
-                                                                                      col * tileWidth + MARGINX, row * tileWidth + MARGINY), row, col, gameObjectId::TileSheet,
-                                                                              FACTOR, 0, r_delete, c_delete, m_delete);
-
-
-                    m_obj[row][col] = std::move(ground);
-                    m_player.transaction(-m_obj[row][col]->buildCost());
-
-                    //check(row, col, retflag);
-
-                }
-
-
-            }
+            handleClick(mousePos, id, row, col);
 
         }
     }
     //id=-1;
+}
+
+void TileMap::handleClick(sf::Vector2f &mousePos, const int &id, int &row, int &col) {
+    if (m_obj[row][col]->checkClick(mousePos)) {
+        //  int retflag;
+        //factor2Check(row, col, retflag);
+        //if (retflag == 2) break;
+
+        if (m_obj[row][col]->returnID() == 0) {
+
+            // if(m_obj[row-1][col]->returnID() == 0)
+            std::cout << id << std::endl;
+            if (id == 1) {
+                createRoad(row, col);
+            } else if (id == 2) {
+
+
+                std::__1::unique_ptr<Commercial> commercial = std::__1::make_unique<Commercial>(sf::Vector2f(
+                                                                                                        col * tileWidth + MARGINX,
+                                                                                                        row * tileWidth + MARGINY), row, col,
+                                                                                                gameObjectId::comPlace,
+                                                                                                PlacebleObjectFactor, id,
+                                                                                                r_commercial,
+                                                                                                c_commercial,
+                                                                                                m_commercial);
+
+                m_obj[row][col] = std::move(commercial);
+                m_player.transaction(-m_obj[row][col]->buildCost());
+
+            } else if (id == 5) {
+
+
+                std::cout << "comm";
+                std::__1::unique_ptr<Residence> residence = std::__1::make_unique<Residence>(sf::Vector2f(
+                                                                                                     col * tileWidth + MARGINX, row * tileWidth + MARGINY), row, col,
+                                                                                             gameObjectId::resPlace,
+                                                                                             PlacebleObjectFactor, id,
+                                                                                             r_ressidance, c_ressidance,
+                                                                                             m_ressidance);
+
+                m_obj[row][col] = std::move(residence);
+                m_player.transaction(-m_obj[row][col]->buildCost());
+
+                //  check(row, col, 1);
+            } else if (id == 4) {
+
+
+                std::cout << "comm";
+                std::__1::unique_ptr<Indastrial> indastrial = std::__1::make_unique<Indastrial>(sf::Vector2f(
+                                                                                                        col * tileWidth + MARGINX, row * tileWidth + MARGINY), row, col,
+                                                                                                gameObjectId::inPlace,
+                                                                                                PlacebleObjectFactor, id,
+                                                                                                r_indastrial,
+                                                                                                c_indastrial,
+                                                                                                m_indastrial);
+
+                m_obj[row][col] = std::move(indastrial);
+                m_player.transaction(-m_obj[row][col]->buildCost());
+
+                // check(row, col, retflag);
+            } else if (id == 6) {
+                int retflag;
+
+                std::__1::unique_ptr<PowerLines> powerLines = std::__1::make_unique<PowerLines>(sf::Vector2f(
+                                                                                                        col * tileWidth + MARGINX, row * tileHeight + MARGINY), row, col, gameObjectId::psLines,
+                                                                                                PlacebleObjectFactor, id,
+                                                                                                r_powerline, c_powerline,
+                                                                                                m_powerline);
+
+                m_obj[row][col] = std::move(powerLines);
+                m_player.transaction(-m_obj[row][col]->buildCost());
+                 diraction(row, col);
+                //check(row, col, id);
+            } else if (id == 7) {
+                int retflag;
+
+                std::cout << "comm";
+                std::__1::unique_ptr<PowerSource> powerSource = std::__1::make_unique<PowerSource>(sf::Vector2f(
+                                                                                                           col * tileWidth + MARGINX, row * tileWidth + MARGINY), row, col,
+                                                                                                   gameObjectId::psSource,
+                                                                                                   PlacebleObjectFactor,
+                                                                                                   id, r_powerSource,
+                                                                                                   c_powerSource,
+                                                                                                   m_powerSource);
+
+                m_obj[row][col] = std::move(powerSource);
+                m_player.transaction(-m_obj[row][col]->buildCost());
+
+                // check(row, col, id);
+            }
+        } else if (id == 3) {
+            int retflag;
+            del(row, col);
+            std::cout << "delete";
+            std::__1::unique_ptr<Ground> ground = std::__1::make_unique<Ground>(sf::Vector2f(
+                                                                                        col * tileWidth + MARGINX, row * tileWidth + MARGINY), row, col, gameObjectId::TileSheet,
+                                                                                FACTOR, 0, r_delete, c_delete, m_delete);
+
+
+            m_obj[row][col] = std::move(ground);
+            m_player.transaction(-m_obj[row][col]->buildCost());
+
+            //check(row, col, retflag);
+
+        }else if(id==1 && m_obj[row][col]->returnID() == 6 ||
+                id==6 && m_obj[row][col]->returnID() == 1) {
+
+            m_obj[row][col]->roadpLine(true);
+
+        }
+
+
+
+    }
 }
 
 void TileMap::del(int row, int col) {
@@ -209,16 +233,26 @@ void TileMap::del(int row, int col) {
         for (int col = 0; col < m_cols; col++) {
             if (m_obj[row][col]->returnID() != 0) {
                 std::cout << "delet power" << std::endl;
-                if (m_obj[row - 1][col]->returnID() != 0)
+                if (m_obj[row - 1][col]->returnID() != 0) {
+                    m_obj[row - 1][col]->roadpLine(false);
                     m_obj[row - 1][col]->connectPower(false);
+                }
                 //std::cout << row - 1 << col << "UP : " << m_obj[row - 1][col]->returnID() << std::endl;
-                if (m_obj[row + 1][col]->returnID() != 0)
+                if (m_obj[row + 1][col]->returnID() != 0) {
+                    m_obj[row + 1][col]->roadpLine(false);
+
                     m_obj[row + 1][col]->connectPower(false);
+                }
 
 
-                if (m_obj[row][col - 1]->returnID() != 0)
+                if (m_obj[row][col - 1]->returnID() != 0) {
+                    m_obj[row ][col-1]->roadpLine(false);
+
                     m_obj[row][col - 1]->connectPower(false);
+                }
                 if (m_obj[row][col + 1]->returnID() != 0) {
+                    m_obj[row ][col+1]->roadpLine(false);
+
                     std::cout << "test" << std::endl;
                     m_obj[row][col + 1]->connectPower(false);
                 }

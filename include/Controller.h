@@ -25,7 +25,7 @@ public:
   Controller();
   void run();
   void draw();
-  void handleTimeAndDate(sf::Time& time1);
+  void handleTimeAndDate(sf::Time &time1);
 private:
     void date();
     sf::Vector2f translateMouse(sf::Vector2i mouseLocation) const;
@@ -36,7 +36,7 @@ private:
     int m_year = 1920;
     int clicked =-1;
     float m_deltaTime;
-
+    sf::Sprite  m_bg;
 
     sf::Text m_testTemp;
     sf::Text m_cityNameText;
@@ -44,6 +44,7 @@ private:
     bool m_payday=true;
     sf::Clock m_clock;
     sf::Clock m_clockAnim;
+    sf::Clock m_generalTime;
 
     SideMenu m_sideMenu;
     std::pair<int,int> m_dims;

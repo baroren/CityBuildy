@@ -16,19 +16,29 @@
 
 namespace // anonymous namespace — the standard way to make function "static"
 {
+    void twoAreaCollide(PlacebleObject &com, PlacebleObject &com2);
+
+    void twoAreaCollide(PlacebleObject &com, PlacebleObject &com2) {
+        if (com.isPowerConnected())
+            com2.connectPower(true);
+
+        if (com2.isPowerConnected())
+            com.connectPower(true);
+    }
 
 // primary collision-processing functions
     void ground(PlacebleObject &som,
                 PlacebleObject &ground) {
         som.connectPower(false);
         som.connectPowerSource(false);
-        std::cout << "Two SpaceShips collision!\n";
     }
 
 //--------com collisions------
     void comPower(PlacebleObject &com,
                   PlacebleObject &powerSource) {
-        std::cout << "SpaceShip and SpaceStation collision!\n";
+
+        com.connectPowerSource(true);
+        com.connectPower(true);
     }
 
     void comPowerLine(PlacebleObject &com,
@@ -44,39 +54,32 @@ namespace // anonymous namespace — the standard way to make function "static"
 
     void comRoad(PlacebleObject &com,
                  PlacebleObject &road) {
-        std::cout << "road and commercial collision!\n";
+        if (road.isroadpLineConnected())
+            comPowerLine(com, road);
+
+        // std::cout << "comRoad\n";
+        //}
+
     }
+
 
     void comCom(PlacebleObject &com,
                 PlacebleObject &com2) {
         //make generic
 
-
-
-
-
-
-        if (com.isPowerConnected())
-            com2.connectPower(true);
-
-
-        // else if (!com.isPowerConnected())
-        //     com2.connectPower(false);
-
-
-        if (com2.isPowerConnected())
-            com.connectPower(true);
+        twoAreaCollide(com, com2);
 
     }
 
+
     void comIn(PlacebleObject &com,
                PlacebleObject &in) {
-        std::cout << "Two SpaceShips collision!\n";
+        twoAreaCollide(com, in);
     }
 
     void comRes(PlacebleObject &com,
                 PlacebleObject &res) {
-        std::cout << "Two SpaceShips collision!\n";
+        twoAreaCollide(com, res);
     }
 
     void comGround(PlacebleObject &com,
@@ -89,32 +92,31 @@ namespace // anonymous namespace — the standard way to make function "static"
 
     void inPower(PlacebleObject &in,
                  PlacebleObject &powerSource) {
-        std::cout << "SpaceShip and SpaceStation collision!\n";
+        comPower(in, powerSource);
     }
 
     void inPowerLine(PlacebleObject &in,
                      PlacebleObject &powerLine) {
-        std::cout << "SpaceShip and SpaceStation collision!\n";
+        comPowerLine(in, powerLine);
     }
 
     void inRoad(PlacebleObject &in,
                 PlacebleObject &road) {
-        std::cout << "Asteroid and SpaceStation collision!\n";
     }
 
     void inCom(PlacebleObject &in,
                PlacebleObject &com) {
-        std::cout << "Two SpaceShips collision!\n";
+        comIn(in, com);
     }
 
     void inIn(PlacebleObject &in,
               PlacebleObject &in2) {
-        std::cout << "Two SpaceShips collision!\n";
+        comCom(in, in2);
     }
 
     void inRes(PlacebleObject &com,
                PlacebleObject &res) {
-        std::cout << "Two SpaceShips collision!\n";
+        twoAreaCollide(com, res);
     }
 //----------end of collision in ---------------------
 
@@ -138,12 +140,13 @@ namespace // anonymous namespace — the standard way to make function "static"
 
     void resCom(PlacebleObject &res,
                 PlacebleObject &com) {
-        std::cout << "Two SpaceShips collision!\n";
+        comRes(res, com);
     }
 
     void resIn(PlacebleObject &res,
                PlacebleObject &in) {
-        std::cout << "Two SpaceShips collision!\n";
+
+        inRes(res, in);
     }
 
     void resRes(PlacebleObject &res,
@@ -161,34 +164,36 @@ namespace // anonymous namespace — the standard way to make function "static"
 
     void roadPowerLine(PlacebleObject &road,
                        PlacebleObject &powerLine) {
-       // powerLine.roadpLine(true);
-        //road.roadpLine(true);
+        //    powerLine.roadpLine(true);
+        //  road.roadpLine(true);
+        if (powerLine.isPowerConnected()) {
+            std::cout << "connectrd";
+            road.connectPower(true);
+        }
+        // if (road2.isroadpLineConnected())
+        //   road2.connectPower(true);
+
 
     }
 
     void roadRoad(PlacebleObject &road,
                   PlacebleObject &road2) {
-        if (road.isroadpLineConnected()||road2.isroadpLineConnected())
-        {
-          //  road.roadpLine(true);
-            //road2.roadpLine(true);
-            //comCom(road,road2);
-        }
+
+        comCom(road, road2);
+
     }
 
     void roadCom(PlacebleObject &road,
                  PlacebleObject &com) {
-        comRoad(com, road);
+        comRoad(road, com);
     }
 
     void roadIn(PlacebleObject &road,
                 PlacebleObject &in) {
-        std::cout << "Two SpaceShips collision!\n";
     }
 
     void roadRes(PlacebleObject &road,
                  PlacebleObject &res) {
-        std::cout << "Two SpaceShips collision!\n";
     }
 //----------end of collision in ---------------------
 
@@ -203,7 +208,7 @@ namespace // anonymous namespace — the standard way to make function "static"
 
     void pLinePowerLine(PlacebleObject &pLine,
                         PlacebleObject &powerLine) {
-      //  roadRoad(pLine,powerLine);
+        roadRoad(pLine, powerLine);
         comCom(pLine, powerLine);
 
 
@@ -211,7 +216,7 @@ namespace // anonymous namespace — the standard way to make function "static"
 
     void pLineRoad(PlacebleObject &pLine,
                    PlacebleObject &road) {
-        //roadPowerLine(road, pLine);
+        roadPowerLine(road, pLine);
     }
 
     void pLineCom(PlacebleObject &pLine,
@@ -223,12 +228,13 @@ namespace // anonymous namespace — the standard way to make function "static"
 
     void pLineIn(PlacebleObject &pLine,
                  PlacebleObject &in) {
-        std::cout << "Two SpaceShips collision!\n";
+        inPowerLine(pLine, in);
     }
+
 
     void pLineRes(PlacebleObject &pLine,
                   PlacebleObject &res) {
-        resPowerLine(res, pLine);
+        resPowerLine(pLine, res);
     }
 //----------end of collision in ---------------------
 
@@ -236,7 +242,6 @@ namespace // anonymous namespace — the standard way to make function "static"
 
     void powerSourcePower(PlacebleObject &powerSource,
                           PlacebleObject &powerSource2) {
-        std::cout << "SpaceShip and SpaceStation collision!\n";
     }
 
     void powerSourcePowerLine(PlacebleObject &powerSource,
@@ -246,22 +251,21 @@ namespace // anonymous namespace — the standard way to make function "static"
 
     void powerSourceRoad(PlacebleObject &powerSource,
                          PlacebleObject &road) {
-        std::cout << "Asteroid and SpaceStation collision!\n";
     }
 
     void powerSourceCom(PlacebleObject &powerSource,
                         PlacebleObject &com) {
-        comPowerLine(com, powerSource);
+        comPower(com, powerSource);
     }
 
     void powerSourceIn(PlacebleObject &powerSource,
                        PlacebleObject &in) {
-        std::cout << "Two SpaceShips collision!\n";
+        comPower(in, powerSource);
     }
 
     void powerSourceRes(PlacebleObject &powerSource,
                         PlacebleObject &res) {
-        resPowerLine(res, powerSource);
+        comPower(res, powerSource);
     }
 
 
@@ -324,8 +328,14 @@ namespace // anonymous namespace — the standard way to make function "static"
         phm[Key(typeid(Road), typeid(Residence))] = &roadRes;
         phm[Key(typeid(Road), typeid(PowerSource))] = &roadPower;
 
-
-        phm[Key(typeid(Road), typeid(Commercial))] = &comRoad;
+        //---------------Indastrial-------------------------------------
+        phm[Key(typeid(Indastrial), typeid(Road))] = &inRoad;
+        phm[Key(typeid(Indastrial), typeid(PowerLines))] = &inPower;
+        phm[Key(typeid(Indastrial), typeid(Ground))] = &ground;
+        phm[Key(typeid(Indastrial), typeid(Indastrial))] = &inIn;
+        phm[Key(typeid(Indastrial), typeid(Commercial))] = &inCom;
+        phm[Key(typeid(Indastrial), typeid(Residence))] = &inRes;
+        phm[Key(typeid(Indastrial), typeid(PowerSource))] = &inPower;
 
 
         phm[Key(typeid(Ground), typeid(Commercial))] = &ground;

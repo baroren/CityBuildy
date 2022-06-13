@@ -71,12 +71,23 @@ public:
 
     virtual void connectPower(bool connect) {
         m_powerConnected = connect;
-        if (connect && m_numAnimations > 1)
-            currAnim = 2;
-        else
+        if (connect && m_numAnimations > 1 && currAnim==0)
+            currAnim =1;
+        else if(!connect)
             currAnim = 0;
     };
+    virtual void changeAnim(){
+        std::cout<<"time "<<time;
+    if (time==3) {
+        if (currAnim < m_numAnimations - 1 && currAnim > 0) {
+            currAnim++;
+            std::cout << "in chagne Anim";
+            time = 0;
 
+        }
+    }else
+            time++;
+    }
     virtual void roadpLine(bool connect) {std::cout<<"test";};
 
     virtual bool isroadpLineConnected() {return false;};
@@ -85,6 +96,7 @@ public:
 protected:
 
     sf::Sprite m_obj;
+    int time=0;
     int m_id;
     int m_numAnimations;
     int m_rate;

@@ -28,7 +28,7 @@ public:
             currAnim=0;
         }
     }
-   virtual bool isroadpLineConnected(){return m_roadLineConnected;};
+   bool isroadpLineConnected() override{return m_roadLineConnected;std::cout<<"Test on connector \n";};
 
 protected:
 

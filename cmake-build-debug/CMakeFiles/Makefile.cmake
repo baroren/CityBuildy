@@ -46,6 +46,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "../resources/CityBuildyMAIN.png"
   "../resources/PowerSourcePlace.png"
   "../resources/arcadeClassic.ttf"
+  "../resources/bg.png"
   "../resources/comPlace.png"
   "../resources/comm.png"
   "../resources/destroy.png"
@@ -96,6 +97,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "inPlace.png"
   "PowerSourcePlace.png"
   "powerLinePlace.png"
+  "bg.png"
   "resources/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 

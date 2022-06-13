@@ -31,12 +31,13 @@ public:
 
     void updateMoney();
 
-    void del(int row, int col) ;
+    void updateAnim();
 
  
 
 private:
 // STL-like algorithm to run over all pairs
+    void del(int row, int col) ;
 
     Player m_player;
 
@@ -65,4 +66,5 @@ private:
     sf::IntRect m_grass;
     sf::IntRect m_ground;
 
+    void handleClick(sf::Vector2f &mousePos, const int &id, int &row, int &col);
 };
