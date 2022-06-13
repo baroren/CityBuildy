@@ -27,7 +27,7 @@ public:
 
     void update(sf::Vector2f mousePos,int &id);
 
-    void check(int row, int col, checkConector check);
+    void check(int row, int col);
 
     void updateMoney();
 

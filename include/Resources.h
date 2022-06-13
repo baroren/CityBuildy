@@ -41,6 +41,6 @@ private:
     int numOfAnim=1;
     std::array<int,numOfSprites> numOfFrames{ 1,1,1,
                                               1,1,1,1,
-                                              1,1,1,1,3,3,3,1,1};
+                                              1,1,1,2,3,3,3,1,2};
     sf::Font m_font;
 };

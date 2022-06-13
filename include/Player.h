@@ -20,7 +20,7 @@ public:
 private:
     int m_money=10000;
     int m_taxes;
-    int m_happyRes;
+    int m_happyRes=100;
     int m_happyCom;
 
 };

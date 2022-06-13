@@ -52,8 +52,7 @@ bool TileMap::draw(sf::RenderWindow &window, std::pair<int, int> dims, float del
         // Loop through the columns
         for (int col = 0; col < m_cols; col++) {
 
-            check(row, col, checkConector::road);
-            //check(row, col, checkConector::powerLines);
+            check(row, col);
         }
     }
 
@@ -157,7 +156,7 @@ void TileMap::update(sf::Vector2f mousePos, int &id) {
 
                         m_obj[row][col] = std::move(powerLines);
                         m_player.transaction(-m_obj[row][col]->buildCost());
-                        //  diraction(row, col);
+                         diraction(row, col);
                         //check(row, col, id);
                     } else if (id == 7) {
                         int retflag;
@@ -195,7 +194,6 @@ void TileMap::update(sf::Vector2f mousePos, int &id) {
 
             }
 
-
         }
     }
     //id=-1;
@@ -231,7 +229,7 @@ void TileMap::del(int row, int col) {
 }
 
 //--------------------------------------------------------------------------
-void TileMap::check(int row, int col, checkConector check) {
+void TileMap::check(int row, int col) {
     // Loop through the rows
 
     if (m_obj[row][col]->returnID() == 0)
@@ -300,7 +298,7 @@ void TileMap::createRoad(int &row, int &col) {
 
     m_obj[row][col] = std::move(roads);
     m_player.transaction(-m_obj[row][col]->buildCost());
-    //   diraction(row, col);
+      diraction(row, col);
 
 }
 

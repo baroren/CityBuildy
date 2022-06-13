@@ -17,7 +17,22 @@ public:
         m_powerConnected = connect;
         // currAnim=2;
     };
-   // Conectors(const sf::Vector2f &pos,) : PlacebleObject(pos) {}
+    virtual void roadpLine(bool connect) {
+        if(connect)
+        {
+            m_roadLineConnected=true;
+            currAnim=1;
+        } else
+        {
+            m_roadLineConnected=false;
+            currAnim=0;
+        }
+    }
+   virtual bool isroadpLineConnected(){return m_roadLineConnected;};
+
+protected:
+
+// Conectors(const sf::Vector2f &pos,) : PlacebleObject(pos) {}
 
 
 

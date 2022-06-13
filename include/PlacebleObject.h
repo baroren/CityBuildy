@@ -14,12 +14,12 @@ public:
     PlacebleObject(sf::Vector2f pos, int row, int col, gameObjectId id,
                    int factor, int idN, int rate, int cost, int maint) {
         m_obj = *Resources::instance().getSprite(id);
+        m_numAnimations = Resources::instance().getImageCount(id);
 
         m_animation = new Animation(Resources::instance().getTexture(id),
-                                    sf::Vector2u(Resources::instance().getImageCount(id),
-                                                 Resources::instance().getImageCount(id)),
+                                    sf::Vector2u(m_numAnimations,
+                                                 m_numAnimations),
                                     0.3f);
-
         m_obj.setPosition(pos);
         m_obj.scale(factor, factor);
         m_id = idN;
@@ -62,29 +62,38 @@ public:
     virtual bool isPowerConnected() { return m_powerConnected; };
 
     virtual bool isRoadConnected() { return m_roadConnected; };
-    virtual bool isPowerLineConnect ( ){return m_powerLineConnected;}
+
+    virtual bool isPowerLineConnect() { return m_powerLineConnected; }
 
     virtual void connectRoad(bool connect) { m_roadConnected = connect; };
-    virtual void connectPowerSource (bool connect ){m_powerLineConnected = connect;}
+
+    virtual void connectPowerSource(bool connect) { m_powerLineConnected = connect; }
+
     virtual void connectPower(bool connect) {
         m_powerConnected = connect;
-        if(connect)
-          currAnim=2;
+        if (connect && m_numAnimations > 1)
+            currAnim = 2;
         else
-            currAnim=0;
+            currAnim = 0;
     };
 
+    virtual void roadpLine(bool connect) {std::cout<<"test";};
+
+    virtual bool isroadpLineConnected() {return false;};
 
 
 protected:
+
     sf::Sprite m_obj;
     int m_id;
+    int m_numAnimations;
     int m_rate;
     int m_buildCost;
     int m_maintance;
-    bool m_roadConnected=false;
-    bool m_powerConnected=false;
-    bool m_powerLineConnected=false;
+    bool m_roadLineConnected = false;
+    bool m_roadConnected = false;
+    bool m_powerConnected = false;
+    bool m_powerLineConnected = false;
     Animation *m_animation;
     int currAnim = 0;
     int groundConnection = 4;

@@ -34,10 +34,10 @@ namespace // anonymous namespace — the standard way to make function "static"
     void comPowerLine(PlacebleObject &com,
                       PlacebleObject &powerLine) {
 
-
-        com.connectPowerSource(true);
-        com.connectPower(true);
-        powerLine.connectPower(true);
+        if (powerLine.isPowerConnected()) {
+            com.connectPowerSource(true);
+            com.connectPower(true);
+        }
         //  std:: cout <<"line and com collide ! "<<powerLine.isPowerConnected();
 
     }
@@ -161,12 +161,19 @@ namespace // anonymous namespace — the standard way to make function "static"
 
     void roadPowerLine(PlacebleObject &road,
                        PlacebleObject &powerLine) {
-        std::cout << "SpaceShip and SpaceStation collision!\n";
+       // powerLine.roadpLine(true);
+        //road.roadpLine(true);
+
     }
 
     void roadRoad(PlacebleObject &road,
                   PlacebleObject &road2) {
-        std::cout << "Asteroid and SpaceStation collision!\n";
+        if (road.isroadpLineConnected()||road2.isroadpLineConnected())
+        {
+          //  road.roadpLine(true);
+            //road2.roadpLine(true);
+            //comCom(road,road2);
+        }
     }
 
     void roadCom(PlacebleObject &road,
@@ -189,21 +196,28 @@ namespace // anonymous namespace — the standard way to make function "static"
 
     void pLinePower(PlacebleObject &pLine,
                     PlacebleObject &powerSource) {
-        std::cout << "SpaceShip and SpaceStation collision!\n";
+
+        pLine.connectPower(true);
+        powerSource.connectPower(true);
     }
 
     void pLinePowerLine(PlacebleObject &pLine,
                         PlacebleObject &powerLine) {
-        std::cout << "SpaceShip and SpaceStation collision!\n";
+      //  roadRoad(pLine,powerLine);
+        comCom(pLine, powerLine);
+
+
     }
 
     void pLineRoad(PlacebleObject &pLine,
                    PlacebleObject &road) {
-        std::cout << "Asteroid and SpaceStation collision!\n";
+        //roadPowerLine(road, pLine);
     }
 
     void pLineCom(PlacebleObject &pLine,
                   PlacebleObject &com) {
+        if (com.isPowerConnected())
+            pLine.connectPower(true);
         comPowerLine(com, pLine);
     }
 
@@ -214,9 +228,41 @@ namespace // anonymous namespace — the standard way to make function "static"
 
     void pLineRes(PlacebleObject &pLine,
                   PlacebleObject &res) {
-resPowerLine(res,pLine);
+        resPowerLine(res, pLine);
     }
 //----------end of collision in ---------------------
+
+//---------powerSource Collision---------------------------
+
+    void powerSourcePower(PlacebleObject &powerSource,
+                          PlacebleObject &powerSource2) {
+        std::cout << "SpaceShip and SpaceStation collision!\n";
+    }
+
+    void powerSourcePowerLine(PlacebleObject &powerSource,
+                              PlacebleObject &powerLine) {
+        pLinePower(powerLine, powerSource);
+    }
+
+    void powerSourceRoad(PlacebleObject &powerSource,
+                         PlacebleObject &road) {
+        std::cout << "Asteroid and SpaceStation collision!\n";
+    }
+
+    void powerSourceCom(PlacebleObject &powerSource,
+                        PlacebleObject &com) {
+        comPowerLine(com, powerSource);
+    }
+
+    void powerSourceIn(PlacebleObject &powerSource,
+                       PlacebleObject &in) {
+        std::cout << "Two SpaceShips collision!\n";
+    }
+
+    void powerSourceRes(PlacebleObject &powerSource,
+                        PlacebleObject &res) {
+        resPowerLine(res, powerSource);
+    }
 
 
 //...
@@ -229,22 +275,55 @@ resPowerLine(res,pLine);
 
     HitMap initializeCollisionMap() {
         HitMap phm;
+
+
+        //---------------Commercial------------------------------------
         phm[Key(typeid(Commercial), typeid(Road))] = &roadCom;
         phm[Key(typeid(Commercial), typeid(PowerLines))] = &comPowerLine;
         phm[Key(typeid(Commercial), typeid(Ground))] = &ground;
         phm[Key(typeid(Commercial), typeid(Residence))] = &comRes;
         phm[Key(typeid(Commercial), typeid(Indastrial))] = &comIn;
         phm[Key(typeid(Commercial), typeid(Commercial))] = &comCom;
+        phm[Key(typeid(Commercial), typeid(PowerSource))] = &comPower;
 
+
+
+        //---------------Residence------------------------------------
         phm[Key(typeid(Residence), typeid(Road))] = &resRoad;
         phm[Key(typeid(Residence), typeid(PowerLines))] = &resPowerLine;
         phm[Key(typeid(Residence), typeid(Ground))] = &ground;
         phm[Key(typeid(Residence), typeid(Residence))] = &resRes;
         phm[Key(typeid(Residence), typeid(Indastrial))] = &resIn;
         phm[Key(typeid(Residence), typeid(Commercial))] = &resCom;
+        phm[Key(typeid(Residence), typeid(PowerSource))] = &resPower;
 
+        //---------------PowerLine------------------------------------
+        phm[Key(typeid(PowerLines), typeid(Road))] = &pLineRoad;
+        phm[Key(typeid(PowerLines), typeid(PowerLines))] = &pLinePowerLine;
+        phm[Key(typeid(PowerLines), typeid(Ground))] = &ground;
+        phm[Key(typeid(PowerLines), typeid(Indastrial))] = &pLineRes;
         phm[Key(typeid(PowerLines), typeid(Commercial))] = &pLineCom;
         phm[Key(typeid(PowerLines), typeid(Residence))] = &pLineRes;
+        phm[Key(typeid(PowerLines), typeid(PowerSource))] = &pLinePower;
+
+        //---------------PowerSource-------------------------------------
+        phm[Key(typeid(PowerSource), typeid(Road))] = &powerSourceRoad;
+        phm[Key(typeid(PowerSource), typeid(PowerLines))] = &powerSourcePowerLine;
+        phm[Key(typeid(PowerSource), typeid(Ground))] = &ground;
+        phm[Key(typeid(PowerSource), typeid(Indastrial))] = &powerSourceIn;
+        phm[Key(typeid(PowerSource), typeid(Commercial))] = &powerSourceIn;
+        phm[Key(typeid(PowerSource), typeid(Residence))] = &powerSourceRes;
+        phm[Key(typeid(PowerSource), typeid(PowerSource))] = &powerSourcePower;
+
+        //---------------Road-------------------------------------
+        phm[Key(typeid(Road), typeid(Road))] = &roadRoad;
+        phm[Key(typeid(Road), typeid(PowerLines))] = &roadPowerLine;
+        phm[Key(typeid(Road), typeid(Ground))] = &ground;
+        phm[Key(typeid(Road), typeid(Indastrial))] = &roadIn;
+        phm[Key(typeid(Road), typeid(Commercial))] = &roadCom;
+        phm[Key(typeid(Road), typeid(Residence))] = &roadRes;
+        phm[Key(typeid(Road), typeid(PowerSource))] = &roadPower;
+
 
         phm[Key(typeid(Road), typeid(Commercial))] = &comRoad;
 
