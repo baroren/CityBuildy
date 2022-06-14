@@ -79,11 +79,16 @@ namespace // anonymous namespace — the standard way to make function "static"
     void comIn(PlacebleObject &com,
                PlacebleObject &in) {
         twoAreaCollide(com, in);
+        com.happy(-1);
+
     }
 
     void comRes(PlacebleObject &com,
                 PlacebleObject &res) {
         twoAreaCollide(com, res);
+
+            com.roadToResconnected(true);
+
 
     }
 
@@ -118,6 +123,7 @@ namespace // anonymous namespace — the standard way to make function "static"
     void inCom(PlacebleObject &in,
                PlacebleObject &com) {
         comIn(com, in);
+
     }
 
     void inIn(PlacebleObject &in,

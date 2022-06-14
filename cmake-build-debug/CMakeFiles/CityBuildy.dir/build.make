@@ -235,6 +235,45 @@ CMakeFiles/CityBuildy.dir/src/Residence.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CityBuildy.dir/src/Residence.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/bar/Documents/school/yearB/CityBuildy/src/Residence.cpp -o CMakeFiles/CityBuildy.dir/src/Residence.cpp.s
 
+CMakeFiles/CityBuildy.dir/src/CRI.cpp.o: CMakeFiles/CityBuildy.dir/flags.make
+CMakeFiles/CityBuildy.dir/src/CRI.cpp.o: ../src/CRI.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/bar/Documents/school/yearB/CityBuildy/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/CityBuildy.dir/src/CRI.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/CityBuildy.dir/src/CRI.cpp.o -c /Users/bar/Documents/school/yearB/CityBuildy/src/CRI.cpp
+
+CMakeFiles/CityBuildy.dir/src/CRI.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/CityBuildy.dir/src/CRI.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/bar/Documents/school/yearB/CityBuildy/src/CRI.cpp > CMakeFiles/CityBuildy.dir/src/CRI.cpp.i
+
+CMakeFiles/CityBuildy.dir/src/CRI.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CityBuildy.dir/src/CRI.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/bar/Documents/school/yearB/CityBuildy/src/CRI.cpp -o CMakeFiles/CityBuildy.dir/src/CRI.cpp.s
+
+CMakeFiles/CityBuildy.dir/src/ProgressBar.cpp.o: CMakeFiles/CityBuildy.dir/flags.make
+CMakeFiles/CityBuildy.dir/src/ProgressBar.cpp.o: ../src/ProgressBar.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/bar/Documents/school/yearB/CityBuildy/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/CityBuildy.dir/src/ProgressBar.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/CityBuildy.dir/src/ProgressBar.cpp.o -c /Users/bar/Documents/school/yearB/CityBuildy/src/ProgressBar.cpp
+
+CMakeFiles/CityBuildy.dir/src/ProgressBar.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/CityBuildy.dir/src/ProgressBar.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/bar/Documents/school/yearB/CityBuildy/src/ProgressBar.cpp > CMakeFiles/CityBuildy.dir/src/ProgressBar.cpp.i
+
+CMakeFiles/CityBuildy.dir/src/ProgressBar.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CityBuildy.dir/src/ProgressBar.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/bar/Documents/school/yearB/CityBuildy/src/ProgressBar.cpp -o CMakeFiles/CityBuildy.dir/src/ProgressBar.cpp.s
+
+CMakeFiles/CityBuildy.dir/src/Factory.cpp.o: CMakeFiles/CityBuildy.dir/flags.make
+CMakeFiles/CityBuildy.dir/src/Factory.cpp.o: ../src/Factory.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/bar/Documents/school/yearB/CityBuildy/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/CityBuildy.dir/src/Factory.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/CityBuildy.dir/src/Factory.cpp.o -c /Users/bar/Documents/school/yearB/CityBuildy/src/Factory.cpp
+
+CMakeFiles/CityBuildy.dir/src/Factory.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/CityBuildy.dir/src/Factory.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/bar/Documents/school/yearB/CityBuildy/src/Factory.cpp > CMakeFiles/CityBuildy.dir/src/Factory.cpp.i
+
+CMakeFiles/CityBuildy.dir/src/Factory.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CityBuildy.dir/src/Factory.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/bar/Documents/school/yearB/CityBuildy/src/Factory.cpp -o CMakeFiles/CityBuildy.dir/src/Factory.cpp.s
+
 # Object files for target CityBuildy
 CityBuildy_OBJECTS = \
 "CMakeFiles/CityBuildy.dir/src/main.cpp.o" \
@@ -249,7 +288,10 @@ CityBuildy_OBJECTS = \
 "CMakeFiles/CityBuildy.dir/src/sideMenu.cpp.o" \
 "CMakeFiles/CityBuildy.dir/src/Animation.cpp.o" \
 "CMakeFiles/CityBuildy.dir/src/CollisionHandling.cpp.o" \
-"CMakeFiles/CityBuildy.dir/src/Residence.cpp.o"
+"CMakeFiles/CityBuildy.dir/src/Residence.cpp.o" \
+"CMakeFiles/CityBuildy.dir/src/CRI.cpp.o" \
+"CMakeFiles/CityBuildy.dir/src/ProgressBar.cpp.o" \
+"CMakeFiles/CityBuildy.dir/src/Factory.cpp.o"
 
 # External object files for target CityBuildy
 CityBuildy_EXTERNAL_OBJECTS =
@@ -267,13 +309,16 @@ CityBuildy.app/Contents/MacOS/CityBuildy: CMakeFiles/CityBuildy.dir/src/sideMenu
 CityBuildy.app/Contents/MacOS/CityBuildy: CMakeFiles/CityBuildy.dir/src/Animation.cpp.o
 CityBuildy.app/Contents/MacOS/CityBuildy: CMakeFiles/CityBuildy.dir/src/CollisionHandling.cpp.o
 CityBuildy.app/Contents/MacOS/CityBuildy: CMakeFiles/CityBuildy.dir/src/Residence.cpp.o
+CityBuildy.app/Contents/MacOS/CityBuildy: CMakeFiles/CityBuildy.dir/src/CRI.cpp.o
+CityBuildy.app/Contents/MacOS/CityBuildy: CMakeFiles/CityBuildy.dir/src/ProgressBar.cpp.o
+CityBuildy.app/Contents/MacOS/CityBuildy: CMakeFiles/CityBuildy.dir/src/Factory.cpp.o
 CityBuildy.app/Contents/MacOS/CityBuildy: CMakeFiles/CityBuildy.dir/build.make
 CityBuildy.app/Contents/MacOS/CityBuildy: /Library/Frameworks/./sfml-graphics.framework/Versions/2.5.1/sfml-graphics
 CityBuildy.app/Contents/MacOS/CityBuildy: /Library/Frameworks/./sfml-audio.framework/Versions/2.5.1/sfml-audio
 CityBuildy.app/Contents/MacOS/CityBuildy: /Library/Frameworks/./sfml-window.framework/Versions/2.5.1/sfml-window
 CityBuildy.app/Contents/MacOS/CityBuildy: /Library/Frameworks/./sfml-system.framework/Versions/2.5.1/sfml-system
 CityBuildy.app/Contents/MacOS/CityBuildy: CMakeFiles/CityBuildy.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/bar/Documents/school/yearB/CityBuildy/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable CityBuildy.app/Contents/MacOS/CityBuildy"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/bar/Documents/school/yearB/CityBuildy/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Linking CXX executable CityBuildy.app/Contents/MacOS/CityBuildy"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/CityBuildy.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

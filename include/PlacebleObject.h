@@ -78,15 +78,17 @@ public:
             currAnim = 1;
         else if (!connect) {
             currAnim = 0;
-std::cout<<"disconnect";
+
         }
     };
 
-    virtual bool changeAnim() {
-        if (time == 3) {
-            if (currAnim < m_numAnimations - 1 && currAnim > 0) {
+    virtual bool changeAnim(int money) {
+        if (time >= 3) {
+            if (currAnim < m_numAnimations - 1 && currAnim > 0 ){
                 currAnim++;
                 time = 0;
+                m_upgradeMoney =m_upgradeMoney*2;
+
                 return true;
             }
         } else if (m_powerConnected)
@@ -98,9 +100,12 @@ std::cout<<"disconnect";
     virtual void roadpLine(bool connect) { std::cout << "test"; };
 
     virtual bool isroadpLineConnected() { return false; };
-
+    virtual int getCurrAnim(){return currAnim;};
     //virtual int residanceCount(){;};
-
+    virtual void happy(int amount){m_happy=amount;};
+    virtual void money(){;};
+    virtual void changeTexture(gameObjectId id){m_obj.setTexture(*Resources::instance().getTexture(id));
+    };
 protected:
 
     sf::Sprite m_obj;
@@ -118,11 +123,11 @@ protected:
     bool m_powerLineConnected = false;
     bool m_roadToResconnected = false;
     bool m_roadAndLine=false;
-
+    int m_happy =100;
     Animation *m_animation;
     int currAnim = 0;
     int groundConnection = 4;
-
+    int m_upgradeMoney=5000;
 private:
 
     std::pair<int, int> index;

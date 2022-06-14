@@ -17,6 +17,9 @@ configure_file ("inPlace.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("PowerSourcePlace.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("powerLinePlace.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("bg.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("grass.png" ${CMAKE_BINARY_DIR} COPYONLY)
+
+
 
 
 

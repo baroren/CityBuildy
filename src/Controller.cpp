@@ -10,6 +10,8 @@ Controller::Controller() {
     m_cityNameText.setFont(*Resources::instance().getFont());
     m_bg= *Resources::instance().getSprite(gameObjectId::bg);
     m_bg.setScale(2.,2);
+
+    m_tileMap = TileMap(true);
 }
 
 //--------------------------------------------------------------------------3
@@ -68,6 +70,7 @@ void Controller::run() {
                 // std::cout<<"temp"<<temp<<std::endl;
                 if (clicked == -1 || temp >= 1 && temp < 9) {
                     clicked = m_sideMenu.handleClick(m_window.mapPixelToCoords(sf::Mouse::getPosition(m_window)));
+                    m_tileMap.saveLevel();
                     std::cout << "clicked from side menud in if  : " << clicked << std::endl;
                     //   cout<<"X: "<<m_window.mapPixelToCoords(sf::Mouse::getPosition(m_window),m_views[0]).x<<std::endl;
                     //   m_views[1].zoom(3.f);

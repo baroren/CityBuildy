@@ -7,6 +7,17 @@ CMakeFiles/CityBuildy.dir/src/Animation.cpp.o: \
 CMakeFiles/CityBuildy.dir/src/Button.cpp.o: \
  ../include/Button.h \
  ../src/Button.cpp
+CMakeFiles/CityBuildy.dir/src/CRI.cpp.o: \
+ ../include/Animation.h \
+ ../include/Area.h \
+ ../include/CRI.h \
+ ../include/Conectors.h \
+ ../include/Macros.h \
+ ../include/PlacebleObject.h \
+ ../include/ProgressBar.h \
+ ../include/Resources.h \
+ ../include/Window.h \
+ ../src/CRI.cpp
 CMakeFiles/CityBuildy.dir/src/CollisionHandling.cpp.o: \
  ../include/Animation.h \
  ../include/Area.h \
@@ -28,10 +39,12 @@ CMakeFiles/CityBuildy.dir/src/Controller.cpp.o: \
  ../include/Animation.h \
  ../include/Area.h \
  ../include/Button.h \
+ ../include/CRI.h \
  ../include/CollisionHandling.h \
  ../include/Commercial.h \
  ../include/Conectors.h \
  ../include/Controller.h \
+ ../include/Factory.h \
  ../include/Ground.h \
  ../include/Indastrial.h \
  ../include/Macros.h \
@@ -42,6 +55,7 @@ CMakeFiles/CityBuildy.dir/src/Controller.cpp.o: \
  ../include/Player.h \
  ../include/PowerLines.h \
  ../include/PowerSource.h \
+ ../include/ProgressBar.h \
  ../include/Residence.h \
  ../include/Resources.h \
  ../include/Road.h \
@@ -49,6 +63,23 @@ CMakeFiles/CityBuildy.dir/src/Controller.cpp.o: \
  ../include/TileMap.h \
  ../include/Window.h \
  ../src/Controller.cpp
+CMakeFiles/CityBuildy.dir/src/Factory.cpp.o: \
+ ../include/Animation.h \
+ ../include/Area.h \
+ ../include/Commercial.h \
+ ../include/Conectors.h \
+ ../include/Factory.h \
+ ../include/Ground.h \
+ ../include/Indastrial.h \
+ ../include/Macros.h \
+ ../include/PlacebleObject.h \
+ ../include/PowerLines.h \
+ ../include/PowerSource.h \
+ ../include/Residence.h \
+ ../include/Resources.h \
+ ../include/Road.h \
+ ../include/Window.h \
+ ../src/Factory.cpp
 CMakeFiles/CityBuildy.dir/src/MainMenu.cpp.o: \
  ../include/Button.h \
  ../include/Macros.h \
@@ -69,6 +100,24 @@ CMakeFiles/CityBuildy.dir/src/Mouse.cpp.o: \
  ../include/Mouse.h \
  ../include/Resources.h \
  ../src/Mouse.cpp
+CMakeFiles/CityBuildy.dir/src/ProgressBar.cpp.o: \
+ ../include/Animation.h \
+ ../include/Macros.h \
+ ../include/PlacebleObject.h \
+ ../include/ProgressBar.h \
+ ../include/Resources.h \
+ ../include/Window.h \
+ ../src/ProgressBar.cpp
+CMakeFiles/CityBuildy.dir/src/Residence.cpp.o: \
+ ../include/Animation.h \
+ ../include/Area.h \
+ ../include/Conectors.h \
+ ../include/Macros.h \
+ ../include/PlacebleObject.h \
+ ../include/Residence.h \
+ ../include/Resources.h \
+ ../include/Window.h \
+ ../src/Residence.cpp
 CMakeFiles/CityBuildy.dir/src/Resources.cpp.o: \
  ../include/Macros.h \
  ../include/Resources.h \
@@ -76,9 +125,11 @@ CMakeFiles/CityBuildy.dir/src/Resources.cpp.o: \
 CMakeFiles/CityBuildy.dir/src/TileMap.cpp.o: \
  ../include/Animation.h \
  ../include/Area.h \
+ ../include/CRI.h \
  ../include/CollisionHandling.h \
  ../include/Commercial.h \
  ../include/Conectors.h \
+ ../include/Factory.h \
  ../include/Ground.h \
  ../include/Indastrial.h \
  ../include/Macros.h \
@@ -86,6 +137,7 @@ CMakeFiles/CityBuildy.dir/src/TileMap.cpp.o: \
  ../include/Player.h \
  ../include/PowerLines.h \
  ../include/PowerSource.h \
+ ../include/ProgressBar.h \
  ../include/Residence.h \
  ../include/Resources.h \
  ../include/Road.h \
@@ -96,10 +148,12 @@ CMakeFiles/CityBuildy.dir/src/main.cpp.o: \
  ../include/Animation.h \
  ../include/Area.h \
  ../include/Button.h \
+ ../include/CRI.h \
  ../include/CollisionHandling.h \
  ../include/Commercial.h \
  ../include/Conectors.h \
  ../include/Controller.h \
+ ../include/Factory.h \
  ../include/Ground.h \
  ../include/Indastrial.h \
  ../include/Macros.h \
@@ -110,6 +164,7 @@ CMakeFiles/CityBuildy.dir/src/main.cpp.o: \
  ../include/Player.h \
  ../include/PowerLines.h \
  ../include/PowerSource.h \
+ ../include/ProgressBar.h \
  ../include/Residence.h \
  ../include/Resources.h \
  ../include/Road.h \

@@ -10,4 +10,7 @@
         "sideMenu.cpp"
         "Animation.cpp"
         "CollisionHandling.cpp"
-        "Residence.cpp")
+        "Residence.cpp"
+        "CRI.cpp"
+        "ProgressBar.cpp"
+        "Factory.cpp")

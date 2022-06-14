@@ -5,6 +5,7 @@
 #include "Window.h"
 #include <vector>
 #include <iostream>
+#include <fstream>
 #include <memory>
 #include "Resources.h"
 #include "PlacebleObject.h"
@@ -18,10 +19,15 @@
 #include "PowerLines.h"
 #include "PowerSource.h"
 #include "CollisionHandling.h"
+#include "CRI.h"
+#include <random>
+#include "Factory.h"
+
+
 class TileMap {
 
 public:
-    TileMap();
+    explicit TileMap(bool file=false);
 
     bool draw(sf::RenderWindow &window,std::pair<int,int>,float deltaTime);
 
@@ -32,12 +38,15 @@ public:
     void updateMoney();
 
     void updateAnim();
+    void saveLevel();
 
  
 
 private:
 // STL-like algorithm to run over all pairs
     void del(int row, int col) ;
+    vector<std::pair<int, int>> assertNum(int size, int a ,int b);
+    void loadLevel();
 
     Player m_player;
 
@@ -52,14 +61,14 @@ private:
 
     // In the constructor, specify these constants
     // They are important
-    const int tileWidth;
-    const int tileHeight;
+
 
     // This textures holds the textures for the tiles
     // It should be a single image with multiple tiles (like a spritesheet)
     //sf::Texture *tileSheet;
 
     sf::Sprite tile;
+    vector<std::pair<int,int>> vect;
     vector<vector<std::unique_ptr<PlacebleObject>>> m_obj;
     // Add / remove these in order to add more tiles
     // This depends on the amount of tiles in your texture
@@ -67,6 +76,6 @@ private:
     int m_cols=30;
     sf::IntRect m_grass;
     sf::IntRect m_ground;
-
+    CRIclass m_CRI;
     void handleClick(sf::Vector2f &mousePos, const int &id, int &row, int &col);
 };

@@ -34,13 +34,16 @@ private:
     std::array <sf::Sprite, numOfSprites> m_sprite;
     std::array <sf::Texture, numOfSprites> m_texture;
     vector <string> m_imagePath = {"CityBuildyMAIN","outdoors","road","comm","destroy","indast","resident","powerLine",
-                                   "powerSource","park","roadHor","comPlace","resPlace","inPlace","PowerSourcePlace","powerLinePlace","bg"};
+                                   "powerSource","park","roadHor","comPlace","resPlace"
+                                   ,"inPlace","PowerSourcePlace","powerLinePlace","bg","grass"};
     vector <string> m_musicNames={"MainMenuMusic.ogg"};
    // vector<Animation *> m_animation;
     sf::Music m_music;
     int numOfAnim=1;
     std::array<int,numOfSprites> numOfFrames{ 1,1 ,1,
                                               1,1,1,1,
-                                              1,1,1,2,3,3,3,1,2,1};
+                                              1,1,1,2,
+                                              4,3,3,1,
+                                              2,1,1};
     sf::Font m_font;
 };

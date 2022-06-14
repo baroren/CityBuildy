@@ -13,11 +13,11 @@ class Conectors:public PlacebleObject {
 public:
     using PlacebleObject::PlacebleObject;
 
-    virtual void connectPower(bool connect) {
+    void connectPower(bool connect) override {
         m_powerConnected = connect;
         // currAnim=2;
     };
-    virtual void roadpLine(bool connect) {
+    void roadpLine(bool connect) override {
         if(connect)
         {
             m_roadLineConnected=true;

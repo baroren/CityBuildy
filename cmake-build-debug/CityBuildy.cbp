@@ -90,10 +90,16 @@
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/src/Button.cpp">
 			<Option target="CityBuildy"/>
 		</Unit>
+		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/src/CRI.cpp">
+			<Option target="CityBuildy"/>
+		</Unit>
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/src/CollisionHandling.cpp">
 			<Option target="CityBuildy"/>
 		</Unit>
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/src/Controller.cpp">
+			<Option target="CityBuildy"/>
+		</Unit>
+		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/src/Factory.cpp">
 			<Option target="CityBuildy"/>
 		</Unit>
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/src/MainMenu.cpp">
@@ -103,6 +109,9 @@
 			<Option target="CityBuildy"/>
 		</Unit>
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/src/Mouse.cpp">
+			<Option target="CityBuildy"/>
+		</Unit>
+		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/src/ProgressBar.cpp">
 			<Option target="CityBuildy"/>
 		</Unit>
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/src/Residence.cpp">
@@ -169,6 +178,9 @@
 			<Option virtualFolder="CMake Files\resources\"/>
 		</Unit>
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/destroy.png">
+			<Option virtualFolder="CMake Files\resources\"/>
+		</Unit>
+		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/grass.png">
 			<Option virtualFolder="CMake Files\resources\"/>
 		</Unit>
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/inPlace.png">

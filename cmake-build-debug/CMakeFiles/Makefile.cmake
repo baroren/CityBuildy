@@ -50,6 +50,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "../resources/comPlace.png"
   "../resources/comm.png"
   "../resources/destroy.png"
+  "../resources/grass.png"
   "../resources/inPlace.png"
   "../resources/indast.png"
   "../resources/outdoors.png"
@@ -98,6 +99,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "PowerSourcePlace.png"
   "powerLinePlace.png"
   "bg.png"
+  "grass.png"
   "resources/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 

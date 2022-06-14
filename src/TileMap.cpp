@@ -1,8 +1,8 @@
 #include "TileMap.h"
 
-TileMap::TileMap()
+TileMap::TileMap(bool file)
 // Change the values when using tiles other than 30x30
-        : tileWidth(16 * FACTOR), tileHeight(16 * FACTOR) {
+{
 
     m_playerMoney.setFont(*Resources::instance().getFont());//move it to Controller
     m_playerResidance.setFont(*Resources::instance().getFont());//move it to Controller
@@ -10,16 +10,54 @@ TileMap::TileMap()
     m_playerMoney.setFillColor(sf::Color::Black);
     m_playerResidance.setFillColor(sf::Color::Black);
 
-    for (int row = 0; row < m_rows; ++row) {
-        vector<std::unique_ptr<PlacebleObject>> temp;
-        for (int col = 0; col < m_cols; col++) {
 
-            temp.push_back(std::make_unique<Ground>(sf::Vector2f(
-                                                            col * tileWidth + MARGINX, row * tileWidth + MARGINY), row, col, gameObjectId::TileSheet, FACTOR, 0,
-                                                    0, 0, 0));
+    vect = assertNum(25, 0, 25);
+    if (file)
+        loadLevel();
+    else {
+        int i = 0;
+        for (int row = 0; row < m_rows; ++row) {
+            vector<std::unique_ptr<PlacebleObject>> temp;
+            temp.reserve(m_cols);
+            for (int col = 0; col < m_cols; col++) {
+
+                temp.push_back(std::make_unique<Ground>(sf::Vector2f(
+                                                                col * tileWidth + MARGINX, row * tileWidth + MARGINY), row, col, gameObjectId::TileSheet,
+                                                        FACTOR, 0,
+                                                        0, 0, 0));
+            }
+            m_obj.push_back(std::move(temp));
         }
-        m_obj.push_back(std::move(temp));
     }
+    for (int j = 0; j < vect.size(); ++j) {
+        try {
+            int min = 0;
+            if (m_rows < m_cols)
+                min = m_rows;
+            else
+                min = m_cols;
+            if (vect[j].first < min)
+                m_obj[vect[j].first][vect[j].second]->changeTexture(gameObjectId::grass);
+
+        } catch (...) {
+
+        }
+    }
+}
+
+
+//--------------
+vector<std::pair<int, int>> TileMap::assertNum(int size, int a, int b) // todo
+{
+    vector<std::pair<int, int>> temp;
+    std::random_device rd; // obtain a random number from hardware
+    std::mt19937 gen(rd()); // seed the generator
+    std::uniform_int_distribution<> distr(a, b); // define the range
+
+    for (int i = 0; i < size; i++) {
+        temp.push_back(std::make_pair(distr(gen), distr(gen)));
+    }
+    return temp;
 }
 
 //---------------------------------------------
@@ -66,7 +104,7 @@ bool TileMap::draw(sf::RenderWindow &window, std::pair<int, int> dims, float del
 
     m_playerMoney.setPosition(50, 8);
     m_playerResidance.setPosition(50, 25);
-
+    // m_CRI.CRIdraw(window);
     window.draw(m_playerMoney);
     window.draw(m_playerResidance);// maybe add to conteoller
 
@@ -85,8 +123,14 @@ void TileMap::updateMoney() {
 
 
             }
+            m_CRI.calcCRI(m_player.getBuilding(playerData::comBuilding),
+                          m_player.getBuilding(playerData::resBuilsing),
+                          m_player.getBuilding(playerData::inBuilding));
+
 
             m_player.transaction(-col->maintanceCost());
+            if (col->returnID() == 5 && !col->isPowerConnected())
+                m_player.numOfTotalBuildings(0, 5, playerData::resBuilsing);
 
 
         }
@@ -100,9 +144,10 @@ void TileMap::updateAnim() {
         // Loop through the columns
         for (auto &col: row) {
 
-            if (col->changeAnim())
+            if (col->changeAnim(m_player.getMoney())) {
                 m_player.ressidanceAdd(30);
-
+                m_CRI.update();
+            }
 
         }
 
@@ -148,6 +193,7 @@ void TileMap::handleClick(sf::Vector2f &mousePos, const int &id, int &row, int &
                                                                                                 r_commercial,
                                                                                                 c_commercial,
                                                                                                 m_commercial);
+                m_player.numOfTotalBuildings(1, 0, playerData::comBuilding);
 
                 m_obj[row][col] = std::move(commercial);
                 m_player.transaction(-m_obj[row][col]->buildCost());
@@ -161,7 +207,7 @@ void TileMap::handleClick(sf::Vector2f &mousePos, const int &id, int &row, int &
                                                                                              PlacebleObjectFactor, id,
                                                                                              r_ressidance, c_ressidance,
                                                                                              m_ressidance);
-                m_player.numOfTotalBuildings(1, 0);
+                m_player.numOfTotalBuildings(1, 0, playerData::resBuilsing);
                 m_obj[row][col] = std::move(residence);
                 m_player.transaction(-m_obj[row][col]->buildCost());
 
@@ -177,6 +223,7 @@ void TileMap::handleClick(sf::Vector2f &mousePos, const int &id, int &row, int &
                                                                                                 r_indastrial,
                                                                                                 c_indastrial,
                                                                                                 m_indastrial);
+                m_player.numOfTotalBuildings(1, 0, playerData::inBuilding);
 
                 m_obj[row][col] = std::move(indastrial);
                 m_player.transaction(-m_obj[row][col]->buildCost());
@@ -244,38 +291,43 @@ void TileMap::del(int row, int col) {
 
     if (row < 1 || row > m_rows - 2 || col < 1 || col > m_cols - 2)
         return;
-    //for (int row = 0; row < m_rows; row++) {
-    // Loop through the columns
-    // for (int col = 0; col < m_cols; col++) {
-    if (m_obj[row][col]->returnID() != 0) {
-        if (m_obj[row][col]->returnID() == 5)
-            m_player.numOfTotalBuildings(-1, 10);
-
-        if (m_obj[row - 1][col]->returnID() != 0) {
-            //  m_obj[row - 1][col]->roadpLine(false);
-            m_obj[row - 1][col]->connectPower(false);
-        }
-        //std::cout << row - 1 << col << "UP : " << m_obj[row - 1][col]->returnID() << std::endl;
-        if (m_obj[row + 1][col]->returnID() != 0) {
-            //    m_obj[row + 1][col]->roadpLine(false);
-
-            m_obj[row + 1][col]->connectPower(false);
-        }
+    if (m_obj[row][col]->returnID() == 5)
+        m_player.numOfTotalBuildings(-1, 5, playerData::resBuilsing);
+    if (m_obj[row][col]->returnID() == 4)
+        m_player.numOfTotalBuildings(-1, 0, playerData::inBuilding);
+    if (m_obj[row][col]->returnID() == 2)
+        m_player.numOfTotalBuildings(-1, 0, playerData::comBuilding);
+    for (int row = 0; row < m_rows; row++) {
+        // Loop through the columns
+        for (int col = 0; col < m_cols; col++) {
+            if (m_obj[row][col]->returnID() != 0) {
 
 
-        if (m_obj[row][col - 1]->returnID() != 0) {
-            //    m_obj[row ][col-1]->roadpLine(false);
+                if (m_obj[row - 1][col]->returnID() != 0) {
+                    //  m_obj[row - 1][col]->roadpLine(false);
+                    m_obj[row - 1][col]->connectPower(false);
+                }
+                //std::cout << row - 1 << col << "UP : " << m_obj[row - 1][col]->returnID() << std::endl;
+                if (m_obj[row + 1][col]->returnID() != 0) {
+                    //    m_obj[row + 1][col]->roadpLine(false);
 
-            m_obj[row][col - 1]->connectPower(false);
-        }
-        if (m_obj[row][col + 1]->returnID() != 0) {
-            //     m_obj[row ][col+1]->roadpLine(false);
+                    m_obj[row + 1][col]->connectPower(false);
+                }
 
-            m_obj[row][col + 1]->connectPower(false);
+
+                if (m_obj[row][col - 1]->returnID() != 0) {
+                    //    m_obj[row ][col-1]->roadpLine(false);
+
+                    m_obj[row][col - 1]->connectPower(false);
+                }
+                if (m_obj[row][col + 1]->returnID() != 0) {
+                    //     m_obj[row ][col+1]->roadpLine(false);
+
+                    m_obj[row][col + 1]->connectPower(false);
+                }
+            }
         }
     }
-    //  }
-    // }
 
 }
 
@@ -353,4 +405,86 @@ void TileMap::initIntRect() {
     m_ground.height = tileHeight / FACTOR;
 
 
+}
+
+
+void TileMap::loadLevel() {
+    std::cout << "load level";
+    std::string levelName = "save.txt";
+    std::ifstream inputFile;
+    inputFile.open(levelName);
+
+    if (!inputFile.is_open()) {
+        throw std::runtime_error("Could not open file");
+
+    }
+
+    inputFile >> m_rows >> m_cols;
+    std::cout << m_rows << ": " << m_cols << std::endl;
+    string line;
+    for (int row = 0; row < m_rows; ++row) {
+        vector<std::unique_ptr<PlacebleObject>> temp;
+
+        for (int col = 0; col < m_cols; ++col) {
+            inputFile >> line;//maybe try catch ?
+            std::cout << line << std::endl;
+            auto o = Factory::create(line, sf::Vector2f(
+                    col * tileWidth + MARGINX, row * tileWidth + MARGINY), row, col);
+            if (o)
+                temp.emplace_back(std::move(o));
+            else //wasnt able to create object
+                throw std::invalid_argument("");
+        }
+        m_obj.emplace_back(std::move(temp));
+    }
+    inputFile >> line;
+
+    m_player.setMoney(stoi(line));
+    inputFile >> line;
+
+    m_player.setRes(stoi(line));
+
+
+    inputFile.close();
+}
+
+void TileMap::saveLevel() {
+    //save to exe folder, i dont want the player to creat his own just save
+    std::cout << "";
+    std::cout << "save level";
+    std::string levelName = "./save.txt";
+    std::ofstream inputFile;
+    inputFile.open(levelName, std::ofstream::out | std::ofstream::trunc);
+
+    if (!inputFile.is_open()) {
+        throw std::runtime_error("Could not open file");
+
+    }
+
+    inputFile << m_rows << " " << m_cols << std::endl;
+    std::cout << "in save level : " << m_rows << ": " << m_cols << std::endl;
+
+    string line;
+    for (int row = 0; row < m_rows; ++row) {
+
+
+        for (int col = 0; col < m_cols; ++col) {
+            inputFile << m_obj[row][col]->returnID();//maybe try catch ?
+            inputFile << " ";
+
+        }
+        inputFile << std::endl;
+
+    }
+    //  inputFile >> line;
+
+    inputFile << m_player.getMoney();
+    //inputFile >> line;
+    inputFile << std::endl;
+
+
+    inputFile << m_player.getRes();
+
+
+    inputFile.close();
 }

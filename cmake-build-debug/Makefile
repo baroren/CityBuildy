@@ -177,6 +177,30 @@ src/Button.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CityBuildy.dir/build.make CMakeFiles/CityBuildy.dir/src/Button.cpp.s
 .PHONY : src/Button.cpp.s
 
+src/CRI.o: src/CRI.cpp.o
+.PHONY : src/CRI.o
+
+# target to build an object file
+src/CRI.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CityBuildy.dir/build.make CMakeFiles/CityBuildy.dir/src/CRI.cpp.o
+.PHONY : src/CRI.cpp.o
+
+src/CRI.i: src/CRI.cpp.i
+.PHONY : src/CRI.i
+
+# target to preprocess a source file
+src/CRI.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CityBuildy.dir/build.make CMakeFiles/CityBuildy.dir/src/CRI.cpp.i
+.PHONY : src/CRI.cpp.i
+
+src/CRI.s: src/CRI.cpp.s
+.PHONY : src/CRI.s
+
+# target to generate assembly for a file
+src/CRI.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CityBuildy.dir/build.make CMakeFiles/CityBuildy.dir/src/CRI.cpp.s
+.PHONY : src/CRI.cpp.s
+
 src/CollisionHandling.o: src/CollisionHandling.cpp.o
 .PHONY : src/CollisionHandling.o
 
@@ -224,6 +248,30 @@ src/Controller.s: src/Controller.cpp.s
 src/Controller.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CityBuildy.dir/build.make CMakeFiles/CityBuildy.dir/src/Controller.cpp.s
 .PHONY : src/Controller.cpp.s
+
+src/Factory.o: src/Factory.cpp.o
+.PHONY : src/Factory.o
+
+# target to build an object file
+src/Factory.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CityBuildy.dir/build.make CMakeFiles/CityBuildy.dir/src/Factory.cpp.o
+.PHONY : src/Factory.cpp.o
+
+src/Factory.i: src/Factory.cpp.i
+.PHONY : src/Factory.i
+
+# target to preprocess a source file
+src/Factory.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CityBuildy.dir/build.make CMakeFiles/CityBuildy.dir/src/Factory.cpp.i
+.PHONY : src/Factory.cpp.i
+
+src/Factory.s: src/Factory.cpp.s
+.PHONY : src/Factory.s
+
+# target to generate assembly for a file
+src/Factory.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CityBuildy.dir/build.make CMakeFiles/CityBuildy.dir/src/Factory.cpp.s
+.PHONY : src/Factory.cpp.s
 
 src/MainMenu.o: src/MainMenu.cpp.o
 .PHONY : src/MainMenu.o
@@ -296,6 +344,30 @@ src/Mouse.s: src/Mouse.cpp.s
 src/Mouse.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CityBuildy.dir/build.make CMakeFiles/CityBuildy.dir/src/Mouse.cpp.s
 .PHONY : src/Mouse.cpp.s
+
+src/ProgressBar.o: src/ProgressBar.cpp.o
+.PHONY : src/ProgressBar.o
+
+# target to build an object file
+src/ProgressBar.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CityBuildy.dir/build.make CMakeFiles/CityBuildy.dir/src/ProgressBar.cpp.o
+.PHONY : src/ProgressBar.cpp.o
+
+src/ProgressBar.i: src/ProgressBar.cpp.i
+.PHONY : src/ProgressBar.i
+
+# target to preprocess a source file
+src/ProgressBar.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CityBuildy.dir/build.make CMakeFiles/CityBuildy.dir/src/ProgressBar.cpp.i
+.PHONY : src/ProgressBar.cpp.i
+
+src/ProgressBar.s: src/ProgressBar.cpp.s
+.PHONY : src/ProgressBar.s
+
+# target to generate assembly for a file
+src/ProgressBar.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CityBuildy.dir/build.make CMakeFiles/CityBuildy.dir/src/ProgressBar.cpp.s
+.PHONY : src/ProgressBar.cpp.s
 
 src/Residence.o: src/Residence.cpp.o
 .PHONY : src/Residence.o
@@ -456,12 +528,18 @@ help:
 	@echo "... src/Button.o"
 	@echo "... src/Button.i"
 	@echo "... src/Button.s"
+	@echo "... src/CRI.o"
+	@echo "... src/CRI.i"
+	@echo "... src/CRI.s"
 	@echo "... src/CollisionHandling.o"
 	@echo "... src/CollisionHandling.i"
 	@echo "... src/CollisionHandling.s"
 	@echo "... src/Controller.o"
 	@echo "... src/Controller.i"
 	@echo "... src/Controller.s"
+	@echo "... src/Factory.o"
+	@echo "... src/Factory.i"
+	@echo "... src/Factory.s"
 	@echo "... src/MainMenu.o"
 	@echo "... src/MainMenu.i"
 	@echo "... src/MainMenu.s"
@@ -471,6 +549,9 @@ help:
 	@echo "... src/Mouse.o"
 	@echo "... src/Mouse.i"
 	@echo "... src/Mouse.s"
+	@echo "... src/ProgressBar.o"
+	@echo "... src/ProgressBar.i"
+	@echo "... src/ProgressBar.s"
 	@echo "... src/Residence.o"
 	@echo "... src/Residence.i"
 	@echo "... src/Residence.s"
