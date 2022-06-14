@@ -57,6 +57,10 @@ namespace // anonymous namespace — the standard way to make function "static"
         if (road.isroadpLineConnected())
             comPowerLine(com, road);
 
+        if (road.isResConnected())
+            com.roadToResconnected(true);
+
+
         // std::cout << "comRoad\n";
         //}
 
@@ -80,6 +84,7 @@ namespace // anonymous namespace — the standard way to make function "static"
     void comRes(PlacebleObject &com,
                 PlacebleObject &res) {
         twoAreaCollide(com, res);
+
     }
 
     void comGround(PlacebleObject &com,
@@ -105,6 +110,9 @@ namespace // anonymous namespace — the standard way to make function "static"
         if (road.isroadpLineConnected())
             inPowerLine(in, road);
 
+        if (road.isResConnected())
+            in.roadToResconnected(true);
+
     }
 
     void inCom(PlacebleObject &in,
@@ -120,6 +128,7 @@ namespace // anonymous namespace — the standard way to make function "static"
     void inRes(PlacebleObject &com,
                PlacebleObject &res) {
         twoAreaCollide(com, res);
+
     }
 //----------end of collision in ---------------------
 
@@ -128,7 +137,7 @@ namespace // anonymous namespace — the standard way to make function "static"
 
     void resPower(PlacebleObject &res,
                   PlacebleObject &powerSource) {
-        std::cout << "SpaceShip and SpaceStation collision!\n";
+        comPower(res, powerSource);
     }
 
     void resPowerLine(PlacebleObject &res,
@@ -141,6 +150,8 @@ namespace // anonymous namespace — the standard way to make function "static"
 
         if (road.isroadpLineConnected())
             resPowerLine(res, road);
+
+        road.roadToResconnected(true);
     }
 
     void resCom(PlacebleObject &res,
@@ -164,7 +175,9 @@ namespace // anonymous namespace — the standard way to make function "static"
 
     void roadPower(PlacebleObject &road,
                    PlacebleObject &powerSource) {
-        std::cout << "SpaceShip and SpaceStation collision!\n";
+
+        if (road.isroadpLineConnected())
+            road.connectPower(true);
     }
 
     void roadPowerLine(PlacebleObject &road,
@@ -172,11 +185,11 @@ namespace // anonymous namespace — the standard way to make function "static"
         //    powerLine.roadpLine(true);
         //  road.roadpLine(true);
         if (powerLine.isPowerConnected()) {
-            std::cout << "connectrd";
-            road.connectPower(true);
+           if (road.isroadpLineConnected())
+                road.connectPower(true);
         }
-        // if (road2.isroadpLineConnected())
-        //   road2.connectPower(true);
+        // if (road.isroadpLineConnected())
+             // road.connectPower(true);
 
 
     }
@@ -186,19 +199,33 @@ namespace // anonymous namespace — the standard way to make function "static"
 
         comCom(road, road2);
 
+
+        if (road.isResConnected())
+            road2.roadToResconnected(true);
+
+        if (road2.isResConnected())
+            road.roadToResconnected(true);
+
+
     }
 
     void roadCom(PlacebleObject &road,
                  PlacebleObject &com) {
+        roadPowerLine(road,com);
         comRoad(com, road);
     }
 
     void roadIn(PlacebleObject &road,
                 PlacebleObject &in) {
+        roadPowerLine(road,in);
+
     }
 
     void roadRes(PlacebleObject &road,
                  PlacebleObject &res) {
+        roadPowerLine(road,res);
+
+        resRoad(res,road);
     }
 //----------end of collision in ---------------------
 
@@ -217,6 +244,8 @@ namespace // anonymous namespace — the standard way to make function "static"
         comCom(pLine, powerLine);
 
 
+
+
     }
 
     void pLineRoad(PlacebleObject &pLine,
@@ -229,17 +258,20 @@ namespace // anonymous namespace — the standard way to make function "static"
         if (com.isPowerConnected())
             pLine.connectPower(true);
         comPowerLine(com, pLine);
+
     }
 
     void pLineIn(PlacebleObject &pLine,
                  PlacebleObject &in) {
         inPowerLine(pLine, in);
+
     }
 
 
     void pLineRes(PlacebleObject &pLine,
                   PlacebleObject &res) {
         resPowerLine(pLine, res);
+        resRoad(res,pLine);
     }
 //----------end of collision in ---------------------
 

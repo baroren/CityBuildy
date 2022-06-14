@@ -9,4 +9,5 @@
         "Mouse.cpp"
         "sideMenu.cpp"
         "Animation.cpp"
-        "CollisionHandling.cpp")
+        "CollisionHandling.cpp"
+        "Residence.cpp")

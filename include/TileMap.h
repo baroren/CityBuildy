@@ -42,6 +42,8 @@ private:
     Player m_player;
 
     sf::Text m_playerMoney;
+    sf::Text m_playerResidance;
+
     void createRoad(int& row, int& col);
 
     void diraction(int& row, int& col);

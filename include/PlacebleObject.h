@@ -18,8 +18,7 @@ public:
 
         m_animation = new Animation(Resources::instance().getTexture(id),
                                     sf::Vector2u(m_numAnimations,
-                                                 m_numAnimations),
-                                    0.3f);
+                                                 m_numAnimations),0.3f);
         m_obj.setPosition(pos);
         m_obj.scale(factor, factor);
         m_id = idN;
@@ -65,47 +64,61 @@ public:
 
     virtual bool isPowerLineConnect() { return m_powerLineConnected; }
 
-    virtual void connectRoad(bool connect) { m_roadConnected = connect; };
+   // virtual void connectRoad(bool connect) { m_roadConnected = connect; };
+
+    virtual bool isResConnected() { return m_roadToResconnected; };
+
+    virtual void roadToResconnected(bool connect) { m_roadToResconnected = connect; };
 
     virtual void connectPowerSource(bool connect) { m_powerLineConnected = connect; }
 
     virtual void connectPower(bool connect) {
         m_powerConnected = connect;
-        if (connect && m_numAnimations > 1 && currAnim==0)
-            currAnim =1;
-        else if(!connect)
+        if (connect && m_numAnimations > 1 && currAnim == 0)
+            currAnim = 1;
+        else if (!connect) {
             currAnim = 0;
-    };
-    virtual void changeAnim(){
-        std::cout<<"time "<<time;
-    if (time==3) {
-        if (currAnim < m_numAnimations - 1 && currAnim > 0) {
-            currAnim++;
-            std::cout << "in chagne Anim";
-            time = 0;
-
+std::cout<<"disconnect";
         }
-    }else
+    };
+
+    virtual bool changeAnim() {
+        if (time == 3) {
+            if (currAnim < m_numAnimations - 1 && currAnim > 0) {
+                currAnim++;
+                time = 0;
+                return true;
+            }
+        } else if (m_powerConnected)
             time++;
+        return false;
     }
-    virtual void roadpLine(bool connect) {std::cout<<"test";};
+    virtual void updateRes(){;};
+    virtual int getResNum(){;};
+    virtual void roadpLine(bool connect) { std::cout << "test"; };
 
-    virtual bool isroadpLineConnected() {return false;};
+    virtual bool isroadpLineConnected() { return false; };
 
+    //virtual int residanceCount(){;};
 
 protected:
 
     sf::Sprite m_obj;
-    int time=0;
+    //int m_residanceCount=0;
+    int time = 0;
     int m_id;
     int m_numAnimations;
     int m_rate;
     int m_buildCost;
     int m_maintance;
+    //int m_resRate=0;
     bool m_roadLineConnected = false;
     bool m_roadConnected = false;
     bool m_powerConnected = false;
     bool m_powerLineConnected = false;
+    bool m_roadToResconnected = false;
+    bool m_roadAndLine=false;
+
     Animation *m_animation;
     int currAnim = 0;
     int groundConnection = 4;

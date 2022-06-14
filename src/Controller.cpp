@@ -9,7 +9,7 @@ Controller::Controller() {
     m_timeTemp.setFont(*Resources::instance().getFont());
     m_cityNameText.setFont(*Resources::instance().getFont());
     m_bg= *Resources::instance().getSprite(gameObjectId::bg);
-    m_bg.setScale(2,2);
+    m_bg.setScale(2.,2);
 }
 
 //--------------------------------------------------------------------------3

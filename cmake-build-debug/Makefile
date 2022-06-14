@@ -297,6 +297,30 @@ src/Mouse.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CityBuildy.dir/build.make CMakeFiles/CityBuildy.dir/src/Mouse.cpp.s
 .PHONY : src/Mouse.cpp.s
 
+src/Residence.o: src/Residence.cpp.o
+.PHONY : src/Residence.o
+
+# target to build an object file
+src/Residence.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CityBuildy.dir/build.make CMakeFiles/CityBuildy.dir/src/Residence.cpp.o
+.PHONY : src/Residence.cpp.o
+
+src/Residence.i: src/Residence.cpp.i
+.PHONY : src/Residence.i
+
+# target to preprocess a source file
+src/Residence.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CityBuildy.dir/build.make CMakeFiles/CityBuildy.dir/src/Residence.cpp.i
+.PHONY : src/Residence.cpp.i
+
+src/Residence.s: src/Residence.cpp.s
+.PHONY : src/Residence.s
+
+# target to generate assembly for a file
+src/Residence.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CityBuildy.dir/build.make CMakeFiles/CityBuildy.dir/src/Residence.cpp.s
+.PHONY : src/Residence.cpp.s
+
 src/Resources.o: src/Resources.cpp.o
 .PHONY : src/Resources.o
 
@@ -447,6 +471,9 @@ help:
 	@echo "... src/Mouse.o"
 	@echo "... src/Mouse.i"
 	@echo "... src/Mouse.s"
+	@echo "... src/Residence.o"
+	@echo "... src/Residence.i"
+	@echo "... src/Residence.s"
 	@echo "... src/Resources.o"
 	@echo "... src/Resources.i"
 	@echo "... src/Resources.s"

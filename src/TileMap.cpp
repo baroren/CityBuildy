@@ -5,7 +5,10 @@ TileMap::TileMap()
         : tileWidth(16 * FACTOR), tileHeight(16 * FACTOR) {
 
     m_playerMoney.setFont(*Resources::instance().getFont());//move it to Controller
+    m_playerResidance.setFont(*Resources::instance().getFont());//move it to Controller
+
     m_playerMoney.setFillColor(sf::Color::Black);
+    m_playerResidance.setFillColor(sf::Color::Black);
 
     for (int row = 0; row < m_rows; ++row) {
         vector<std::unique_ptr<PlacebleObject>> temp;
@@ -59,8 +62,14 @@ bool TileMap::draw(sf::RenderWindow &window, std::pair<int, int> dims, float del
 
 
     m_playerMoney.setString("funds " + std::to_string(m_player.getMoney()));
-    m_playerMoney.setPosition(50, 25);
+    m_playerResidance.setString("residence " + std::to_string(m_player.getRes()));
+
+    m_playerMoney.setPosition(50, 8);
+    m_playerResidance.setPosition(50, 25);
+
     window.draw(m_playerMoney);
+    window.draw(m_playerResidance);// maybe add to conteoller
+
     return (m_player.gameOver());
 
 
@@ -70,7 +79,13 @@ void TileMap::updateMoney() {
     for (auto &row: m_obj) {
         // Loop through the columns
         for (auto &col: row) {
-            m_player.transaction(col->calcRate());
+            if (col->isResConnected()) {
+                if (col->returnID() != 5)
+                    m_player.transaction(col->calcRate());
+
+
+            }
+
             m_player.transaction(-col->maintanceCost());
 
 
@@ -80,13 +95,14 @@ void TileMap::updateMoney() {
 }
 
 
-void TileMap::updateAnim()
-{
+void TileMap::updateAnim() {
     for (auto &row: m_obj) {
         // Loop through the columns
         for (auto &col: row) {
 
-            col->changeAnim();
+            if (col->changeAnim())
+                m_player.ressidanceAdd(30);
+
 
         }
 
@@ -95,7 +111,6 @@ void TileMap::updateAnim()
 //---------------------------------------------
 
 void TileMap::update(sf::Vector2f mousePos, int &id) {
-    std::cout << mousePos.x << "y" << mousePos.y << std::endl;
 
 
     for (int row = 0; row < m_rows; row++) {
@@ -119,7 +134,6 @@ void TileMap::handleClick(sf::Vector2f &mousePos, const int &id, int &row, int &
         if (m_obj[row][col]->returnID() == 0) {
 
             // if(m_obj[row-1][col]->returnID() == 0)
-            std::cout << id << std::endl;
             if (id == 1) {
                 createRoad(row, col);
             } else if (id == 2) {
@@ -129,7 +143,8 @@ void TileMap::handleClick(sf::Vector2f &mousePos, const int &id, int &row, int &
                                                                                                         col * tileWidth + MARGINX,
                                                                                                         row * tileWidth + MARGINY), row, col,
                                                                                                 gameObjectId::comPlace,
-                                                                                                PlacebleObjectFactor, id,
+                                                                                                PlacebleObjectFactor,
+                                                                                                id,
                                                                                                 r_commercial,
                                                                                                 c_commercial,
                                                                                                 m_commercial);
@@ -140,14 +155,13 @@ void TileMap::handleClick(sf::Vector2f &mousePos, const int &id, int &row, int &
             } else if (id == 5) {
 
 
-                std::cout << "comm";
                 std::__1::unique_ptr<Residence> residence = std::__1::make_unique<Residence>(sf::Vector2f(
                                                                                                      col * tileWidth + MARGINX, row * tileWidth + MARGINY), row, col,
                                                                                              gameObjectId::resPlace,
                                                                                              PlacebleObjectFactor, id,
                                                                                              r_ressidance, c_ressidance,
                                                                                              m_ressidance);
-
+                m_player.numOfTotalBuildings(1, 0);
                 m_obj[row][col] = std::move(residence);
                 m_player.transaction(-m_obj[row][col]->buildCost());
 
@@ -155,11 +169,11 @@ void TileMap::handleClick(sf::Vector2f &mousePos, const int &id, int &row, int &
             } else if (id == 4) {
 
 
-                std::cout << "comm";
                 std::__1::unique_ptr<Indastrial> indastrial = std::__1::make_unique<Indastrial>(sf::Vector2f(
                                                                                                         col * tileWidth + MARGINX, row * tileWidth + MARGINY), row, col,
                                                                                                 gameObjectId::inPlace,
-                                                                                                PlacebleObjectFactor, id,
+                                                                                                PlacebleObjectFactor,
+                                                                                                id,
                                                                                                 r_indastrial,
                                                                                                 c_indastrial,
                                                                                                 m_indastrial);
@@ -173,18 +187,19 @@ void TileMap::handleClick(sf::Vector2f &mousePos, const int &id, int &row, int &
 
                 std::__1::unique_ptr<PowerLines> powerLines = std::__1::make_unique<PowerLines>(sf::Vector2f(
                                                                                                         col * tileWidth + MARGINX, row * tileHeight + MARGINY), row, col, gameObjectId::psLines,
-                                                                                                PlacebleObjectFactor, id,
-                                                                                                r_powerline, c_powerline,
+                                                                                                PlacebleObjectFactor,
+                                                                                                id,
+                                                                                                r_powerline,
+                                                                                                c_powerline,
                                                                                                 m_powerline);
 
                 m_obj[row][col] = std::move(powerLines);
                 m_player.transaction(-m_obj[row][col]->buildCost());
-                 diraction(row, col);
+                diraction(row, col);
                 //check(row, col, id);
             } else if (id == 7) {
                 int retflag;
 
-                std::cout << "comm";
                 std::__1::unique_ptr<PowerSource> powerSource = std::__1::make_unique<PowerSource>(sf::Vector2f(
                                                                                                            col * tileWidth + MARGINX, row * tileWidth + MARGINY), row, col,
                                                                                                    gameObjectId::psSource,
@@ -201,10 +216,11 @@ void TileMap::handleClick(sf::Vector2f &mousePos, const int &id, int &row, int &
         } else if (id == 3) {
             int retflag;
             del(row, col);
-            std::cout << "delete";
+
             std::__1::unique_ptr<Ground> ground = std::__1::make_unique<Ground>(sf::Vector2f(
                                                                                         col * tileWidth + MARGINX, row * tileWidth + MARGINY), row, col, gameObjectId::TileSheet,
-                                                                                FACTOR, 0, r_delete, c_delete, m_delete);
+                                                                                FACTOR, 0, r_delete, c_delete,
+                                                                                m_delete);
 
 
             m_obj[row][col] = std::move(ground);
@@ -212,13 +228,12 @@ void TileMap::handleClick(sf::Vector2f &mousePos, const int &id, int &row, int &
 
             //check(row, col, retflag);
 
-        }else if(id==1 && m_obj[row][col]->returnID() == 6 ||
-                id==6 && m_obj[row][col]->returnID() == 1) {
+        } else if (id == 1 && m_obj[row][col]->returnID() == 6 ||
+                   id == 6 && m_obj[row][col]->returnID() == 1) {
 
             m_obj[row][col]->roadpLine(true);
 
         }
-
 
 
     }
@@ -229,37 +244,38 @@ void TileMap::del(int row, int col) {
 
     if (row < 1 || row > m_rows - 2 || col < 1 || col > m_cols - 2)
         return;
-    for (int row = 0; row < m_rows; row++) {
-        // Loop through the columns
-        for (int col = 0; col < m_cols; col++) {
-            if (m_obj[row][col]->returnID() != 0) {
-                std::cout << "delet power" << std::endl;
-                if (m_obj[row - 1][col]->returnID() != 0) {
-                  //  m_obj[row - 1][col]->roadpLine(false);
-                    m_obj[row - 1][col]->connectPower(false);
-                }
-                //std::cout << row - 1 << col << "UP : " << m_obj[row - 1][col]->returnID() << std::endl;
-                if (m_obj[row + 1][col]->returnID() != 0) {
-                //    m_obj[row + 1][col]->roadpLine(false);
+    //for (int row = 0; row < m_rows; row++) {
+    // Loop through the columns
+    // for (int col = 0; col < m_cols; col++) {
+    if (m_obj[row][col]->returnID() != 0) {
+        if (m_obj[row][col]->returnID() == 5)
+            m_player.numOfTotalBuildings(-1, 10);
 
-                    m_obj[row + 1][col]->connectPower(false);
-                }
+        if (m_obj[row - 1][col]->returnID() != 0) {
+            //  m_obj[row - 1][col]->roadpLine(false);
+            m_obj[row - 1][col]->connectPower(false);
+        }
+        //std::cout << row - 1 << col << "UP : " << m_obj[row - 1][col]->returnID() << std::endl;
+        if (m_obj[row + 1][col]->returnID() != 0) {
+            //    m_obj[row + 1][col]->roadpLine(false);
+
+            m_obj[row + 1][col]->connectPower(false);
+        }
 
 
-                if (m_obj[row][col - 1]->returnID() != 0) {
-                //    m_obj[row ][col-1]->roadpLine(false);
+        if (m_obj[row][col - 1]->returnID() != 0) {
+            //    m_obj[row ][col-1]->roadpLine(false);
 
-                    m_obj[row][col - 1]->connectPower(false);
-                }
-                if (m_obj[row][col + 1]->returnID() != 0) {
-               //     m_obj[row ][col+1]->roadpLine(false);
+            m_obj[row][col - 1]->connectPower(false);
+        }
+        if (m_obj[row][col + 1]->returnID() != 0) {
+            //     m_obj[row ][col+1]->roadpLine(false);
 
-                    std::cout << "test" << std::endl;
-                    m_obj[row][col + 1]->connectPower(false);
-                }
-            }
+            m_obj[row][col + 1]->connectPower(false);
         }
     }
+    //  }
+    // }
 
 }
 
@@ -271,7 +287,6 @@ void TileMap::check(int row, int col) {
         return;
     if (row < 1 || row > m_rows - 2 || col < 1 || col > m_cols - 2)
         return;
-
 
 
     if (m_obj[row - 1][col]->returnID() != 0)
@@ -288,39 +303,7 @@ void TileMap::check(int row, int col) {
         processCollision(*m_obj[row][col], *m_obj[row][col + 1]);
 
 
-
-
-
-    //  else;
-    //    m_obj[row][col]->connectPower(false);
-    // s
 }
-//for size*2 factor
-
-
-/*
-for (int i = 0; i < m_rows; i++) {
-    // Loop through the columns
-    for (int j = 0; j < m_cols; j++) {
-        if(m_obj[i][j]->returnID() != 0) {
-            if (!(i == row && j == col)) {
-                if (m_obj[i][j]->checkIfContained(m_obj[row][col]->bound())) {
-                    if (m_obj[i][j]->bound().left + 144 - m_obj[row][col]->bound().left < 0)
-                        std::cout << "containes \n\n";
-                    std::cout << "touching.\n";
-                    std::cout << m_obj[i][j]->bound().left << ".\n";
-
-                    std::cout << m_obj[row][col]->bound().left << ".\n";
-
-                }
-
-            }
-        }
-
-    }\
-}
- */
-
 
 
 //--------------------------------------------------------------------------
@@ -333,7 +316,7 @@ void TileMap::createRoad(int &row, int &col) {
 
     m_obj[row][col] = std::move(roads);
     m_player.transaction(-m_obj[row][col]->buildCost());
-      diraction(row, col);
+    diraction(row, col);
 
 }
 
@@ -342,7 +325,6 @@ void TileMap::diraction(int &row, int &col) {//make gengeric
     if (row > 0 && row < m_rows)
         if (m_obj[row - 1][col]->returnID() == 1 ||
             m_obj[row + 1][col]->returnID() == 1) {
-            std::cout << "rotate";
             m_obj[row][col]->rotate();
             if (m_obj[row - 1][col]->returnID() == 1 &&
                 m_obj[row + 1][col]->returnID() == 1) {

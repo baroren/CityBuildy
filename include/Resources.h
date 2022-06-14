@@ -39,7 +39,7 @@ private:
    // vector<Animation *> m_animation;
     sf::Music m_music;
     int numOfAnim=1;
-    std::array<int,numOfSprites> numOfFrames{ 1,1,1,
+    std::array<int,numOfSprites> numOfFrames{ 1,1 ,1,
                                               1,1,1,1,
                                               1,1,1,2,3,3,3,1,2,1};
     sf::Font m_font;
