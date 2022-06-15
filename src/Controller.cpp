@@ -140,7 +140,9 @@ void Controller::handleView() {
     if (clicked == 8)
         m_tileMap.saveLevel();
     else if (clicked == 9) {
-        m_views[1].zoom(1 - m_zoomRate);
+        if (m_views[1].getSize().x > 400 && m_views[1].getSize().y < 400)
+
+            m_views[1].zoom(1 - m_zoomRate);
 
         std::cout << m_views[1].getSize().x << " " << m_views[1].getSize().y << std::endl;
     } else if (clicked == 10) {

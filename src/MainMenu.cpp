@@ -36,7 +36,7 @@ bool MainMenu::run(bool &file, std::string &cityName) {
 
         while (m_window.getWindow().pollEvent(event)) {
 
-            if (m_newWorld && event.type == sf::Event::TextEntered && m_cityName.length() < 8) {
+            if (level==2 && event.type == sf::Event::TextEntered && m_cityName.length() < 8) {
                 if (event.text.unicode >= 33 && event.text.unicode <= 126) {
                     m_cityName += (char) event.text.unicode;
                 } else if (event.text.unicode == 8)
@@ -53,16 +53,17 @@ bool MainMenu::run(bool &file, std::string &cityName) {
                 if (m_menu.handleClick(
                         m_window.getWindow().mapPixelToCoords(sf::Mouse::getPosition(m_window.getWindow())),
                         m_window.getWindow()) == 0) {
-                    m_startClicked = true;
+                    level=1;
                 } else if (m_menuSave.handleClick(
                         m_window.getWindow().mapPixelToCoords(sf::Mouse::getPosition(m_window.getWindow())),
-                        m_window.getWindow()) == 0 && !m_newWorld) {
+                        m_window.getWindow()) == 0 &&level==1 ) {
                     file = true;
+                    level=2;
                     return true;
 
                 } else if (m_menuNew.handleClick(
                         m_window.getWindow().mapPixelToCoords(sf::Mouse::getPosition(m_window.getWindow())),
-                        m_window.getWindow()) == 0 && !m_startClicked) {
+                        m_window.getWindow()) == 0 && level==2) {
                     file = false;
                     cityName = m_cityName;
                     return true;
@@ -72,27 +73,23 @@ bool MainMenu::run(bool &file, std::string &cityName) {
 
                 if (m_menu.handleClick(
                         m_window.getWindow().mapPixelToCoords(sf::Mouse::getPosition(m_window.getWindow())),
-                        m_window.getWindow()) == 1) {
-
+                        m_window.getWindow()) == 1&& level==0) {
 
                 }
                 if (m_menuNew.handleClick(
                         m_window.getWindow().mapPixelToCoords(sf::Mouse::getPosition(m_window.getWindow())),
-                        m_window.getWindow()) == 1&& !m_startClicked) {
+                        m_window.getWindow()) == 1&&level==2 ) {
                     std::cout << "m_menuNew";
 
-                    m_startClicked=false;
-
-                    m_newWorld = true;
+                  level=1;
                 }
                 else  if (m_menuSave.handleClick(
                         m_window.getWindow().mapPixelToCoords(sf::Mouse::getPosition(m_window.getWindow())),
-                        m_window.getWindow()) == 1 &&m_startClicked) {
+                        m_window.getWindow()) == 1 && level==1) {
                     file = false;
                      std::cout << "test";
 
-                    m_startClicked = false;
-                    m_newWorld = true;
+                    level=2;
 
                     m_text.setString("enter Name : ");
 
@@ -116,7 +113,7 @@ bool MainMenu::run(bool &file, std::string &cityName) {
             m_menuSave.updateBt(m_window.getWindow());
 
         }
-        if (level ==2) {
+       else if (level ==2) {
 
             m_menuNew.updateBt(m_window.getWindow());
         } else
