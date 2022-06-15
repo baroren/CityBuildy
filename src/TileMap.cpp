@@ -67,7 +67,7 @@ vector<std::pair<int, int>> TileMap::assertNum(int size, int a, int b) // todo
     std::uniform_int_distribution<> distr(a, b); // define the range
 
     for (int i = 0; i < size; i++) {
-        temp.push_back(std::make_pair(distr(gen), distr(gen)));
+        temp.emplace_back(distr(gen), distr(gen));
     }
     return temp;
 }

@@ -111,9 +111,6 @@
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/src/Mouse.cpp">
 			<Option target="CityBuildy"/>
 		</Unit>
-		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/src/ProgressBar.cpp">
-			<Option target="CityBuildy"/>
-		</Unit>
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/src/Residence.cpp">
 			<Option target="CityBuildy"/>
 		</Unit>

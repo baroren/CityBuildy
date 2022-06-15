@@ -10,7 +10,6 @@
 #include "Conectors.h"
 #include "Macros.h"
 #include "Area.h"
-#include "ProgressBar.h"
 
 
 class PopUps {

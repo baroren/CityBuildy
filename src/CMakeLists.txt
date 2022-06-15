@@ -12,5 +12,4 @@
         "CollisionHandling.cpp"
         "Residence.cpp"
         "CRI.cpp"
-        "ProgressBar.cpp"
         "Factory.cpp")
