@@ -37,81 +37,82 @@ bool MainMenu::run(bool &file, std::string &cityName) {
             if (event.type == sf::Event::MouseButtonPressed) {
                 if (level == 4) {
                     level = 3;
+                }else {
+                    if (m_menu.handleClick(
+                            m_window.getWindow().mapPixelToCoords(sf::Mouse::getPosition(m_window.getWindow())),
+                            m_window.getWindow()) == 0 && level == 0) {
+                        level = 1;
+                    } else if (m_menuSettings.handleClick(
+                            m_window.getWindow().mapPixelToCoords(sf::Mouse::getPosition(m_window.getWindow())),
+                            m_window.getWindow()) == 0 && level == 3) {
+                        level = 3;
+                        Resources::instance().stopMusic(gameObjectId::bg);
+
+
+                    } else if (m_menuSave.handleClick(
+                            m_window.getWindow().mapPixelToCoords(sf::Mouse::getPosition(m_window.getWindow())),
+                            m_window.getWindow()) == 0 && level == 1) {
+                        file = true;
+                        level = 2;
+                        return true;
+                    } else if (m_menuNew.handleClick(
+                            m_window.getWindow().mapPixelToCoords(sf::Mouse::getPosition(m_window.getWindow())),
+                            m_window.getWindow()) == 0 && level == 2) {
+                        file = false;
+                        cityName = m_cityName;
+                        return true;
+                    }
+
+
+                    if (m_menu.handleClick(
+                            m_window.getWindow().mapPixelToCoords(sf::Mouse::getPosition(m_window.getWindow())),
+                            m_window.getWindow()) == 1 && level == 0) {
+                        level = 3;
+
+                    } else if (m_menuNew.handleClick(
+                            m_window.getWindow().mapPixelToCoords(sf::Mouse::getPosition(m_window.getWindow())),
+                            m_window.getWindow()) == 1 && level == 2) {
+                        level = 1;
+                    } else if (m_menuSave.handleClick(
+                            m_window.getWindow().mapPixelToCoords(sf::Mouse::getPosition(m_window.getWindow())),
+                            m_window.getWindow()) == 1 && level == 1) {
+                        file = false;
+
+                        level = 2;
+
+                        m_text.setString("enter Name : ");
+
+                    } else if (m_menuSettings.handleClick(
+                            m_window.getWindow().mapPixelToCoords(sf::Mouse::getPosition(m_window.getWindow())),
+                            m_window.getWindow()) == 1 && level == 3) {
+                        Resources::instance().playMusic(gameObjectId::bg);
+
+                        level = 3;
+
+
+                    }
+
+                    if (m_menuSettings.handleClick(
+                            m_window.getWindow().mapPixelToCoords(sf::Mouse::getPosition(m_window.getWindow())),
+                            m_window.getWindow()) == 2 && level == 3) {
+                        level = 0;
+
+                    } else if (m_menuSave.handleClick(
+                            m_window.getWindow().mapPixelToCoords(sf::Mouse::getPosition(m_window.getWindow())),
+                            m_window.getWindow()) == 2 && level == 1) {
+                        level = 0;
+
+                    } else if (m_menuSave.handleClick(
+                            m_window.getWindow().mapPixelToCoords(sf::Mouse::getPosition(m_window.getWindow())),
+                            m_window.getWindow()) == 2 && level == 0) {
+                        exit(EXIT_SUCCESS);
+
+                    }
+                    if (m_menuSettings.handleClick(
+                            m_window.getWindow().mapPixelToCoords(sf::Mouse::getPosition(m_window.getWindow())),
+                            m_window.getWindow()) == 3 && level == 3)
+                        level = 4;
                 }
-                if (m_menu.handleClick(
-                        m_window.getWindow().mapPixelToCoords(sf::Mouse::getPosition(m_window.getWindow())),
-                        m_window.getWindow()) == 0 && level == 0) {
-                    level = 1;
-                } else if (m_menuSettings.handleClick(
-                        m_window.getWindow().mapPixelToCoords(sf::Mouse::getPosition(m_window.getWindow())),
-                        m_window.getWindow()) == 0 && level == 3) {
-                    level = 3;
-                    Resources::instance().stopMusic(gameObjectId::bg);
-
-
-                } else if (m_menuSave.handleClick(
-                        m_window.getWindow().mapPixelToCoords(sf::Mouse::getPosition(m_window.getWindow())),
-                        m_window.getWindow()) == 0 && level == 1) {
-                    file = true;
-                    level = 2;
-                    return true;
-                } else if (m_menuNew.handleClick(
-                        m_window.getWindow().mapPixelToCoords(sf::Mouse::getPosition(m_window.getWindow())),
-                        m_window.getWindow()) == 0 && level == 2) {
-                    file = false;
-                    cityName = m_cityName;
-                    return true;
-                }
-
-
-                if (m_menu.handleClick(
-                        m_window.getWindow().mapPixelToCoords(sf::Mouse::getPosition(m_window.getWindow())),
-                        m_window.getWindow()) == 1 && level == 0) {
-                    level = 3;
-
-                } else if (m_menuNew.handleClick(
-                        m_window.getWindow().mapPixelToCoords(sf::Mouse::getPosition(m_window.getWindow())),
-                        m_window.getWindow()) == 1 && level == 2) {
-                    level = 1;
-                } else if (m_menuSave.handleClick(
-                        m_window.getWindow().mapPixelToCoords(sf::Mouse::getPosition(m_window.getWindow())),
-                        m_window.getWindow()) == 1 && level == 1) {
-                    file = false;
-
-                    level = 2;
-
-                    m_text.setString("enter Name : ");
-
-                } else if (m_menuSettings.handleClick(
-                        m_window.getWindow().mapPixelToCoords(sf::Mouse::getPosition(m_window.getWindow())),
-                        m_window.getWindow()) == 1 && level == 3) {
-                    Resources::instance().playMusic(gameObjectId::bg);
-
-                    level = 3;
-
-
-                }
-
-                if (m_menuSettings.handleClick(
-                        m_window.getWindow().mapPixelToCoords(sf::Mouse::getPosition(m_window.getWindow())),
-                        m_window.getWindow()) == 2 && level == 3) {
-                    level = 0;
-
-                } else if (m_menuSave.handleClick(
-                        m_window.getWindow().mapPixelToCoords(sf::Mouse::getPosition(m_window.getWindow())),
-                        m_window.getWindow()) == 2 && level == 1) {
-                    level = 0;
-
-                } else if (m_menuSave.handleClick(
-                        m_window.getWindow().mapPixelToCoords(sf::Mouse::getPosition(m_window.getWindow())),
-                        m_window.getWindow()) == 2 && level == 0) {
-                    exit(EXIT_SUCCESS);
-
-                }
-                if (m_menuSettings.handleClick(
-                        m_window.getWindow().mapPixelToCoords(sf::Mouse::getPosition(m_window.getWindow())),
-                        m_window.getWindow()) == 3 && level == 3)
-                    level = 4;
             }
 
         }
