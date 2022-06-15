@@ -11,7 +11,7 @@ TileMap::TileMap(bool file)
     m_playerResidance.setFillColor(sf::Color::Black);
 
 
-    vect = assertNum(25, 0, 25);
+    vect = assertNum(100, 0, 49);
     if (file)
         loadLevel();
     else {
@@ -62,7 +62,6 @@ vector<std::pair<int, int>> TileMap::assertNum(int size, int a, int b) // todo
 
 //---------------------------------------------
 bool TileMap::draw(sf::RenderWindow &window, std::pair<int, int> dims, float deltaTime) {
-
     // Loop through the rows
     for (auto &row: m_obj) {
         // Loop through the columns
@@ -99,17 +98,22 @@ bool TileMap::draw(sf::RenderWindow &window, std::pair<int, int> dims, float del
     }
 
 
-    m_playerMoney.setString("funds " + std::to_string(m_player.getMoney()));
-    m_playerResidance.setString("residence " + std::to_string(m_player.getRes()));
 
-    m_playerMoney.setPosition(50, 8);
-    m_playerResidance.setPosition(50, 25);
-    // m_CRI.CRIdraw(window);
-    window.draw(m_playerMoney);
-    window.draw(m_playerResidance);// maybe add to conteoller
 
     return (m_player.gameOver());
 
+
+}
+
+void TileMap::drawMoney(sf::RenderWindow &window) {
+    m_playerMoney.setString("funds " + std::to_string(m_player.getMoney()));
+    m_playerResidance.setString("residence " + std::to_string(m_player.getRes()));
+
+    m_playerMoney.setPosition(50, 60);
+    m_playerResidance.setPosition(50, 85);
+    // m_CRI.CRIdraw(window);
+    window.draw(m_playerMoney);
+    window.draw(m_playerResidance);// maybe add to conteoller
 
 }
 
@@ -171,6 +175,7 @@ void TileMap::update(sf::Vector2f mousePos, int &id) {
 }
 
 void TileMap::handleClick(sf::Vector2f &mousePos, const int &id, int &row, int &col) {
+
     if (m_obj[row][col]->checkClick(mousePos)) {
         //  int retflag;
         //factor2Check(row, col, retflag);

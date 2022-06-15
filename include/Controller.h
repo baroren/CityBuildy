@@ -28,6 +28,7 @@ public:
   void draw();
   void handleTimeAndDate(sf::Time &time1);
 private:
+
     void date();
     sf::Vector2f translateMouse(sf::Vector2i mouseLocation) const;
     std::array<sf::View,2> m_views;
@@ -38,7 +39,7 @@ private:
     int clicked =-1;
     float m_deltaTime;
     sf::Sprite  m_bg;
-
+    bool m_readFromFile;
     sf::Text m_testTemp;
     sf::Text m_cityNameText;
     sf::Text m_timeTemp;
@@ -46,7 +47,7 @@ private:
     sf::Clock m_clock;
     sf::Clock m_clockAnim;
     sf::Clock m_generalTime;
-
+    sf::Music * m_music ;
     SideMenu m_sideMenu;
     std::pair<int,int> m_dims;
     MainMenu m_mainMenu;
@@ -55,4 +56,6 @@ private:
     sf::RenderWindow m_window;
 
     string m_cityName="nahariya ";
+
+    void handleView();
 };

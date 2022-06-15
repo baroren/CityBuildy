@@ -162,6 +162,9 @@
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/CityBuildyMAIN.png">
 			<Option virtualFolder="CMake Files\resources\"/>
 		</Unit>
+		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/MainMenuMusic.ogg">
+			<Option virtualFolder="CMake Files\resources\"/>
+		</Unit>
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/PowerSourcePlace.png">
 			<Option virtualFolder="CMake Files\resources\"/>
 		</Unit>
@@ -180,6 +183,12 @@
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/destroy.png">
 			<Option virtualFolder="CMake Files\resources\"/>
 		</Unit>
+		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/down.png">
+			<Option virtualFolder="CMake Files\resources\"/>
+		</Unit>
+		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/gameOver.png">
+			<Option virtualFolder="CMake Files\resources\"/>
+		</Unit>
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/grass.png">
 			<Option virtualFolder="CMake Files\resources\"/>
 		</Unit>
@@ -187,6 +196,9 @@
 			<Option virtualFolder="CMake Files\resources\"/>
 		</Unit>
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/indast.png">
+			<Option virtualFolder="CMake Files\resources\"/>
+		</Unit>
+		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/left.png">
 			<Option virtualFolder="CMake Files\resources\"/>
 		</Unit>
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/outdoors.png">
@@ -213,10 +225,25 @@
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/resident.png">
 			<Option virtualFolder="CMake Files\resources\"/>
 		</Unit>
+		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/right.png">
+			<Option virtualFolder="CMake Files\resources\"/>
+		</Unit>
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/road.png">
 			<Option virtualFolder="CMake Files\resources\"/>
 		</Unit>
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/roadHor.png">
+			<Option virtualFolder="CMake Files\resources\"/>
+		</Unit>
+		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/save.png">
+			<Option virtualFolder="CMake Files\resources\"/>
+		</Unit>
+		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/up.png">
+			<Option virtualFolder="CMake Files\resources\"/>
+		</Unit>
+		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/zoomIn.png">
+			<Option virtualFolder="CMake Files\resources\"/>
+		</Unit>
+		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/zoomOut.png">
 			<Option virtualFolder="CMake Files\resources\"/>
 		</Unit>
 	</Project>

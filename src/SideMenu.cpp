@@ -4,11 +4,27 @@ SideMenu::SideMenu() {
     for (int i = 2; i < 9; i++) {
         m_buttons.push_back(*Resources::instance().getSprite(gameObjectId(i)));
     }
+    m_buttons.push_back(*Resources::instance().getSprite(gameObjectId::save));
+    m_buttons.push_back(*Resources::instance().getSprite(gameObjectId::zoomIn));
+    m_buttons.push_back(*Resources::instance().getSprite(gameObjectId::zoomOut));
+    m_buttons.push_back(*Resources::instance().getSprite(gameObjectId::left));
+    m_buttons.push_back(*Resources::instance().getSprite(gameObjectId::up));
+    m_buttons.push_back(*Resources::instance().getSprite(gameObjectId::down));
+    m_buttons.push_back(*Resources::instance().getSprite(gameObjectId::right));
+
+
+
+
     for (int i = 0; i < m_buttons.size(); ++i) {
         m_buttons[i].setScale(2, 2);
 
-        m_buttons[i].setPosition(100, 100 + 55 * i);
+        m_buttons[i].setPosition(100, 200 + 55 * i);
     }
+
+
+
+
+
 }
 
 void SideMenu::draw(sf::RenderWindow &window) {
@@ -23,6 +39,7 @@ int SideMenu::handleClick(const sf::Vector2f position) {
     for (int i = 0; i < m_buttons.size(); i++) {
         if (m_buttons[i].getGlobalBounds().contains(position)) {
             std::cout << "clicked";
+
             return i + 1;
 
 
@@ -52,6 +69,9 @@ string SideMenu::getPrice(int id) {
             return "Power line "+std::to_string(c_powerline);
         case 7 :
             return "PowerSource "+std::to_string(c_powerSource);
+        case 8 :
+            return "File Saved ";
+
         default:
             return "0";
 

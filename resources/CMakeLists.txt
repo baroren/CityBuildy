@@ -18,6 +18,23 @@ configure_file ("PowerSourcePlace.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("powerLinePlace.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("bg.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("grass.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("save.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("MainMenuMusic.ogg" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("zoomIn.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("zoomOut.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("right.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("left.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("up.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("down.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("gameOver.png" ${CMAKE_BINARY_DIR} COPYONLY)
+
+
+
+
+
+
+
+
 
 
 

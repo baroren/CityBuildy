@@ -58,9 +58,29 @@ void Resources::buildSprite()
 
     }
 }
+
 // ----------------------------------------------------------------------------
 
+sf::Music* Resources::getMusic(gameObjectId id)
+{
+    return &m_music;
 
+}
+// ----------------------------------------------------------------------------
+
+void Resources::buildMusic()
+{
+
+    for(int i=0;i<m_musicNames.size();i++) {
+        // sf::Music temp;
+        if (!m_music.openFromFile(m_musicNames[i])) {
+            // error...
+            std::cout << "error loading music";
+
+        }
+        // m_music.push_back(temp);
+    }
+}
 // ----------------------------------------------------------------------------
 
 Resources& Resources:: instance(){

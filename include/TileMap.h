@@ -30,6 +30,7 @@ public:
     explicit TileMap(bool file=false);
 
     bool draw(sf::RenderWindow &window,std::pair<int,int>,float deltaTime);
+    void drawMoney(sf::RenderWindow &window);
 
     void update(sf::Vector2f mousePos,int &id);
 
@@ -72,10 +73,11 @@ private:
     vector<vector<std::unique_ptr<PlacebleObject>>> m_obj;
     // Add / remove these in order to add more tiles
     // This depends on the amount of tiles in your texture
-    int m_rows=17;
-    int m_cols=30;
+    int m_rows=50;
+    int m_cols=50;
     sf::IntRect m_grass;
     sf::IntRect m_ground;
     CRIclass m_CRI;
     void handleClick(sf::Vector2f &mousePos, const int &id, int &row, int &col);
+
 };
