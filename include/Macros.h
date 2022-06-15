@@ -8,7 +8,7 @@ enum class gameObjectId{MainMenuBG,TileSheet,road,comm,destroy,indast,resident,p
 enum class popUps{gameover,start,win};
 const int POPUPSIZE=1;
 enum class sideMenuId{S_road=1,S_com=2,S_del=3,S_facroty=4,S_park=5,S_powerLine,S_PowerPlant};
-const int numOfSprites=35,MARGINX=900,MARGINY=900,moneyToWin=50000,resToWin=700;
+const int numOfSprites=35,MARGINX=900,MARGINY=900,moneyToWin=50000,resToWin=500;
 
 const sf::Vector2f maxSize(50*16*3,50*16*3);
 static int FACTOR=3,PlacebleObjectFactor=1, month = 2,

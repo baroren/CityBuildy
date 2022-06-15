@@ -80,8 +80,11 @@ void Controller::run() {
             if (event.type == sf::Event::Closed)
                 m_window.close();
             if (event.type == sf::Event::MouseButtonPressed) {
-                if (m_tileMap.winGame())
+                if (m_tileMap.winGame()) {
+                    m_cityNameText.setFillColor(sf::Color::Magenta);
+
                     m_win = true;
+                }
                 if (m_gameOver) {
                     handleGameOver();
 
