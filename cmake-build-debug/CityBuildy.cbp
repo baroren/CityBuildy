@@ -243,6 +243,9 @@
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/up.png">
 			<Option virtualFolder="CMake Files\resources\"/>
 		</Unit>
+		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/win.png">
+			<Option virtualFolder="CMake Files\resources\"/>
+		</Unit>
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/zoomIn.png">
 			<Option virtualFolder="CMake Files\resources\"/>
 		</Unit>

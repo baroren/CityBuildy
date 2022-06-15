@@ -27,11 +27,7 @@ namespace // anonymous namespace — the standard way to make function "static"
     }
 
 // primary collision-processing functions
-    void ground(PlacebleObject &som,
-                PlacebleObject &ground) {
-        som.connectPower(false);
-        som.connectPowerSource(false);
-    }
+
 
 //--------com collisions------
     void comPower(PlacebleObject &com,
@@ -94,7 +90,7 @@ namespace // anonymous namespace — the standard way to make function "static"
 
     void comGround(PlacebleObject &com,
                    PlacebleObject &res) {
-        ground(res, com);
+        //ground(res, com);
     }
 //----------end of com collision --------------------
 
@@ -269,7 +265,7 @@ namespace // anonymous namespace — the standard way to make function "static"
 
     void pLineIn(PlacebleObject &pLine,
                  PlacebleObject &in) {
-        inPowerLine(pLine, in);
+        inPowerLine(in, pLine);
 
     }
 
@@ -327,7 +323,7 @@ namespace // anonymous namespace — the standard way to make function "static"
         //---------------Commercial------------------------------------
         phm[Key(typeid(Commercial), typeid(Road))] = &roadCom;
         phm[Key(typeid(Commercial), typeid(PowerLines))] = &comPowerLine;
-        phm[Key(typeid(Commercial), typeid(Ground))] = &ground;
+       // phm[Key(typeid(Commercial), typeid(Ground))] = &ground;
         phm[Key(typeid(Commercial), typeid(Residence))] = &comRes;
         phm[Key(typeid(Commercial), typeid(Indastrial))] = &comIn;
         phm[Key(typeid(Commercial), typeid(Commercial))] = &comCom;
@@ -338,7 +334,7 @@ namespace // anonymous namespace — the standard way to make function "static"
         //---------------Residence------------------------------------
         phm[Key(typeid(Residence), typeid(Road))] = &resRoad;
         phm[Key(typeid(Residence), typeid(PowerLines))] = &resPowerLine;
-        phm[Key(typeid(Residence), typeid(Ground))] = &ground;
+       // phm[Key(typeid(Residence), typeid(Ground))] = &ground;
         phm[Key(typeid(Residence), typeid(Residence))] = &resRes;
         phm[Key(typeid(Residence), typeid(Indastrial))] = &resIn;
         phm[Key(typeid(Residence), typeid(Commercial))] = &resCom;
@@ -347,7 +343,7 @@ namespace // anonymous namespace — the standard way to make function "static"
         //---------------PowerLine------------------------------------
         phm[Key(typeid(PowerLines), typeid(Road))] = &pLineRoad;
         phm[Key(typeid(PowerLines), typeid(PowerLines))] = &pLinePowerLine;
-        phm[Key(typeid(PowerLines), typeid(Ground))] = &ground;
+      //  phm[Key(typeid(PowerLines), typeid(Ground))] = &ground;
         phm[Key(typeid(PowerLines), typeid(Indastrial))] = &pLineIn;
         phm[Key(typeid(PowerLines), typeid(Commercial))] = &pLineCom;
         phm[Key(typeid(PowerLines), typeid(Residence))] = &pLineRes;
@@ -356,7 +352,7 @@ namespace // anonymous namespace — the standard way to make function "static"
         //---------------PowerSource-------------------------------------
         phm[Key(typeid(PowerSource), typeid(Road))] = &powerSourceRoad;
         phm[Key(typeid(PowerSource), typeid(PowerLines))] = &powerSourcePowerLine;
-        phm[Key(typeid(PowerSource), typeid(Ground))] = &ground;
+    //    phm[Key(typeid(PowerSource), typeid(Ground))] = &ground;
         phm[Key(typeid(PowerSource), typeid(Indastrial))] = &powerSourceIn;
         phm[Key(typeid(PowerSource), typeid(Commercial))] = &powerSourceIn;
         phm[Key(typeid(PowerSource), typeid(Residence))] = &powerSourceRes;
@@ -365,7 +361,7 @@ namespace // anonymous namespace — the standard way to make function "static"
         //---------------Road-------------------------------------
         phm[Key(typeid(Road), typeid(Road))] = &roadRoad;
         phm[Key(typeid(Road), typeid(PowerLines))] = &roadPowerLine;
-        phm[Key(typeid(Road), typeid(Ground))] = &ground;
+        //phm[Key(typeid(Road), typeid(Ground))] = &ground;
         phm[Key(typeid(Road), typeid(Indastrial))] = &roadIn;
         phm[Key(typeid(Road), typeid(Commercial))] = &roadCom;
         phm[Key(typeid(Road), typeid(Residence))] = &roadRes;
@@ -373,15 +369,15 @@ namespace // anonymous namespace — the standard way to make function "static"
 
         //---------------Indastrial-------------------------------------
         phm[Key(typeid(Indastrial), typeid(Road))] = &inRoad;
-        phm[Key(typeid(Indastrial), typeid(PowerLines))] = &inPower;
-        phm[Key(typeid(Indastrial), typeid(Ground))] = &ground;
+        phm[Key(typeid(Indastrial), typeid(PowerLines))] = &inPowerLine;
+     //   phm[Key(typeid(Indastrial), typeid(Ground))] = &ground;
         phm[Key(typeid(Indastrial), typeid(Indastrial))] = &inIn;
         phm[Key(typeid(Indastrial), typeid(Commercial))] = &inCom;
         phm[Key(typeid(Indastrial), typeid(Residence))] = &inRes;
         phm[Key(typeid(Indastrial), typeid(PowerSource))] = &inPower;
 
 
-        phm[Key(typeid(Ground), typeid(Commercial))] = &ground;
+       // phm[Key(typeid(Ground), typeid(Commercial))] = &ground;
 
         //...
         return phm;

@@ -31,13 +31,13 @@ public:
 
     bool draw(sf::RenderWindow &window,std::pair<int,int>,float deltaTime);
     void drawMoney(sf::RenderWindow &window);
-
+    bool winGame(){return m_player.gameWin();};
     void update(sf::Vector2f mousePos,int &id);
 
     void check(int row, int col);
 
     void updateMoney();
-    int CRIup();
+    std::string CRIup();
 
     void updateAnim();
     void saveLevel();
@@ -49,7 +49,7 @@ private:
     void del(int row, int col) ;
     vector<std::pair<int, int>> assertNum(int size, int a ,int b);
     void loadLevel();
-
+float m_CRImulti= 1.5;
     Player m_player;
 
     sf::Text m_playerMoney;

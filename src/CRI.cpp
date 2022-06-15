@@ -25,10 +25,11 @@ void CRIclass::calcCRI(int c, int r, int i) {
 
 }
 
-void CRIclass::update() {
+std::string CRIclass::update() {
     for (int i = 0; i < m_CRI.size(); ++i) {
         if (m_CRI[i] < 30)
-            std::cout << m_need[i];
+            return m_need[i];
     }
+    return " ";
 
 }

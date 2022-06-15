@@ -1,6 +1,6 @@
 #include "TileMap.h"
 
-TileMap::TileMap(bool file,std::string cityName)
+TileMap::TileMap(bool file, std::string cityName)
 // Change the values when using tiles other than 30x30
 {
 
@@ -9,12 +9,23 @@ TileMap::TileMap(bool file,std::string cityName)
 
     m_playerMoney.setFillColor(sf::Color::Black);
     m_playerResidance.setFillColor(sf::Color::Black);
-    m_cityName=cityName;
+    m_cityName = cityName;
 
     vect = assertNum(100, 0, 49);
-    if (file)
-        loadLevel();
-    else {
+    if (file) {
+        try {
+            loadLevel();
+        }
+        catch (const std::ifstream::failure &e) //catches fstream error and sstream
+        {
+            std::cerr << "There was an error opening level file OR reading input\n";
+            exit(EXIT_FAILURE);
+        }
+        catch (const std::invalid_argument &e) {
+            std::cerr << "There was an error opening level file\n";
+            exit(EXIT_FAILURE);
+        }
+    } else {
         int i = 0;
         for (int row = 0; row < m_rows; ++row) {
             vector<std::unique_ptr<PlacebleObject>> temp;
@@ -103,6 +114,7 @@ bool TileMap::draw(sf::RenderWindow &window, std::pair<int, int> dims, float del
 
 }
 
+
 void TileMap::drawMoney(sf::RenderWindow &window) {
     m_playerMoney.setString("funds " + std::to_string(m_player.getMoney()));
     m_playerResidance.setString("residence " + std::to_string(m_player.getRes()));
@@ -121,13 +133,18 @@ void TileMap::updateMoney() {
         for (auto &col: row) {
             if (col->isResConnected()) {
                 if (col->returnID() != 5)
-                    m_player.transaction(col->calcRate());
+                    m_player.transaction(col->calcRate()*m_CRImulti);
 
 
             }
             m_CRI.calcCRI(m_player.getBuilding(playerData::comBuilding),
                           m_player.getBuilding(playerData::resBuilsing),
                           m_player.getBuilding(playerData::inBuilding));
+
+            if(  m_CRI.update() == " ")
+                m_CRImulti=1.5;
+            else
+                m_CRImulti=1;
 
 
             m_player.transaction(-col->maintanceCost());
@@ -147,8 +164,7 @@ void TileMap::updateAnim() {
         for (auto &col: row) {
 
             if (col->changeAnim(m_player.getMoney())) {
-                m_player.ressidanceAdd(30);
-                m_CRI.update();
+                m_player.ressidanceAdd(30 * m_CRImulti);
             }
 
         }
@@ -169,15 +185,13 @@ void TileMap::update(sf::Vector2f mousePos, int &id) {
 
         }
     }
-    //id=-1;
+
 }
 
 void TileMap::handleClick(sf::Vector2f &mousePos, const int &id, int &row, int &col) {
 
     if (m_obj[row][col]->checkClick(mousePos)) {
-        //  int retflag;
-        //factor2Check(row, col, retflag);
-        //if (retflag == 2) break;
+
 
         if (m_obj[row][col]->returnID() == 0) {
 
@@ -288,15 +302,12 @@ void TileMap::handleClick(sf::Vector2f &mousePos, const int &id, int &row, int &
 
     }
 }
-int TileMap::CRIup(){
-    if(m_CRI.getCRI(CRI::C)<30)
-        return 0;
-    if(m_CRI.getCRI(CRI::R)<30)
-        return 1;
-    if(m_CRI.getCRI(CRI::I)<30)
-      return 2;
+
+std::string TileMap::CRIup() {
+    return m_CRI.update();
 
 }
+
 void TileMap::del(int row, int col) {
 
 
@@ -427,7 +438,6 @@ void TileMap::loadLevel() {
 
     if (!inputFile.is_open()) {
         throw std::runtime_error("Could not open file");
-
     }
 
     inputFile >> m_rows >> m_cols;
@@ -448,7 +458,7 @@ void TileMap::loadLevel() {
         m_obj.emplace_back(std::move(temp));
     }
     inputFile >> line;
-std::cout<<line<<std::endl;
+    std::cout << line << std::endl;
     m_player.setMoney(std::stoi(line));
 
     inputFile >> line;
@@ -456,8 +466,8 @@ std::cout<<line<<std::endl;
     m_player.setRes(std::stoi(line));
 
 
-    inputFile>>line;
-    m_cityName=line;
+    inputFile >> line;
+    m_cityName = line;
 
     inputFile.close();
 }
@@ -472,7 +482,6 @@ void TileMap::saveLevel() {
 
     if (!inputFile.is_open()) {
         throw std::runtime_error("Could not open file");
-
     }
 
     inputFile << m_rows << " " << m_cols << std::endl;

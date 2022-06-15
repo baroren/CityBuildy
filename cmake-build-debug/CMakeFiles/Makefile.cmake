@@ -71,6 +71,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "../resources/save.png"
   "../resources/startScreen.png"
   "../resources/up.png"
+  "../resources/win.png"
   "../resources/zoomIn.png"
   "../resources/zoomOut.png"
   "../src/CMakeLists.txt"
@@ -119,6 +120,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "up.png"
   "down.png"
   "gameOver.png"
+  "win.png"
   "startScreen.png"
   "resources/CMakeFiles/CMakeDirectoryInformation.cmake"
   )

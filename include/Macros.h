@@ -4,18 +4,18 @@
 #pragma once
 enum class gameObjectId{MainMenuBG,TileSheet,road,comm,destroy,indast,resident,powerLine,
     powerSource,park,roadHor,comPlace,resPlace,inPlace,
-    psSource,psLines,bg,grass,save,zoomIn,zoomOut,left,up,down,right,gameover,start};
-enum class popUps{gameover,start};
+    psSource,psLines,bg,grass,save,zoomIn,zoomOut,left,up,down,right,gameover,start,win};
+enum class popUps{gameover,start,win};
 const int POPUPSIZE=1;
 enum class sideMenuId{S_road=1,S_com=2,S_del=3,S_facroty=4,S_park=5,S_powerLine,S_PowerPlant};
-const int numOfSprites=30,MARGINX=900,MARGINY=900;
+const int numOfSprites=35,MARGINX=900,MARGINY=900,moneyToWin=50000,resToWin=700;
 
 const sf::Vector2f maxSize(50*16*3,50*16*3);
 static int FACTOR=3,PlacebleObjectFactor=1, month = 2,
         c_ressidance=30,c_road=10,c_commercial=90,c_indastrial=50,c_delete=10,
         c_powerline=10,c_powerSource=300,
         m_ressidance=50,m_road=10,m_commercial=100,m_indastrial=100,m_delete=0,
-        m_powerline=10,m_powerSource=200,//-
+        m_powerline=10,m_powerSource=50,//-
         r_ressidance=0,//will calculate in  taxes
         r_road=0,r_commercial=150,r_indastrial=120,r_delete=0,
         r_powerline=0,r_powerSource=0;//+

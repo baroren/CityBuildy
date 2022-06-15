@@ -5,10 +5,12 @@
 #include "Controller.h"
 
 Controller::Controller() {
-     Resources::instance().playMusic(gameObjectId::bg);
+    Resources::instance().playMusic(gameObjectId::bg);
     m_testTemp.setFont(*Resources::instance().getFont());
     m_timeTemp.setFont(*Resources::instance().getFont());
     m_cityNameText.setFont(*Resources::instance().getFont());
+    CRI.setFont(*Resources::instance().getFont());
+
     m_bg = *Resources::instance().getSprite(gameObjectId::bg);
     m_bg.setScale(2., 2);
     if (!m_mainMenu.run(m_readFromFile, m_cityName))
@@ -18,18 +20,11 @@ Controller::Controller() {
         m_cityName = m_tileMap.getCityName();
 
     } else {
-std::cout<<"tre\n";
+        std::cout << "tre\n";
         m_startGame = true;
     }
 
-
-}
-
-//--------------------------------------------------------------------------3
-void Controller::run() {
-
-    //move to constructor maybe move
-//------------------------------------------
+    //------------------------------------------
     auto viewSize = sf::Vector2f(m_window.getSize().x / 2, m_window.getSize().y);
     m_views[0] = sf::View(sf::FloatRect(0.f, 0.f, 1920 * 0.2f, 1080.f));
     m_views[0].setViewport(sf::FloatRect(0.f, 0.f, 0.2f, 1.f));
@@ -38,12 +33,17 @@ void Controller::run() {
 
     m_testTemp.setPosition(50, 990);//temp for clock pos
     m_testTemp.setCharacterSize(48);
+    CRI.setPosition(50, 950);//temp for clock pos
+    CRI.setCharacterSize(24);
+
     m_timeTemp.setPosition(50, 100);//temp for clock pos
     m_timeTemp.setCharacterSize(48);
     m_cityNameText.setPosition(50, 10);//temp for clock pos
     m_cityNameText.setCharacterSize(48);
     m_cityNameText.setString(m_cityName);
     m_testTemp.setFillColor(sf::Color::Black);
+    CRI.setFillColor(sf::Color::Black);
+
     m_cityNameText.setFillColor(sf::Color::Black);
     m_timeTemp.setFillColor(sf::Color::Black);
 
@@ -52,6 +52,15 @@ void Controller::run() {
     m_dims.first = sf::VideoMode::getDesktopMode().width;
     m_dims.second = sf::VideoMode::getDesktopMode().height;
 //----------------------------------
+
+
+}
+
+//--------------------------------------------------------------------------3
+void Controller::run() {
+
+    //move to constructor maybe move
+
 
 
     while (m_window.isOpen()) {
@@ -72,19 +81,8 @@ void Controller::run() {
                 m_window.close();
             if (event.type == sf::Event::MouseButtonPressed) {
                 if (m_gameOver) {
-                    std::cout << translateMouse(sf::Mouse::getPosition(m_window)).x << std::endl;
-                    m_gameOver = false;
-                    m_tileMap = TileMap(false);
-                    m_clock.restart();
-                    m_year = startYear;
-                    m_currDate = 0;
-                }
-                if(m_startGame)
-                {
-                    std::cout<<"Start";
-                    m_startGame = false;
-                }
-                else {
+                    handleGameOver();
+                } else {
 
                     sf::Vector2i mouse = sf::Mouse::getPosition(m_window);
                     int temp = m_sideMenu.handleClick(translateMouse(mouse));
@@ -98,6 +96,11 @@ void Controller::run() {
                         m_tileMap.update(translateMouse(mouse), clicked);
                     }
                 }
+                if (m_startGame) {
+                    std::cout << "Start";
+                    m_startGame = false;
+                }
+
             }
 
         }
@@ -106,47 +109,11 @@ void Controller::run() {
         // clear the window with black color
         // std::cout<<time1.asSeconds()<<std::endl;
         // draw everything here...
-        // window.draw(...);
-        // m_clock.restart()
+
         m_window.clear(sf::Color(123, 200, 249));
 
-        if (!m_gameOver) {
-            m_window.setView(m_views[0]);
-            m_window.draw(m_bg);
-            m_tileMap.drawMoney(m_window);
-            draw();
+        handleDraw();
 
-
-            m_window.setView(m_views[1]);
-
-            m_bg.setPosition(2000, 2200);
-            m_bg.setScale(3.5, 3.5);
-            m_window.draw(m_bg);
-
-            if (m_tileMap.draw(m_window, m_dims, m_deltaTime)) {
-                m_gameOver = true;
-            }
-            draw();
-        }
-
-        else {
-
-                m_window.setView(m_window.getDefaultView());
-                m_popUps.draw(m_window, popUps::gameover);
-
-
-
-            //  m_window.draw(m_bg);
-        }
-
-        if (m_startGame) {
-            m_window.setView(m_window.getDefaultView());
-            std::cout <<"in se";
-
-            m_popUps.draw(m_window, popUps::start);
-        }
-
-        // draw();
 
         m_deltaTime = m_clockAnim.restart().asSeconds();
 
@@ -157,19 +124,85 @@ void Controller::run() {
     }
 }
 
+void Controller::handleGameOver() {
+    std::cout << translateMouse(sf::Mouse::getPosition(m_window)).x << std::endl;
+    m_gameOver = false;
+    m_tileMap = TileMap(false);
+    m_clock.restart();
+    m_year = startYear;
+    m_currDate = 0;
+}
+
+void Controller::handleDraw() {
+
+    if (!m_gameOver) {
+        m_window.setView(m_views[0]);
+        m_window.draw(m_bg);
+        m_tileMap.drawMoney(m_window);
+        CRI.setString(m_tileMap.CRIup());
+        m_window.draw(CRI);
+        draw();
+        m_window.setView(m_views[1]);
+        m_bg.setPosition(2000, 2200);
+        m_bg.setScale(3.5, 3.5);
+        m_window.draw(m_bg);
+
+        if (m_tileMap.draw(m_window, m_dims, m_deltaTime)) {
+            m_gameOver = true;
+        }
+
+        draw();
+    } else {
+
+        m_window.setView(m_window.getDefaultView());
+        m_popUps.draw(m_window, popUps::gameover);
+
+    }
+
+    if (m_startGame) {
+        m_window.setView(m_window.getDefaultView());
+        m_popUps.draw(m_window, popUps::start);
+
+        std::cout << "in se";
+
+    }
+      if (m_tileMap.winGame()) {
+        m_window.setView(m_window.getDefaultView());
+        m_popUps.draw(m_window, popUps::start);
+
+        std::cout << "win";
+
+    }
+      std::cout<<m_tileMap.winGame();
+
+}
+
+
 void Controller::handleView() {
-    if (clicked == 8)
-        m_tileMap.saveLevel();
+    if (clicked == 8) {
+        try {
+            m_tileMap.saveLevel();
+        }
+        catch (const std::ifstream::failure& e) //catches fstream error and sstream
+        {
+            std::cerr << "There was an error opening level file OR reading input\n";
+            exit(EXIT_FAILURE);
+        }
+        catch (const std::invalid_argument& e)
+        {
+            std::cerr << "There was an error opening level file\n";
+            exit(EXIT_FAILURE);
+        }
+    }
+
     else if (clicked == 9) {
         m_views[1].zoom(1 - m_zoomRate);
 
-        std::cout << m_views[1].getSize().x << " " << m_views[1].getSize().y << std::endl;
     } else if (clicked == 10) {
         if (m_views[1].getSize().x < maxSize.x && m_views[1].getSize().y < maxSize.y)
             m_views[1].zoom(1 + m_zoomRate);
 
     } else if (clicked == 11) {
-        std::cout << m_views[1].getCenter().x << " " << m_views[1].getCenter().y << std::endl;
         if (m_views[1].getCenter().x > 1600)
             m_views[1].move(sf::Vector2f(-MOVE, 0));
 
@@ -178,7 +211,6 @@ void Controller::handleView() {
             m_views[1].move(sf::Vector2f(0, -MOVE));
 
     } else if (clicked == 13) {
-        std::cout << m_views[1].getCenter().x << " " << m_views[1].getCenter().y << std::endl;
         if (m_views[1].getCenter().y < 2000)
             m_views[1].move(sf::Vector2f(0, MOVE));
 
@@ -193,12 +225,7 @@ void Controller::handleView() {
 
 
 sf::Vector2f Controller::translateMouse(sf::Vector2i mouseLocation) const {
-    /* for (const auto &view: m_views) {
-         if (m_window.getViewport(view).contains(mouseLocation)) {
-             std::cout<<"test \n";
-             return m_window.mapPixelToCoords(mouseLocation, view);
-         }
-     }*/
+
     for (int i = 0; i < m_views.size(); ++i) {
         if (m_window.getViewport(m_views[i]).contains(mouseLocation)) {
             std::cout << "test :" << i << std::endl;
@@ -219,6 +246,7 @@ void Controller::draw() {
     m_mouse.trackMouse(m_window.mapPixelToCoords(sf::Mouse::getPosition(m_window)), m_window, 16 * FACTOR);
     m_sideMenu.draw(m_window);
     m_window.draw(m_timeTemp);
+
     // end the current frame
 }
 
@@ -228,7 +256,6 @@ void Controller::handleTimeAndDate(sf::Time &time1) {
     m_timeTemp.setString(m_dates[m_currDate] + "  " + std::to_string(m_year));
     if (time1.asSeconds() > float(month) && m_payday) {
         m_clock.restart();
-        //   m_payday=false;
         cout << "month past";
         m_tileMap.updateMoney();
         m_tileMap.updateAnim();

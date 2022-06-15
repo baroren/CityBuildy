@@ -6,10 +6,17 @@ Resources::Resources() {
         std::cout << "error loading font";
 
    }
-    buildTexture();
-    //buildAnimation();
-    buildSprite();
-     buildMusic();
+
+    try {
+        buildTexture();
+        buildSprite();
+        buildMusic();
+    }
+    catch (const std::logic_error& e)
+    {
+        std::cerr << "Error loading: " << e.what();
+        throw(std::logic_error("Music\n"));
+    }
     //add sound
 }
 // ----------------------------------------------------------------------------
@@ -17,15 +24,7 @@ Resources::Resources() {
 void Resources::buildTexture() {
     for(int i=0;i<m_imagePath.size();i++) {
         if (!m_texture[i].loadFromFile(m_imagePath[i] + ".png"))
-            exit(EXIT_FAILURE);
-        /*
-        if (!m_temp.loadFromFile(m_imagePath[i]+".png")) {
-            // error...
-            std::cout << "error loading font";
-
-        }
-        m_texture.push_back(m_temp);
-        */
+            throw(std::logic_error("Texture\n"));
     }
 }
 // ----------------------------------------------------------------------------

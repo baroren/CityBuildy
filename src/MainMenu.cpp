@@ -5,7 +5,6 @@
 #include "MainMenu.h"
 
 MainMenu::MainMenu() {
-    // m_window = Window(sf::Vector2u(600,500),"test");
     m_bg = *Resources::instance().getSprite(gameObjectId::MainMenuBG);
     sf::Vector2f targetSize(1000, 500);
     m_bg.setPosition(sf::Vector2f(500, 250));
@@ -44,7 +43,7 @@ bool MainMenu::run(bool &file, std::string &cityName) {
         while (m_window.getWindow().pollEvent(event)) {
 
             if (level == 2 && event.type == sf::Event::TextEntered && m_cityName.length() < 8) {
-                if (event.text.unicode >= 33 && event.text.unicode <= 126) {
+                if (event.text.unicode >= 33 && event.text.unicode <=126) {
                     m_cityName += (char) event.text.unicode;
                 } else if (event.text.unicode == 8)
                     m_cityName = m_cityName.substr(0, m_cityName.length() - 1);

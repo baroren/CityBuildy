@@ -19,7 +19,7 @@ public:
 
     void calcCRI(int c = 0, int r = 0, int i = 0);
 
-    void update();
+    std::string update();
     int getCRI(CRI id){return m_CRI[int(id)];};
     //void CRIdraw(sf::RenderWindow &window){progressBar.progressBarDraw(window);};
 
