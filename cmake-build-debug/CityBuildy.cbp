@@ -237,6 +237,9 @@
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/save.png">
 			<Option virtualFolder="CMake Files\resources\"/>
 		</Unit>
+		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/startScreen.png">
+			<Option virtualFolder="CMake Files\resources\"/>
+		</Unit>
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/up.png">
 			<Option virtualFolder="CMake Files\resources\"/>
 		</Unit>

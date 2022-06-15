@@ -17,6 +17,8 @@ class PopUps {
 public:
     PopUps() {
         m_popUps.push_back(*Resources::instance().getSprite(gameObjectId::gameover));
+        m_popUps.push_back(*Resources::instance().getSprite(gameObjectId::start));
+
         for (auto &popUp: m_popUps){
 
             popUp.setPosition(960,540);

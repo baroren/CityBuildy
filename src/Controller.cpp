@@ -5,30 +5,35 @@
 #include "Controller.h"
 
 Controller::Controller() {
-    m_music = Resources::instance().getMusic(gameObjectId::bg);
+     Resources::instance().playMusic(gameObjectId::bg);
     m_testTemp.setFont(*Resources::instance().getFont());
     m_timeTemp.setFont(*Resources::instance().getFont());
     m_cityNameText.setFont(*Resources::instance().getFont());
     m_bg = *Resources::instance().getSprite(gameObjectId::bg);
     m_bg.setScale(2., 2);
-    if (!m_mainMenu.run(m_readFromFile,m_cityName))
-        m_window.close();
-    m_tileMap = TileMap(m_readFromFile,m_cityName);
-    if(m_readFromFile)
-        m_cityName=m_tileMap.getCityName();
+    if (!m_mainMenu.run(m_readFromFile, m_cityName))
+        exit(EXIT_SUCCESS);
+    m_tileMap = TileMap(m_readFromFile, m_cityName);
+    if (m_readFromFile) {
+        m_cityName = m_tileMap.getCityName();
+
+    } else {
+std::cout<<"tre\n";
+        m_startGame = true;
+    }
+
 
 }
 
 //--------------------------------------------------------------------------3
 void Controller::run() {
-    m_music->play();
 
     //move to constructor maybe move
 //------------------------------------------
     auto viewSize = sf::Vector2f(m_window.getSize().x / 2, m_window.getSize().y);
     m_views[0] = sf::View(sf::FloatRect(0.f, 0.f, 1920 * 0.2f, 1080.f));
     m_views[0].setViewport(sf::FloatRect(0.f, 0.f, 0.2f, 1.f));
-    m_views[1] = sf::View(sf::FloatRect(float(MARGINX + 25 * 16), float(MARGINX + 25 * 16), 800.f, 600.f));
+    m_views[1] = sf::View(sf::FloatRect(float(MARGINX + 25 * 16), float(MARGINX + 25 * 16), 1600.f, 1200.f));
     m_views[1].setViewport({0.2f, 0.f, 0.8f, 1.f});
 
     m_testTemp.setPosition(50, 990);//temp for clock pos
@@ -66,18 +71,23 @@ void Controller::run() {
             if (event.type == sf::Event::Closed)
                 m_window.close();
             if (event.type == sf::Event::MouseButtonPressed) {
-                if(m_gameOver){
-                   std::cout<< translateMouse(sf::Mouse::getPosition(m_window)).x<<std::endl;
-                    m_gameOver=false;
-                    m_tileMap=TileMap(false);
+                if (m_gameOver) {
+                    std::cout << translateMouse(sf::Mouse::getPosition(m_window)).x << std::endl;
+                    m_gameOver = false;
+                    m_tileMap = TileMap(false);
                     m_clock.restart();
-                    m_year=startYear;
-                    m_currDate=0;
-                }else {
+                    m_year = startYear;
+                    m_currDate = 0;
+                }
+                if(m_startGame)
+                {
+                    std::cout<<"Start";
+                    m_startGame = false;
+                }
+                else {
 
                     sf::Vector2i mouse = sf::Mouse::getPosition(m_window);
                     int temp = m_sideMenu.handleClick(translateMouse(mouse));
-                    // std::cout<<"temp"<<temp<<std::endl;
                     if (clicked == -1 || temp >= 1 && temp < m_sideMenu.getSize() + 1) {//TODO make const
 
                         clicked = m_sideMenu.handleClick(translateMouse(mouse));
@@ -85,7 +95,6 @@ void Controller::run() {
 
 
                     } else {
-                        std::cout << "clicked from side menud : " << clicked << std::endl;
                         m_tileMap.update(translateMouse(mouse), clicked);
                     }
                 }
@@ -101,7 +110,7 @@ void Controller::run() {
         // m_clock.restart()
         m_window.clear(sf::Color(123, 200, 249));
 
-        if(!m_gameOver) {
+        if (!m_gameOver) {
             m_window.setView(m_views[0]);
             m_window.draw(m_bg);
             m_tileMap.drawMoney(m_window);
@@ -118,12 +127,24 @@ void Controller::run() {
                 m_gameOver = true;
             }
             draw();
-        } else {
-            m_window.setView(m_window.getDefaultView());
-            m_popUps.draw(m_window,popUps::gameover);
-          //  m_window.draw(m_bg);
         }
 
+        else {
+
+                m_window.setView(m_window.getDefaultView());
+                m_popUps.draw(m_window, popUps::gameover);
+
+
+
+            //  m_window.draw(m_bg);
+        }
+
+        if (m_startGame) {
+            m_window.setView(m_window.getDefaultView());
+            std::cout <<"in se";
+
+            m_popUps.draw(m_window, popUps::start);
+        }
 
         // draw();
 
@@ -140,15 +161,12 @@ void Controller::handleView() {
     if (clicked == 8)
         m_tileMap.saveLevel();
     else if (clicked == 9) {
-        if (m_views[1].getSize().x > 400 && m_views[1].getSize().y < 400)
-
-            m_views[1].zoom(1 - m_zoomRate);
+        m_views[1].zoom(1 - m_zoomRate);
 
         std::cout << m_views[1].getSize().x << " " << m_views[1].getSize().y << std::endl;
     } else if (clicked == 10) {
         if (m_views[1].getSize().x < maxSize.x && m_views[1].getSize().y < maxSize.y)
             m_views[1].zoom(1 + m_zoomRate);
-
 
     } else if (clicked == 11) {
         std::cout << m_views[1].getCenter().x << " " << m_views[1].getCenter().y << std::endl;

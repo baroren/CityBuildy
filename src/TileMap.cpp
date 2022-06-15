@@ -288,7 +288,15 @@ void TileMap::handleClick(sf::Vector2f &mousePos, const int &id, int &row, int &
 
     }
 }
+int TileMap::CRIup(){
+    if(m_CRI.getCRI(CRI::C)<30)
+        return 0;
+    if(m_CRI.getCRI(CRI::R)<30)
+        return 1;
+    if(m_CRI.getCRI(CRI::I)<30)
+      return 2;
 
+}
 void TileMap::del(int row, int col) {
 
 

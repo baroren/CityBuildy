@@ -37,6 +37,7 @@ public:
     void check(int row, int col);
 
     void updateMoney();
+    int CRIup();
 
     void updateAnim();
     void saveLevel();

@@ -58,6 +58,6 @@ private:
     sf::RenderWindow m_window;
     PopUps m_popUps;
     string m_cityName="nahariya ";
-
+bool m_startGame=false;
     void handleView();
 };

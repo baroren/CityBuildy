@@ -9,7 +9,7 @@ Resources::Resources() {
     buildTexture();
     //buildAnimation();
     buildSprite();
-    //  buildMusic();
+     buildMusic();
     //add sound
 }
 // ----------------------------------------------------------------------------
@@ -60,10 +60,15 @@ void Resources::buildSprite()
 }
 
 // ----------------------------------------------------------------------------
-
-sf::Music* Resources::getMusic(gameObjectId id)
+void Resources::playMusic(gameObjectId id)
 {
-    return &m_music;
+    m_music.play();
+
+}
+// ----------------------------------------------------------------------------
+void Resources::stopMusic(gameObjectId id)
+{
+    m_music.stop();
 
 }
 // ----------------------------------------------------------------------------
@@ -75,7 +80,7 @@ void Resources::buildMusic()
         // sf::Music temp;
         if (!m_music.openFromFile(m_musicNames[i])) {
             // error...
-            std::cout << "error loading music";
+           throw(std::logic_error("Music\n"));
 
         }
         // m_music.push_back(temp);
