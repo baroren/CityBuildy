@@ -67,7 +67,7 @@ private:
     PopUps m_popUps;
     string m_cityName = "nahariya ";
     bool m_startGame = false;
-
+    bool m_win=false;
     void handleView();
 
     int count = 0;

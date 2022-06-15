@@ -18,6 +18,7 @@ public:
     PopUps() {
         m_popUps.push_back(*Resources::instance().getSprite(gameObjectId::gameover));
         m_popUps.push_back(*Resources::instance().getSprite(gameObjectId::start));
+        m_popUps.push_back(*Resources::instance().getSprite(gameObjectId::win));
 
         for (auto &popUp: m_popUps){
 

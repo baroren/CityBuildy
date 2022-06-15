@@ -80,8 +80,11 @@ void Controller::run() {
             if (event.type == sf::Event::Closed)
                 m_window.close();
             if (event.type == sf::Event::MouseButtonPressed) {
+                if (m_tileMap.winGame())
+                    m_win = true;
                 if (m_gameOver) {
                     handleGameOver();
+
                 } else {
 
                     sf::Vector2i mouse = sf::Mouse::getPosition(m_window);
@@ -166,14 +169,14 @@ void Controller::handleDraw() {
         std::cout << "in se";
 
     }
-      if (m_tileMap.winGame()) {
-        m_window.setView(m_window.getDefaultView());
-        m_popUps.draw(m_window, popUps::start);
+    if (m_tileMap.winGame() && !m_win) {
 
-        std::cout << "win";
+        m_window.setView(m_window.getDefaultView());
+        m_popUps.draw(m_window, popUps::win);
+        std::cout << "win" << std::endl;
 
     }
-      std::cout<<m_tileMap.winGame();
+    std::cout << m_tileMap.winGame();
 
 }
 
@@ -183,19 +186,16 @@ void Controller::handleView() {
         try {
             m_tileMap.saveLevel();
         }
-        catch (const std::ifstream::failure& e) //catches fstream error and sstream
+        catch (const std::ifstream::failure &e) //catches fstream error and sstream
         {
             std::cerr << "There was an error opening level file OR reading input\n";
             exit(EXIT_FAILURE);
         }
-        catch (const std::invalid_argument& e)
-        {
+        catch (const std::invalid_argument &e) {
             std::cerr << "There was an error opening level file\n";
             exit(EXIT_FAILURE);
         }
-    }
-
-    else if (clicked == 9) {
+    } else if (clicked == 9) {
         m_views[1].zoom(1 - m_zoomRate);
 
     } else if (clicked == 10) {

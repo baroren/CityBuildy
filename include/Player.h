@@ -17,7 +17,7 @@ public:
     int getBuilding(playerData id){return m_building[int(id)];};
     void transaction(int amount){m_money+=amount;};
     bool gameOver(){return m_money<=0;};
-    bool gameWin(){if(m_money>=moneyToWin && m_ressidance>=resToWin) return true;
+    bool gameWin(){if(m_money>=30 && m_ressidance>=30) return true;
    else  return false;};
     void ressidanceAdd(int amount){
 
