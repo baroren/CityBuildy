@@ -122,6 +122,12 @@ bool MainMenu::run(bool &file, std::string &cityName) {
                     level = 0;
 
                 }
+                else if (m_menuSave.handleClick(
+                        m_window.getWindow().mapPixelToCoords(sf::Mouse::getPosition(m_window.getWindow())),
+                        m_window.getWindow()) == 2 && level == 0) {
+                    exit(EXIT_SUCCESS);
+
+                }
             }
 
         }
