@@ -37,7 +37,7 @@ std::unique_ptr<PlacebleObject> Factory::create(const std::string &name, sf::Vec
         registerit(std::to_string(int(classId::ground)), [](sf::Vector2f pos, int row, int col) ->
                 std::unique_ptr<PlacebleObject> {
             return std::make_unique<PowerSource>(pos, row, col, gameObjectId::TileSheet, FACTOR,
-                                                 int(classId::ground), r_powerSource, c_powerSource, m_powerSource);
+                                                 int(classId::ground), 0, 0, 0);
         });
 
         initial = false;

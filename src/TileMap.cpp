@@ -1,6 +1,6 @@
 #include "TileMap.h"
 
-TileMap::TileMap(bool file)
+TileMap::TileMap(bool file,std::string cityName)
 // Change the values when using tiles other than 30x30
 {
 
@@ -9,7 +9,7 @@ TileMap::TileMap(bool file)
 
     m_playerMoney.setFillColor(sf::Color::Black);
     m_playerResidance.setFillColor(sf::Color::Black);
-
+    m_cityName=cityName;
 
     vect = assertNum(100, 0, 49);
     if (file)
@@ -96,8 +96,6 @@ bool TileMap::draw(sf::RenderWindow &window, std::pair<int, int> dims, float del
             check(row, col);
         }
     }
-
-
 
 
     return (m_player.gameOver());
@@ -432,7 +430,6 @@ void TileMap::loadLevel() {
 
         for (int col = 0; col < m_cols; ++col) {
             inputFile >> line;//maybe try catch ?
-            std::cout << line << std::endl;
             auto o = Factory::create(line, sf::Vector2f(
                     col * tileWidth + MARGINX, row * tileWidth + MARGINY), row, col);
             if (o)
@@ -443,12 +440,16 @@ void TileMap::loadLevel() {
         m_obj.emplace_back(std::move(temp));
     }
     inputFile >> line;
+std::cout<<line<<std::endl;
+    m_player.setMoney(std::stoi(line));
 
-    m_player.setMoney(stoi(line));
     inputFile >> line;
 
-    m_player.setRes(stoi(line));
+    m_player.setRes(std::stoi(line));
 
+
+    inputFile>>line;
+    m_cityName=line;
 
     inputFile.close();
 }
@@ -489,7 +490,8 @@ void TileMap::saveLevel() {
 
 
     inputFile << m_player.getRes();
+    inputFile << std::endl;
 
-
+    inputFile << m_cityName;
     inputFile.close();
 }

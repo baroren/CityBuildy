@@ -1,8 +1,39 @@
-//
-// Created by Bar Oren on 15/06/2022.
-//
+#pragma once
 
-#ifndef CITYBUILDY_POPUPS_H
-#define CITYBUILDY_POPUPS_H
+#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+#include "Window.h"
+#include <vector>
+#include <iostream>
+#include <memory>
+#include "Resources.h"
+#include "Conectors.h"
+#include "Macros.h"
+#include "Area.h"
+#include "ProgressBar.h"
 
-#endif //CITYBUILDY_POPUPS_H
+
+class PopUps {
+public:
+    PopUps() {
+        m_popUps.push_back(*Resources::instance().getSprite(gameObjectId::gameover));
+        for (auto &popUp: m_popUps){
+
+            popUp.setPosition(960,540);
+        }
+    }
+
+
+    void draw(sf::RenderWindow& window, popUps id){
+        window.draw(m_popUps[int(id)]);};
+    //void CRIdraw(sf::RenderWindow &window){progressBar.progressBarDraw(window);};
+
+private:
+
+    // ProgressBar progressBar;
+
+    vector<sf::Sprite> m_popUps;
+
+};
+
+

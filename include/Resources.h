@@ -37,7 +37,7 @@ private:
     vector <string> m_imagePath = {"CityBuildyMAIN","outdoors","road","comm","destroy","indast","resident","powerLine",
                                    "powerSource","park","roadHor","comPlace","resPlace"
                                    ,"inPlace","PowerSourcePlace","powerLinePlace","bg","grass","save","zoomIn","zoomOut"
-                                                                                                               ,"left","up","down","right"};
+                                                                                                               ,"left","up","down","right","gameOver"};
     vector <string> m_musicNames={"MainMenuMusic.ogg"};
    // vector<Animation *> m_animation;
     sf::Music m_music;
@@ -46,6 +46,6 @@ private:
                                               1,1,1,1,
                                               1,1,1,2,
                                               4,3,3,1,
-                                              2,1,1,1,1,1,1,1,1,1};
+                                              2,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
     sf::Font m_font;
 };

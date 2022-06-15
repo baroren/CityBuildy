@@ -27,7 +27,7 @@
 class TileMap {
 
 public:
-    explicit TileMap(bool file=false);
+    explicit TileMap(bool file=false,std::string cityName="defualt");
 
     bool draw(sf::RenderWindow &window,std::pair<int,int>,float deltaTime);
     void drawMoney(sf::RenderWindow &window);
@@ -41,7 +41,7 @@ public:
     void updateAnim();
     void saveLevel();
 
- 
+ std::string getCityName(){return m_cityName;};
 
 private:
 // STL-like algorithm to run over all pairs
@@ -67,7 +67,7 @@ private:
     // This textures holds the textures for the tiles
     // It should be a single image with multiple tiles (like a spritesheet)
     //sf::Texture *tileSheet;
-
+std::string m_cityName;
     sf::Sprite tile;
     vector<std::pair<int,int>> vect;
     vector<vector<std::unique_ptr<PlacebleObject>>> m_obj;
@@ -79,5 +79,5 @@ private:
     sf::IntRect m_ground;
     CRIclass m_CRI;
     void handleClick(sf::Vector2f &mousePos, const int &id, int &row, int &col);
-
+bool firstRun=true;
 };

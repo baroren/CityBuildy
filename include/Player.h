@@ -16,7 +16,7 @@ public:
     int getRes(){return m_ressidance;};
     int getBuilding(playerData id){return m_building[int(id)];};
     void transaction(int amount){m_money+=amount;};
-    bool gameOver(){return m_money<=0;};
+    bool gameOver(){return m_money<=0;std::cout<<"fail";};
     void ressidanceAdd(int amount){
 
         if(m_building[int(playerData::resBuilsing)]>visted) {
@@ -30,7 +30,7 @@ public:
     };
     void numOfTotalBuildings(int amount,int res,playerData id){m_building[int(id)]+=amount;
     if(id==playerData::resBuilsing &&m_ressidance>0)m_ressidance-=res;}
-    void setMoney(int amount ){m_money=amount;};
+    void setMoney(int amount ){m_money=amount;std::cout<<"in player "<<amount;};
     void setRes(int amount){m_ressidance=amount;};
 
 
@@ -42,7 +42,7 @@ public:
     // Conectors(const sf::Vector2f &pos,) : PlacebleObject(pos) {}
 
 private:
-    int m_money=13000;
+    int m_money=10000;
     int m_ressidance=0;
 std::array<int,3> m_building ={0,0,0};
 int m_taxes;

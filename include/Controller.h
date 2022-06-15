@@ -15,6 +15,7 @@
 #include "Road.h"
 #include <string>
 #include <random>
+#include "popUps.h"
 using std::vector;
 using std::unique_ptr;
 using std::make_unique;
@@ -44,6 +45,7 @@ private:
     sf::Text m_cityNameText;
     sf::Text m_timeTemp;
     bool m_payday=true;
+    bool m_gameOver=false;
     sf::Clock m_clock;
     sf::Clock m_clockAnim;
     sf::Clock m_generalTime;
@@ -54,7 +56,7 @@ private:
     TileMap m_tileMap;
     Mouse m_mouse;
     sf::RenderWindow m_window;
-
+    PopUps m_popUps;
     string m_cityName="nahariya ";
 
     void handleView();

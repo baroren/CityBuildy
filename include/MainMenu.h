@@ -18,16 +18,19 @@ using std::unique_ptr;
 class MainMenu {
 public:
     MainMenu();
-    bool run(bool& file);
+    bool run(bool& file,std::string &cityName);
 
 
 private :
+    int level=0;
     bool m_startClicked=false;
-    std::string m_fileSave="Would you like to open a saved city?";
+    bool m_newWorld=false;
+    std::string m_cityName;
+    std::string m_fileSave="Would you like  to\n  open a saved city";
     sf::Text m_text;
     Window m_window;
     sf::Sprite m_bg;
     Menu m_menu;
+    Menu m_menuNew;
     Menu m_menuSave;
-
 };

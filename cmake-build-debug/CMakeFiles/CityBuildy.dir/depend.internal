@@ -62,6 +62,7 @@ CMakeFiles/CityBuildy.dir/src/Controller.cpp.o
  ../include/SideMenu.h
  ../include/TileMap.h
  ../include/Window.h
+ ../include/popUps.h
  /Users/bar/Documents/school/yearB/CityBuildy/src/Controller.cpp
 CMakeFiles/CityBuildy.dir/src/Factory.cpp.o
  ../include/Animation.h
@@ -171,6 +172,7 @@ CMakeFiles/CityBuildy.dir/src/main.cpp.o
  ../include/SideMenu.h
  ../include/TileMap.h
  ../include/Window.h
+ ../include/popUps.h
  /Users/bar/Documents/school/yearB/CityBuildy/src/main.cpp
 CMakeFiles/CityBuildy.dir/src/sideMenu.cpp.o
  ../include/Button.h

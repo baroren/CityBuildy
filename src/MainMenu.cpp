@@ -19,72 +19,114 @@ MainMenu::MainMenu() {
     m_menuSave.createButton("open Saved City ", 330, 350, 250, 50);
     m_menuSave.createButton("create New City", 660, 350, 250, 50);
     m_text.setFont(*Resources::instance().getFont());
+    m_menuNew.createButton("Continue ", 330, 350, 250, 50);
+    m_menuNew.createButton("return", 660, 350, 250, 50);
 
 }
 
-bool MainMenu::run(bool &file) {
-    m_text.setPosition(250, 200);//temp for clock pos
-    m_text.setCharacterSize(48);
+bool MainMenu::run(bool &file, std::string &cityName) {
+    m_text.setPosition(350, 200);//temp for clock pos
+    m_text.setCharacterSize(32);
 
     m_text.setFillColor(sf::Color::White);
-
     while (m_window.isOpen()) {
         // check all the window's events that were triggered since the last iteration of the loop
         sf::Event event;
+
+
         while (m_window.getWindow().pollEvent(event)) {
-            // "close requested" event: we close the window
+
+            if (m_newWorld && event.type == sf::Event::TextEntered && m_cityName.length() < 8) {
+                if (event.text.unicode >= 33 && event.text.unicode <= 126) {
+                    m_cityName += (char) event.text.unicode;
+                } else if (event.text.unicode == 8)
+                    m_cityName = m_cityName.substr(0, m_cityName.length() - 1);
+                std::cout << m_cityName << std::endl;
+                m_text.setString("enter Name : " + m_cityName);
+            }
+            // "close reque
+            //
+            // sted" event: we close the window
             if (event.type == sf::Event::Closed)
                 m_window.getWindow().close();
             if (event.type == sf::Event::MouseButtonPressed) {
-
-                if (m_menuSave.handleClick(
-                        m_window.getWindow().mapPixelToCoords(sf::Mouse::getPosition(m_window.getWindow())),
-                        m_window.getWindow()) == 0) {
-                    file = true;
-                    return true;
-                    //    return true;
-                }
-                if (m_menuSave.handleClick(
-                        m_window.getWindow().mapPixelToCoords(sf::Mouse::getPosition(m_window.getWindow())),
-                        m_window.getWindow()) == 1) {
-                    file = false;
-                    return true;
-                    //    return true;
-                }
                 if (m_menu.handleClick(
                         m_window.getWindow().mapPixelToCoords(sf::Mouse::getPosition(m_window.getWindow())),
                         m_window.getWindow()) == 0) {
                     m_startClicked = true;
-                    //    return true;
+                } else if (m_menuSave.handleClick(
+                        m_window.getWindow().mapPixelToCoords(sf::Mouse::getPosition(m_window.getWindow())),
+                        m_window.getWindow()) == 0 && !m_newWorld) {
+                    file = true;
+                    return true;
+
+                } else if (m_menuNew.handleClick(
+                        m_window.getWindow().mapPixelToCoords(sf::Mouse::getPosition(m_window.getWindow())),
+                        m_window.getWindow()) == 0 && !m_startClicked) {
+                    file = false;
+                    cityName = m_cityName;
+                    return true;
+
+
                 }
+
                 if (m_menu.handleClick(
                         m_window.getWindow().mapPixelToCoords(sf::Mouse::getPosition(m_window.getWindow())),
-                        m_window.getWindow()) == 2) {
+                        m_window.getWindow()) == 1) {
 
 
-                    return false;
                 }
+                if (m_menuNew.handleClick(
+                        m_window.getWindow().mapPixelToCoords(sf::Mouse::getPosition(m_window.getWindow())),
+                        m_window.getWindow()) == 1&& !m_startClicked) {
+                    std::cout << "m_menuNew";
 
-            }
-            if (event.type == sf::Event::Closed) {
+                    m_startClicked=false;
 
+                    m_newWorld = true;
+                }
+                else  if (m_menuSave.handleClick(
+                        m_window.getWindow().mapPixelToCoords(sf::Mouse::getPosition(m_window.getWindow())),
+                        m_window.getWindow()) == 1 &&m_startClicked) {
+                    file = false;
+                     std::cout << "test";
 
-                return false;
+                    m_startClicked = false;
+                    m_newWorld = true;
+
+                    m_text.setString("enter Name : ");
+
+                }
             }
 
         }
+
+
+
 
         // clear the window with black color
 
         // draw everything here...
         // window.draw(...);
+
         m_window.getWindow().draw(m_bg);
-        if (m_startClicked)
+        if (level==1) {
+            m_text.setString(m_fileSave);
+
             m_menuSave.updateBt(m_window.getWindow());
-        else
+
+        }
+        if (level ==2) {
+
+            m_menuNew.updateBt(m_window.getWindow());
+        } else
             m_menu.updateBt(m_window.getWindow());
+
+
+        m_window.getWindow().draw(m_text);
         // end the current frame
         m_window.display();
     }
-    return true;
+
+
 }
