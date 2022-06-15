@@ -434,7 +434,7 @@ void TileMap::initIntRect() {
 
 void TileMap::loadLevel() {
     std::cout << "load level";
-    std::string levelName = "save.txt";
+    std::string levelName = "../../../resources/save.txt";
     std::ifstream inputFile;
     inputFile.open(levelName);
 
@@ -478,7 +478,7 @@ void TileMap::saveLevel() {
     //save to exe folder, i dont want the player to creat his own just save
     std::cout << "";
     std::cout << "save level";
-    std::string levelName = "./save.txt";
+    std::string levelName = "../../../resources/save.txt";
     std::ofstream inputFile;
     inputFile.open(levelName, std::ofstream::out | std::ofstream::trunc);
 

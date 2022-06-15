@@ -29,6 +29,7 @@ configure_file ("down.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("gameOver.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("win.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("help.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("save.txt" ${CMAKE_BINARY_DIR} COPYONLY)
 
 configure_file ("startScreen.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
