@@ -54,6 +54,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "../resources/down.png"
   "../resources/gameOver.png"
   "../resources/grass.png"
+  "../resources/help.png"
   "../resources/inPlace.png"
   "../resources/indast.png"
   "../resources/left.png"
@@ -121,6 +122,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "down.png"
   "gameOver.png"
   "win.png"
+  "help.png"
   "startScreen.png"
   "resources/CMakeFiles/CMakeDirectoryInformation.cmake"
   )

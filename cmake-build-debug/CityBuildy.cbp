@@ -192,6 +192,9 @@
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/grass.png">
 			<Option virtualFolder="CMake Files\resources\"/>
 		</Unit>
+		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/help.png">
+			<Option virtualFolder="CMake Files\resources\"/>
+		</Unit>
 		<Unit filename="/Users/bar/Documents/school/yearB/CityBuildy/resources/inPlace.png">
 			<Option virtualFolder="CMake Files\resources\"/>
 		</Unit>

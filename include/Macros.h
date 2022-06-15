@@ -4,7 +4,7 @@
 #pragma once
 enum class gameObjectId{MainMenuBG,TileSheet,road,comm,destroy,indast,resident,powerLine,
     powerSource,park,roadHor,comPlace,resPlace,inPlace,
-    psSource,psLines,bg,grass,save,zoomIn,zoomOut,left,up,down,right,gameover,start,win};
+    psSource,psLines,bg,grass,save,zoomIn,zoomOut,left,up,down,right,gameover,start,win,help};
 enum class popUps{gameover,start,win};
 const int POPUPSIZE=1;
 enum class sideMenuId{S_road=1,S_com=2,S_del=3,S_facroty=4,S_park=5,S_powerLine,S_PowerPlant};

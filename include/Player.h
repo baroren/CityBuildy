@@ -44,7 +44,7 @@ public:
     // Conectors(const sf::Vector2f &pos,) : PlacebleObject(pos) {}
 
 private:
-    int m_money=49900;
+    int m_money=15000;
     int m_ressidance=500;
 std::array<int,3> m_building ={0,0,0};
 int m_taxes;

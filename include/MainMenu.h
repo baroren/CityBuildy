@@ -30,9 +30,14 @@ private :
     sf::Text m_text;
     Window m_window;
     sf::Sprite m_bg;
+    sf::Sprite m_help;
+
     Menu m_menu;
     Menu m_menuNew;
     Menu m_menuSave;
     Menu m_menuSettings;
 
+    void init();
+
+    void handleDraw();
 };

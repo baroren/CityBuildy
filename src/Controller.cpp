@@ -103,7 +103,6 @@ void Controller::run() {
                     }
                 }
                 if (m_startGame) {
-                    std::cout << "Start";
                     m_startGame = false;
                 }
 
@@ -169,17 +168,15 @@ void Controller::handleDraw() {
         m_window.setView(m_window.getDefaultView());
         m_popUps.draw(m_window, popUps::start);
 
-        std::cout << "in se";
+
 
     }
     if (m_tileMap.winGame() && !m_win) {
 
         m_window.setView(m_window.getDefaultView());
         m_popUps.draw(m_window, popUps::win);
-        std::cout << "win" << std::endl;
 
     }
-    std::cout << m_tileMap.winGame();
 
 }
 
