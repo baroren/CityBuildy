@@ -14,7 +14,6 @@ public:
     using PlacebleObject::PlacebleObject;
 
 
-    // Conectors(const sf::Vector2f &pos,) : PlacebleObject(pos) {}
 
 
 

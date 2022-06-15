@@ -33,4 +33,6 @@ private :
     Menu m_menu;
     Menu m_menuNew;
     Menu m_menuSave;
+    Menu m_menuSettings;
+
 };

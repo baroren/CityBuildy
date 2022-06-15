@@ -16,7 +16,6 @@ public:
     using Area::Area;
     void money(){if(currAnim==3)r_commercial=200;}
 private:
-    // sf::Sprite m_obj;
     std::pair<int, int> pos;
 
 };

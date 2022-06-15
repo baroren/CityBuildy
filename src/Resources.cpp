@@ -62,7 +62,9 @@ void Resources::buildSprite()
 // ----------------------------------------------------------------------------
 void Resources::playMusic(gameObjectId id)
 {
+    m_music.setLoop(true);
     m_music.play();
+
 
 }
 // ----------------------------------------------------------------------------

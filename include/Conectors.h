@@ -15,7 +15,6 @@ public:
 
     void connectPower(bool connect) override {
         m_powerConnected = connect;
-        // currAnim=2;
     };
     void roadpLine(bool connect) override {
         if(connect)
@@ -32,7 +31,6 @@ public:
 
 protected:
 
-// Conectors(const sf::Vector2f &pos,) : PlacebleObject(pos) {}
 
 
 
