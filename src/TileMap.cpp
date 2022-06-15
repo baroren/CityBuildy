@@ -202,7 +202,7 @@ void TileMap::handleClick(sf::Vector2f &mousePos, const int &id, int &row, int &
             } else if (id == 2) {
 
 
-                std::__1::unique_ptr<Commercial> commercial = std::__1::make_unique<Commercial>(sf::Vector2f(
+                std::unique_ptr<Commercial> commercial = std::make_unique<Commercial>(sf::Vector2f(
                                                                                                         col * tileWidth + MARGINX,
                                                                                                         row * tileWidth + MARGINY), row, col,
                                                                                                 gameObjectId::comPlace,
@@ -219,7 +219,7 @@ void TileMap::handleClick(sf::Vector2f &mousePos, const int &id, int &row, int &
             } else if (id == 5) {
 
 
-                std::__1::unique_ptr<Residence> residence = std::__1::make_unique<Residence>(sf::Vector2f(
+                std::unique_ptr<Residence> residence = std::make_unique<Residence>(sf::Vector2f(
                                                                                                      col * tileWidth + MARGINX, row * tileWidth + MARGINY), row, col,
                                                                                              gameObjectId::resPlace,
                                                                                              PlacebleObjectFactor, id,
@@ -233,7 +233,7 @@ void TileMap::handleClick(sf::Vector2f &mousePos, const int &id, int &row, int &
             } else if (id == 4) {
 
 
-                std::__1::unique_ptr<Indastrial> indastrial = std::__1::make_unique<Indastrial>(sf::Vector2f(
+                std::unique_ptr<Indastrial> indastrial = std::make_unique<Indastrial>(sf::Vector2f(
                                                                                                         col * tileWidth + MARGINX, row * tileWidth + MARGINY), row, col,
                                                                                                 gameObjectId::inPlace,
                                                                                                 PlacebleObjectFactor,
@@ -250,7 +250,7 @@ void TileMap::handleClick(sf::Vector2f &mousePos, const int &id, int &row, int &
             } else if (id == 6) {
                 int retflag;
 
-                std::__1::unique_ptr<PowerLines> powerLines = std::__1::make_unique<PowerLines>(sf::Vector2f(
+                std::unique_ptr<PowerLines> powerLines = std::make_unique<PowerLines>(sf::Vector2f(
                                                                                                         col * tileWidth + MARGINX, row * tileHeight + MARGINY), row, col, gameObjectId::psLines,
                                                                                                 PlacebleObjectFactor,
                                                                                                 id,
@@ -265,7 +265,7 @@ void TileMap::handleClick(sf::Vector2f &mousePos, const int &id, int &row, int &
             } else if (id == 7) {
                 int retflag;
 
-                std::__1::unique_ptr<PowerSource> powerSource = std::__1::make_unique<PowerSource>(sf::Vector2f(
+                std::unique_ptr<PowerSource> powerSource = std::make_unique<PowerSource>(sf::Vector2f(
                                                                                                            col * tileWidth + MARGINX, row * tileWidth + MARGINY), row, col,
                                                                                                    gameObjectId::psSource,
                                                                                                    PlacebleObjectFactor,
@@ -282,7 +282,7 @@ void TileMap::handleClick(sf::Vector2f &mousePos, const int &id, int &row, int &
             int retflag;
             del(row, col);
 
-            std::__1::unique_ptr<Ground> ground = std::__1::make_unique<Ground>(sf::Vector2f(
+            std::unique_ptr<Ground> ground = std::make_unique<Ground>(sf::Vector2f(
                                                                                         col * tileWidth + MARGINX, row * tileWidth + MARGINY), row, col, gameObjectId::TileSheet,
                                                                                 FACTOR, 0, r_delete, c_delete,
                                                                                 m_delete);

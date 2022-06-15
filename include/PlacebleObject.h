@@ -99,7 +99,7 @@ public:
         return false;
     }
     virtual void updateRes(){;};
-    virtual int getResNum(){;};
+    virtual int getResNum(){return 0;};
     virtual void roadpLine(bool connect) { std::cout << "test"; };
 
     virtual bool isroadpLineConnected() { return false; };
