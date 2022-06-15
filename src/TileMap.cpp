@@ -47,9 +47,10 @@ TileMap::TileMap(bool file, std::string cityName)
                 min = m_rows;
             else
                 min = m_cols;
-            if (vect[j].first < min)
+            if (vect[j].first < min) {
+                if( m_obj[vect[j].first][vect[j].second]->returnID()==0)
                 m_obj[vect[j].first][vect[j].second]->changeTexture(gameObjectId::grass);
-
+            }
         } catch (...) {
 
         }
@@ -296,6 +297,7 @@ void TileMap::handleClick(sf::Vector2f &mousePos, const int &id, int &row, int &
                    id == 6 && m_obj[row][col]->returnID() == 1) {
 
             m_obj[row][col]->roadpLine(true);
+            m_obj[row][col]->changeId(8);
 
         }
 

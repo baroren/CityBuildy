@@ -12,7 +12,7 @@
 class PlacebleObject {
 public:
     PlacebleObject(sf::Vector2f pos, int row, int col, gameObjectId id,
-                   int factor, int idN, int rate, int cost, int maint) {
+                   int factor, int idN, int rate, int cost, int maint,bool power=false) {
         m_obj = *Resources::instance().getSprite(id);
         m_numAnimations = Resources::instance().getImageCount(id);
 
@@ -25,6 +25,9 @@ public:
         m_rate = rate;
         m_buildCost = cost;
         m_maintance = maint;
+        m_powerConnected=power;
+        if(m_powerConnected)
+            connectPower(true);
 
 
     }
@@ -106,6 +109,7 @@ public:
     virtual void money(){;};
     virtual void changeTexture(gameObjectId id){m_obj.setTexture(*Resources::instance().getTexture(id));
     };
+    virtual void changeId(int id){m_id=id;};
 protected:
 
     sf::Sprite m_obj;

@@ -23,7 +23,7 @@ enum class playerData{resBuilsing,comBuilding,inBuilding};
 enum class CRI{C,R,I};
 const float m_zoomRate=0.2;
 const int MOVE=100;
-enum class classId {ground,road,com,del,in,res,pl,ps};
+enum class classId {ground,road,com,del,in,res,pl,ps,roadPowered};
 
 const int tileWidth=16*FACTOR;
 const int tileHeight=16*FACTOR;
